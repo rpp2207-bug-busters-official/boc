@@ -25,7 +25,7 @@ jobs:
       id: deploy
       run: |
         aws deploy create-deployment \
-        --application-name node-app-23 \
-        --deployment-group-name node-app-23-DG \
+        --application-name BOC_AUTO \
+        --deployment-group-name BOC-deploy-group \
         --deployment-config-name CodeDeployDefault.OneAtATime \
         --github-location repository=${{ github.repository }},commitId=${{ github.sha }}
