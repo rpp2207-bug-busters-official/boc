@@ -3,6 +3,8 @@ os: linux
 files:
   - source: /
     destination: /home/ec2-user/boc
+    overwrite: true
+file_exists_behavior: OVERWRITE
 # permissions: read-all|write-all
 hooks:
 # ApplicationStop:
