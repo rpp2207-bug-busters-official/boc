@@ -1,13 +1,15 @@
 import login from '../api/login.js';
 import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
 import firebase from '../../../firebase/clientApp.js';
+import facebookLogin from './facebookLogin.js';
 
 export default function Login(props) {
   const provider = new GoogleAuthProvider();
   const auth = getAuth();
   auth.languageCode = 'it';
-  const handleClick = () => {
-    console.log('entering handleClick')
+
+  const googleLogin = () => {
+    console.log('entering facebookLogin')
     provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
     signInWithPopup(auth, provider)
       .then((result) => {
@@ -21,11 +23,12 @@ export default function Login(props) {
         const email = err.customData.email;
         const credential = GoogleAuthProvider.credentialFromResult(err);
       })
-
   }
+
   return (
     <>
-      <p onClick={handleClick}>hi</p>
+      <p onClick={googleLogin}>Google</p>
+      <p onClick = {facebookLogin}>Facebook</p>
     </>
   )
 }
