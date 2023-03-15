@@ -2,11 +2,12 @@ import Link from 'next/link';
 
 const Navbar = () => {
   return (
-    <div>
-      <h1>NAVBAR</h1>
-      <Link href="/Authenticated">Profile</Link>
-      <Link href="/">Home</Link>
-    </div>
+    <nav class="navbar bg-body-tertiary">
+      <form class="container-fluid justify-content-start">
+      <Link  class="btn btn-outline-success me-2" href="/">Find Locations</Link>
+      <Link class="btn btn-sm btn-outline-secondary" href="/authenticated">View Profile</Link>
+      </form>
+    </nav>
   );
 }
 
