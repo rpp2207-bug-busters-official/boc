@@ -140,6 +140,7 @@ a {
   background: #fff;
   }
 
+<<<<<<< HEAD
 .activity-list {
   background-color: #0f2f7f84;
   padding-bottom: 1%;
@@ -166,3 +167,9 @@ a {
 .activity-body {
   margin: auto;
 }
+=======
+  .mapboxgl-popup {
+    max-width: 400px;
+    font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    }
+>>>>>>> 5411d05 (added pop up after click)
