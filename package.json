@@ -11,10 +11,12 @@
   },
   "dependencies": {
     "bootstrap": "^5.2.3",
+    "dotenv": "^16.0.3",
     "eslint": "8.35.0",
     "eslint-config-next": "13.2.3",
     "mapbox-gl": "^2.13.0",
     "next": "13.2.3",
+    "path": "^0.12.7",
     "pg": "^8.10.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",

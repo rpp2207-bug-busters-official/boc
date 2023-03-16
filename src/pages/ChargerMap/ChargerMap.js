@@ -4,10 +4,12 @@ import {Helmet} from 'react-helmet'
 import React, { useRef, useEffect, useState } from 'react'
 import 'mapbox-gl/dist/mapbox-gl.css'
 
-import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
+import mapboxgl from '!mapbox-gl' // eslint-disable-line import/no-webpack-loader-syntax
 
-mapboxgl.accessToken = 'pk.eyJ1IjoicmxodXRvbmciLCJhIjoiY2xmOTJib2JpMmJ2eDNxbGhtdDRvanp4bCJ9.34AL9vkcKwIOO4xkure1kg';
-
+// const path = require('path');
+// require('dotenv').config({ path: path.resolve(__dirname, '../../../.env') });
+// mapboxgl.accessToken = 'pk.eyJ1IjoicmxodXRvbmciLCJhIjoiY2xmOTJib2JpMmJ2eDNxbGhtdDRvanp4bCJ9.34AL9vkcKwIOO4xkure1kg';
+mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_KEY;
 export default function ChargerMap(props) {
 
   const mapContainer = useRef(null);
