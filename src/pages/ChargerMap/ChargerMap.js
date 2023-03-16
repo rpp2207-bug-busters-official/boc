@@ -36,6 +36,7 @@ export default function ChargerMap(props) {
       })
     );
     map.current.addControl(new mapboxgl.NavigationControl());
+    // map.current.addControl(new mapboxGeocoder)
     // map.current.on('move', () => {
     //   setLng(map.current.getCenter().lng.toFixed(4));
     //   setLat(map.current.getCenter().lat.toFixed(4));
@@ -43,18 +44,23 @@ export default function ChargerMap(props) {
     //   });
     // map.current.on('mousemove', (e) => {
       map.current.on('click', (e) => {
-      document.getElementById('info').innerHTML =
-      // `e.point` is the x, y coordinates of the `mousemove` event
-      // relative to the top-left corner of the map.
-      JSON.stringify(e.point) +
-      '<br />' +
-      // `e.lngLat` is the longitude, latitude geographical position of the event.
-      // JSON.stringify(e.lng);
-      JSON.stringify(e.lngLat.wrap());
+      // document.getElementById('info').innerHTML =
+      // // `e.point` is the x, y coordinates of the `mousemove` event
+      // // relative to the top-left corner of the map.
+      // JSON.stringify(e.point) +
+      // '<br />' +
+      // // `e.lngLat` is the longitude, latitude geographical position of the event.
+      // // JSON.stringify(e.lng);
+      // JSON.stringify(e.lngLat.wrap());
       map.current.flyTo({
         center: e.lngLat
-        });
       });
+      new mapboxgl.Popup()
+        .setLngLat(e.lngLat)
+        .setHTML(e.lngLat)
+        .addTo(map.current);
+    });
+
   });
 
   return (
@@ -62,6 +68,7 @@ export default function ChargerMap(props) {
 
     <div className="jumbotron text-center">
     <Script src="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js"></Script>
+    <Script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></Script>
   <h1>Charge and Tarry</h1>
   <p>Search box  |  Filter</p>
 </div>
