@@ -16,25 +16,19 @@
     "dotenv": "^16.0.3",
     "eslint": "8.35.0",
     "eslint-config-next": "13.2.3",
-<<<<<<< HEAD
     "firebase": "^9.17.2",
     "firebase-admin": "^11.5.0",
     "fs": "^0.0.1-security",
-=======
     "mapbox-gl": "^2.13.0",
->>>>>>> d29c1a7 (add libraries, modified css to render map in app)
     "next": "13.2.3",
     "path": "^0.12.7",
     "pg": "^8.10.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-<<<<<<< HEAD
     "react-icons": "^4.8.0"
-=======
     "react-helmet": "^6.1.0",
     "react-map-gl": "^7.0.21",
     "react-scripts": "^5.0.1"
->>>>>>> d29c1a7 (add libraries, modified css to render map in app)
   },
   "devDependencies": {
     "jest": "^29.5.0"
