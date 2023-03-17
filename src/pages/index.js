@@ -14,6 +14,7 @@ import ActivityForm from './ActivityForm/ActivityForm.js';
 import Login from './Login/Login.js';
 import Script from 'next/script';
 
+
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
