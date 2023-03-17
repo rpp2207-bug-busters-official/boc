@@ -40,14 +40,14 @@ function MyVerticallyCenteredModal(props) {
               </div> */}
 
               <div className="col">
-                <a href="#!">Forgot password?</a>
+                <a href="#!" style={{color:'green'}}>Forgot password?</a>
               </div>
             </div>
 
             <button type="button" className="btn btn-success">Sign in</button>
 
             <div className="text-center">
-              <p>Not a member? <a href="#!">Register</a></p>
+              <p>Not a member? <a href="#!" style={{color:'green'}}>Register</a></p>
               <p>or sign up with:</p>
               <Button onClick={googleLogin} variant='success'>
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-google" viewBox="0 0 16 16">
