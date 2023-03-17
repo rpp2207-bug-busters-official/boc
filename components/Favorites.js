@@ -45,15 +45,15 @@ const Favorites = () => {
     }, [favorites])
 
     return (
-        <div className="list-group" style={{backgroundColor: "#69B578", width: "20rem"}}>
-            <h3 style={{textAlign: "center"}}>Favorites</h3>
+        <div className="list-group" style={{backgroundColor: "#467850", width: "20rem"}}>
+            <h3 style={{textAlign: "center", color: "white"}}>Favorites</h3>
             {rendered.map((fav, key) => {
                 return (
                     <div 
                         className="list-group-item list-group-item-action active"
                         aria-current="true"
                         key={key}
-                        style={{backgroundColor: "#69B578", color: "black", borderColor: "black"}}
+                        style={{backgroundColor: "#69B578", color: "black", borderColor: "#467850"}}
                     >
                         <div>
                             <h5
@@ -68,12 +68,30 @@ const Favorites = () => {
                     </div>
                 );
             })}
-            {rendered.length < allFav.length ? 
-                <button onClick={showMore}>Show More</button>
-            : null}
-            {rendered.length > 4 ?
-                <button onClick={collapse}>Collapse</button>
-            : null}
+            <div style={{width: "100%", textAlign: "center"}}>
+                {rendered.length < allFav.length ? 
+                    <button
+                        style={{
+                            backgroundColor: "#467850",
+                            border: "none",
+                            float: "left",
+                            marginLeft: "1rem"
+                        }}
+                        onClick={showMore}
+                    >Show More</button>
+                : null}
+                {rendered.length > 4 ?
+                    <button
+                        style={{
+                            backgroundColor: "#467850",
+                            border: "none",
+                            float: "right",
+                            marginRight: "1rem"
+                        }}
+                        onClick={collapse}
+                    >Collapse</button>
+                : null}
+            </div>
         </div>
     );
 };

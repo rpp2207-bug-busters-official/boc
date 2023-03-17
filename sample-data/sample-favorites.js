@@ -43,6 +43,69 @@ const favorites = [
         rating: 4.3,
         opening: 6,
         closing: 22
+    },
+    {
+        activity_id: 8674635,
+        location_id: 4768596871,
+        name: 'Green Mountain Trail',
+        description: 'Hiking trail to the peak of Green Mountain',
+        rating: 4.3,
+        opening: 6,
+        closing: 22
+    },
+    {
+        activity_id: 8674635,
+        location_id: 4768596871,
+        name: 'Green Mountain Trail',
+        description: 'Hiking trail to the peak of Green Mountain',
+        rating: 4.3,
+        opening: 6,
+        closing: 22
+    },
+    {
+        activity_id: 8674635,
+        location_id: 4768596871,
+        name: 'Green Mountain Trail',
+        description: 'Hiking trail to the peak of Green Mountain',
+        rating: 4.3,
+        opening: 6,
+        closing: 22
+    },
+    {
+        activity_id: 8674635,
+        location_id: 4768596871,
+        name: 'Green Mountain Trail',
+        description: 'Hiking trail to the peak of Green Mountain',
+        rating: 4.3,
+        opening: 6,
+        closing: 22
+    },
+    {
+        activity_id: 8674635,
+        location_id: 4768596871,
+        name: 'Green Mountain Trail',
+        description: 'Hiking trail to the peak of Green Mountain',
+        rating: 4.3,
+        opening: 6,
+        closing: 22
+    },
+    {
+        activity_id: 8674635,
+        location_id: 4768596871,
+        name: 'Green Mountain Trail',
+        description: 'Hiking trail to the peak of Green Mountain',
+        rating: 4.3,
+        opening: 6,
+        closing: 22
+    },
+    {
+        activity_id: 8674635,
+        location_id: 4768596871,
+        name: 'Green Mountain Trail',
+        description: 'Hiking trail to the peak of Green Mountain',
+        rating: 4.3,
+        opening: 6,
+        closing: 22
     }
 ];
 
