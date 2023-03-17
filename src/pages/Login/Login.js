@@ -14,11 +14,10 @@ function MyVerticallyCenteredModal(props) {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            Activity Form
+            Login
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h4>Add a new activity here</h4>
           <form>
   <label>
     Username:
@@ -29,7 +28,7 @@ function MyVerticallyCenteredModal(props) {
     Password:
     <input type="text" name="password" />
   </label>
-  <input type="submit" value="Submit" />
+  <input type="submit" value="Login" />
 
 </form>
         </Modal.Body>
