@@ -15,46 +15,52 @@ export default function ActivityForm(props) {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            Activity Form
+            New Activity Form
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h4>Add a new activity here</h4>
-          <form>
-  <label>
-    Name:
-    <input type="text" name="name" />
-  </label>
-  <label>
-    Address:
-    <input type="text" name="address" />
-  </label>
-  <label>
-    City:
-    <input type="text" name="city" />
-  </label>
-  <label>
-    Zip Code:
-    <input type="text" name="zipCode" />
-  </label>
-  <label>
-    State:
-    <input type="text" name="state" />
-  </label>
-  <label>
-    Country:
-    <input type="text" name="country" />
-  </label>
-  <label>
-    Phone Number:
-    <input type="text" name="phoneNumber" />
-  </label>
+<form>
+  <div class="row mb-4">
+    <div class="col">
+      <div class="form-outline">
+        <input type="text" id="form6Example1" class="form-control" />
+        <label class="form-label" for="form6Example1">Activity Name</label>
+      </div>
+    </div>
+  </div>
+  <div class="form-outline mb-4">
+    <input type="text" id="form6Example3" class="form-control" />
+    <label class="form-label" for="form6Example3">Address</label>
+  </div>
+  <div class="form-outline mb-4">
+    <input type="text" id="form6Example4" class="form-control" />
+    <label class="form-label" for="form6Example4">City</label>
+  </div>
+  <div class="form-outline mb-4">
+    <input type="text" id="form6Example4" class="form-control" />
+    <label class="form-label" for="form6Example4">Zip Code</label>
+  </div>
+  <div class="form-outline mb-4">
+    <input type="text" id="form6Example4" class="form-control" />
+    <label class="form-label" for="form6Example4">State</label>
+  </div>
+  <div class="form-outline mb-4">
+    <input type="text" id="form6Example4" class="form-control" />
+    <label class="form-label" for="form6Example4">Country</label>
+  </div>
 
-  <Button  variant="success">Create</Button>
+  <div class="form-outline mb-4">
+    <input type="number" id="form6Example6" class="form-control" />
+    <label class="form-label" for="form6Example6">Phone Number</label>
+  </div>
+
+
+
+  <button type="submit" class="btn btn-success">Create!</button>
 </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="dark" onClick={props.onHide}>Close</Button>
+          <Button variant="secondary" onClick={props.onHide}>Close</Button>
         </Modal.Footer>
       </Modal>
     );

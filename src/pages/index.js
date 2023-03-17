@@ -12,6 +12,7 @@ import ChargerMap from './ChargerMap/ChargerMap.js';
 import ActivityList from './ActivityList/ActivityList.js';
 import ActivityForm from './ActivityForm/ActivityForm.js';
 import Login from './Login/Login.js';
+import Register from './Login/register.js';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -42,6 +43,7 @@ export default function Home() {
         <ChargerMap/>
         <ActivityList/>
         <ActivityForm/>
+        <Register/>
         <Login/>
       </main>
     </>
