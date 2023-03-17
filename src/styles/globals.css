@@ -106,11 +106,9 @@ a {
   }
 }
 
-<<<<<<< HEAD
 #addActivity {
   background-color: green;
-
-=======
+}
 .activity-list {
   background-color: #0f2f7f84;
   padding-bottom: 1%;
@@ -136,5 +134,4 @@ a {
 
 .activity-body {
   margin: auto;
->>>>>>> a29647a110e87c1f18d20a889950b8769f21c081
 }
