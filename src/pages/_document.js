@@ -11,6 +11,10 @@ export default function Document() {
             integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
             crossOrigin="anonymous"
           />
+
+          <link
+            href = "https://mynamerobin.com://"
+          />
       </Head>
 
       <Script
@@ -18,6 +22,12 @@ export default function Document() {
         integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
         crossOrigin="anonymous"
       />
+
+      <Script
+        src='https://connect.facebook.net/en_US/sdk.js'
+        crossOrigin='anonymous'
+      />
+
       <body>
         <Main />
         <NextScript />
