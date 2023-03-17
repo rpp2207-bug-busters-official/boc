@@ -7,12 +7,17 @@ const Favorites = () => {
             <h3 style={{textAlign: "center"}}>Favorites</h3>
             {favorites.map((fav, key) => {
                 return (
-                    <div>
+                    <div 
+                        className="list-group-item list-group-item-action active"
+                        aria-current="true"
+                        key={key}
+                        style={{backgroundColor: "#69B578", color: "black", borderColor: "black"}}
+                    >
                         <div>
-                            <h3 style={{display: "inline"}}>{fav.name}</h3>
-                            <h5 style={{display: "inline"}}>{fav.rating}</h5>
+                            <h5 className="mb-1" style={{display: "inline"}}>{fav.name}</h5>
+                            <h6 style={{display: "inline", float: "right"}}>{fav.rating}</h6>
                         </div>
-                        <p>{fav.description}</p>
+                        <p className="mb-1">{fav.description}</p>
                     </div>
                 )
             })}
