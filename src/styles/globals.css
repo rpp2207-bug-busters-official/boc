@@ -85,15 +85,15 @@ body {
   overflow-x: hidden;
 }
 
-body {
-  /* color: rgb(var(--foreground-rgb));
+/* body {
+  color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
     )
-    rgb(var(--background-start-rgb)); */
-}
+    rgb(var(--background-start-rgb));
+} */
 
 a {
   color: inherit;
@@ -104,4 +104,37 @@ a {
   html {
     color-scheme: dark;
   }
+}
+
+<<<<<<< HEAD
+#addActivity {
+  background-color: green;
+
+=======
+.activity-list {
+  background-color: #0f2f7f84;
+  padding-bottom: 1%;
+  margin-right: 65%;
+  max-height: 40em;
+  border-radius: 1%;
+  overflow-y: auto;
+}
+
+.activity-widget {
+  background-color: #1c8230b0;
+  padding: 4%;
+  margin: 4%;
+}
+
+.fa-star {
+  color: #fafafa;
+}
+
+.star-button {
+  font-size:2em;
+}
+
+.activity-body {
+  margin: auto;
+>>>>>>> a29647a110e87c1f18d20a889950b8769f21c081
 }

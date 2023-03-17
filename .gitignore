@@ -30,3 +30,8 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+#chargermap doc files
+/src/pages/ChargeMap/test.js
+
+
