@@ -49,15 +49,12 @@ export default function ActivityForm(props) {
     Phone Number:
     <input type="text" name="phoneNumber" />
   </label>
-  <label>
-    Type:
-    <input type="text" name="Type" />
-  </label>
-  <input type="submit" value="Submit" />
+
+  <Button  variant="success">Create</Button>
 </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={props.onHide}>Close</Button>
+          <Button variant="dark" onClick={props.onHide}>Close</Button>
         </Modal.Footer>
       </Modal>
     );
@@ -66,7 +63,7 @@ export default function ActivityForm(props) {
   const [modalShow, setModalShow] = React.useState(false);
   return (
       <>
-        <Button variant="primary" onClick={() => setModalShow(true)}>
+        <Button variant="primary"  class="btn btn-success" onClick={() => setModalShow(true)}>
           Add Activity Here!
         </Button>
 

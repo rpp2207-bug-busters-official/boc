@@ -33,12 +33,12 @@ function MyVerticallyCenteredModal(props) {
     Password:
     <input type="text" name="password" />
   </label>
-  <input type="submit" value="Login" />
+  <Button  variant="success">Login</Button>
 
 </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={props.onHide}>Close</Button>
+          <Button  variant="dark" onClick={props.onHide}>Close</Button>
         </Modal.Footer>
       </Modal>
     );
@@ -47,7 +47,7 @@ function MyVerticallyCenteredModal(props) {
   const [modalShow, setModalShow] = React.useState(false);
   return (
       <>
-        <Button variant="primary" onClick={() => setModalShow(true)}>
+        <Button variant="primary" class="btn btn-success" onClick={() => setModalShow(true)}>
           Login!
         </Button>
 
