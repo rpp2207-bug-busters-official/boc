@@ -1,28 +1,79 @@
-//import 'bootstrap/dist/css/bootstrap.css';
+import React from 'react';
+import { Button, Modal} from 'react-bootstrap';
+
+
 
 export default function ActivityForm(props) {
+
+  function MyVerticallyCenteredModal(props) {
+    return (
+      <Modal
+        {...props}
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">
+            Activity Form
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <h4>Add a new activity here</h4>
+          <form>
+  <label>
+    Name:
+    <input type="text" name="name" />
+  </label>
+  <label>
+    Address:
+    <input type="text" name="address" />
+  </label>
+  <label>
+    City:
+    <input type="text" name="city" />
+  </label>
+  <label>
+    Zip Code:
+    <input type="text" name="zipCode" />
+  </label>
+  <label>
+    State:
+    <input type="text" name="state" />
+  </label>
+  <label>
+    Country:
+    <input type="text" name="country" />
+  </label>
+  <label>
+    Phone Number:
+    <input type="text" name="phoneNumber" />
+  </label>
+  <label>
+    Type:
+    <input type="text" name="Type" />
+  </label>
+  <input type="submit" value="Submit" />
+</form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button onClick={props.onHide}>Close</Button>
+        </Modal.Footer>
+      </Modal>
+    );
+  }
+
+  const [modalShow, setModalShow] = React.useState(false);
   return (
-    <div>
-<button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Launch demo modal
-</button>
-<div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div className="modal-dialog">
-    <div className="modal-content">
-      <div className="modal-header">
-        <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div className="modal-body">
-        ...
-      </div>
-      <div className="modal-footer">
-        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" className="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-    </div>
-  )
+      <>
+        <Button variant="primary" onClick={() => setModalShow(true)}>
+          Add Activity Here!
+        </Button>
+
+  <MyVerticallyCenteredModal
+          show={modalShow}
+          onHide={() => setModalShow(false)}
+        />
+      </>
+    )
 }

@@ -2,7 +2,6 @@ import '@/styles/globals.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import Head from 'next/head';
 import Script from 'next/script';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import Layout from '../../components/Layout.js';
 
 export default function App({ Component, pageProps }) {
