@@ -13,7 +13,13 @@
     "bootstrap": "^5.2.3",
     "eslint": "8.35.0",
     "eslint-config-next": "13.2.3",
+<<<<<<< HEAD
     "jquery": "^3.6.4",
+=======
+    "firebase": "^9.17.2",
+    "firebase-admin": "^11.5.0",
+    "fs": "^0.0.1-security",
+>>>>>>> 9d48408c8412f3aa1dea215b3dad914ab0aa863a
     "next": "13.2.3",
     "pg": "^8.10.0",
     "react": "18.2.0",

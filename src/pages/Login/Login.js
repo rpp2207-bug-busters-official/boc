@@ -3,6 +3,11 @@ import { Button, Modal} from 'react-bootstrap';
 
 
 
+import login from '../api/login.js';
+import firebase from '../../../firebase/clientApp.js';
+import facebookLogin from './facebookLogin.js';
+import googleLogin from './googleLogin.js';
+
 export default function Login(props) {
 function MyVerticallyCenteredModal(props) {
     return (

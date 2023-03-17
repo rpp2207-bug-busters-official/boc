@@ -11,6 +11,10 @@ export default function Document() {
             integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
             crossOrigin="anonymous"
           />
+
+          <link
+            href = "https://mynamerobin.com://"
+          />
       </Head>
 
       <Script
@@ -18,6 +22,7 @@ export default function Document() {
         integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
         crossOrigin="anonymous"
       />
+<<<<<<< HEAD
       <Script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
       crossorigin="anonymous"/>
@@ -27,6 +32,14 @@ crossorigin="anonymous"/>
 <Script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
 integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
 crossorigin="anonymous"/>
+=======
+
+      <Script
+        src='https://connect.facebook.net/en_US/sdk.js'
+        crossOrigin='anonymous'
+      />
+
+>>>>>>> 9d48408c8412f3aa1dea215b3dad914ab0aa863a
       <body>
         <Main />
         <NextScript />

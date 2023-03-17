@@ -85,15 +85,25 @@ body {
   overflow-x: hidden;
 }
 
+<<<<<<< HEAD
 /* body {
   color: rgb(var(--foreground-rgb));
+=======
+body {
+  /* color: rgb(var(--foreground-rgb));
+>>>>>>> 9d48408c8412f3aa1dea215b3dad914ab0aa863a
   background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
     )
+<<<<<<< HEAD
     rgb(var(--background-start-rgb));
 } */
+=======
+    rgb(var(--background-start-rgb)); */
+}
+>>>>>>> 9d48408c8412f3aa1dea215b3dad914ab0aa863a
 
 a {
   color: inherit;
