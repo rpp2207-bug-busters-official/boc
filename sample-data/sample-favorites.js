@@ -4,7 +4,7 @@ const favorites = [
         location_id: 1123413255,
         name: 'Cheba Hut',
         description: 'The best stoner sandwiches in town',
-        rating: 5.0,
+        rating: 3.7,
         opening: 10,
         closing: 23.5
     },
@@ -13,7 +13,7 @@ const favorites = [
         location_id: 6729422852,
         name: 'Scott Carpenter Park',
         description: 'Playground with a big rocket',
-        rating: 4.3,
+        rating: 4.1,
         opening: 0,
         closing: 0
     },
@@ -31,7 +31,7 @@ const favorites = [
         location_id: 3335678932,
         name: 'Franks Fish Hut',
         description: 'Feeeeeesh',
-        rating: 5.0,
+        rating: 4.9,
         opening: 10,
         closing: 23.5
     },
