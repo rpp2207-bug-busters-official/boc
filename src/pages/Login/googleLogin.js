@@ -1,12 +1,9 @@
 import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
 import React from 'react';
 
-
-
 export default function googleLogin() {
   const provider = new GoogleAuthProvider();
   const auth = getAuth();
-  console.log('yoy')
   auth.languageCode = 'it';
   const googleLogin = () => {
     provider.addScope('https://www.googleapis.com/auth/contacts.readonly');

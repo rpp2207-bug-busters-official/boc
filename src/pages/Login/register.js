@@ -1,8 +1,5 @@
 import React from 'react';
 import { Button, Modal} from 'react-bootstrap';
-
-
-
 import login from '../api/login.js';
 import firebase from '../../../firebase/clientApp.js';
 import facebookLogin from './facebookLogin.js';
