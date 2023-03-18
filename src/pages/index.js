@@ -12,6 +12,8 @@ import ChargerMap from './ChargerMap/ChargerMap.js';
 import ActivityList from './ActivityList/ActivityList.js';
 import ActivityForm from './ActivityForm/ActivityForm.js';
 import Login from './Login/Login.js';
+import Script from 'next/script';
+
 
 const inter = Inter({ subsets: ['latin'] })
 

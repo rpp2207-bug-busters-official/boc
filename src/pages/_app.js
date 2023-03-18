@@ -2,6 +2,8 @@ import '@/styles/globals.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import Head from 'next/head';
 import Script from 'next/script';
+import Layout from '../../components/Layout.js';
+
 
 export default function App({ Component, pageProps }) {
   return (
@@ -10,7 +12,11 @@ export default function App({ Component, pageProps }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+
+
 
     </>
   )
