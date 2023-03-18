@@ -6,14 +6,11 @@ export default function signIn(email, password) {
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
-      console.log(setCookie)
       Cookies.setCookie(user.uid);
-      console.log('success')
     })
     .catch((error) => {
       console.log('failure')
       const errorCode = error.code;
       const errorMessage = error.message;
-      console.log(errorMessage)
     });
 }

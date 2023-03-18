@@ -31,7 +31,7 @@ export default function Home() {
         <ActivityList/>
         <ActivityForm/>
         <Register/>
-        <Login/>
+        {/* <Login/> */}
       </main>
     </>
   )

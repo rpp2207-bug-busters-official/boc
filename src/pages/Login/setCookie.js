@@ -7,5 +7,9 @@ function setCookie(userId) {
 function logOut(userId) {
   Cookies.remove('userId');
 }
-let obj = {setCookie:setCookie, logOut:logOut}
+
+function getCookie() {
+  Cookies.get('userId');
+}
+let obj = {setCookie:setCookie, logOut:logOut, getCookie: getCookie}
 export default obj;
