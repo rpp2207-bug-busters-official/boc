@@ -5,7 +5,7 @@ import {useState} from 'react';
 export default function ActivityList(props) {
   const [activities, setActivities] = useState([]);
   var queryURL = 'https://cors-anywhere.herokuapp.com/';
-const yelpAPI = 'a6Z4f3lHkBOQBPImRcYCx2I8L9uqflZEpSz_mG9bZwmTqM6qFrPJiRdtjH0xjDmx7Hi0W0Dm_k30n8sPTyv9LdMHscP65v6775Ov3HrUvYeCtgPPfkmOCAtvWNQMZHYx'
+  const yelpAPI = process.env.NEXT_PUBLIC_YELP_KEY;
 
 const getNearbyActivities = async () => {
   const options = {
@@ -36,7 +36,7 @@ const getNearbyActivities = async () => {
 }
 
 var queryURL = 'https://cors-anywhere.herokuapp.com/';
-const yelpAPI = 'a6Z4f3lHkBOQBPImRcYCx2I8L9uqflZEpSz_mG9bZwmTqM6qFrPJiRdtjH0xjDmx7Hi0W0Dm_k30n8sPTyv9LdMHscP65v6775Ov3HrUvYeCtgPPfkmOCAtvWNQMZHYx'
+const yelpAPI = process.env.NEXT_PUBLIC_YELP_KEY;
 
 const getNearbyActivities = async () => {
   const options = {

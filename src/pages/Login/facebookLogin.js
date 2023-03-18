@@ -1,4 +1,6 @@
 import { getAuth, signInWithPopup, FacebookAuthProvider } from "firebase/auth";
+import React from 'react';
+
 
 export default function facebookLogin () {
   const auth = getAuth();
