@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Button, Modal} from 'react-bootstrap';
 import login from '../api/login.js';
 import firebase from '../../../firebase/clientApp.js';
 import facebookLogin from './facebookLogin.js';
 import googleLogin from './googleLogin.js';
+import CreateUser from './newUser.js';
 
 export default function Register(props) {
 function MyVerticallyCenteredModal(props) {
@@ -22,25 +23,30 @@ function MyVerticallyCenteredModal(props) {
         <Modal.Body>
 <form>
   <div className="form-outline mb-4">
-    <input type="email" id="form2Example0" className="form-control" />
+    <input type="userName" id="username" className="form-control" />
     <label className="form-label" htmlFor="form2Example0">Username</label>
   </div>
 
   <div className="form-outline mb-4">
-    <input type="email" id="form2Example1" className="form-control" />
+    <input type="email" id="email" className="form-control" />
     <label className="form-label" htmlFor="form2Example1">Email address</label>
   </div>
 
   <div className="form-outline mb-4">
-    <input type="password" id="form2Example2" className="form-control" />
+    <input type="password" id="password" className="form-control" />
     <label className="form-label" htmlFor="form2Example2">Password</label>
   </div>
   <div className="form-outline mb-4">
-    <input type="password" id="form2Example" className="form-control" />
+    <input type="password" id="rePassword" className="form-control" />
     <label className="form-label" htmlFor="form2Example3">Re-Enter Password</label>
   </div>
 
-  <button type="button" className="btn btn-success">Create Account!</button>
+  <button type="button" className="btn btn-success" onClick={
+    () => {CreateUser(
+      document.getElementById('email').value,
+      document.getElementById('password').value,
+      document.getElementById('username').value)}
+  }>Create Account!</button>
 
 </form>
         </Modal.Body>
