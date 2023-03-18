@@ -5,7 +5,7 @@ import Register from '../src/pages/Login/register.js';
 
 
 const Navbar = () => {
-
+  console.log(Cookies.getCookie())
   return (
     <nav className="navbar bg-body-tertiary">
       <div className='d-flex'>
