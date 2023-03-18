@@ -21,7 +21,9 @@ const Navbar = () => {
         <div className="mr-auto p-2">
           <form className="">
             <Link className="btn btn-outline-success me-2" href="/">Find Locations</Link>
-            <Link className="btn btn-sm btn-outline-secondary" href="/authenticated">View Profile</Link>
+            {cookie !== undefined &&
+              <Link className="btn btn-sm btn-outline-secondary" href="/authenticated">View Profile</Link>
+            }
           </form>
         </div>
         <div className='ml-auto p-2'>
