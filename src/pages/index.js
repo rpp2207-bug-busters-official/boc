@@ -30,7 +30,7 @@ export default function Home() {
         <ChargerMap/>
         <ActivityList/>
         <ActivityForm/>
-        <Register/>
+        {/* <Register/> */}
         {/* <Login/> */}
       </main>
     </>
