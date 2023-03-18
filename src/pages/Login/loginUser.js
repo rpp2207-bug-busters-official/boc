@@ -9,7 +9,6 @@ export default function signIn(email, password) {
       Cookies.setCookie(user.uid);
     })
     .catch((error) => {
-      console.log('failure')
       const errorCode = error.code;
       const errorMessage = error.message;
     });
