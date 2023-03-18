@@ -43,7 +43,7 @@ const getNearbyActivities = async () => {
     method: 'GET',
     headers: {
       accept: 'application/json',
-      Authorization: `Bearer ${yelpAPI}`
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_YELP_KEY}`
     }
   };
 
