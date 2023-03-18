@@ -3,8 +3,18 @@ import LoginButton from '../src/pages/Login/Login.js';
 import Cookies from '../src/pages/Login/setCookie.js';
 import Register from '../src/pages/Login/register.js';
 import Logout from '../src/pages/Login/logOut.js';
+import react, {useEffect, useState} from 'react';
 
 const Navbar = () => {
+  let [cookie, setCookie] = useState('');
+
+  useEffect(() => {
+    updateCookie();
+  }, [cookie]);
+
+  const updateCookie = () => {
+    setCookie(Cookies.getCookie());
+  }
   return (
     <nav className="navbar bg-body-tertiary">
       <div className='d-flex'>
@@ -15,16 +25,16 @@ const Navbar = () => {
           </form>
         </div>
         <div className='ml-auto p-2'>
-        {Cookies.getCookie('userId') === undefined &&
+        {cookie === undefined &&
             <>
-              <LoginButton/>
+              <LoginButton props={updateCookie}/>
               &nbsp;
               <Register/>
             </>
           }
-          {Cookies.getCookie('userId') !== undefined &&
+          {cookie !== undefined &&
             <>
-              <Logout/>
+              <Logout props={updateCookie}/>
             </>
           }
         </div>
