@@ -20,43 +20,43 @@ export default function ActivityForm(props) {
         </Modal.Header>
         <Modal.Body>
 <form>
-  <div class="row mb-4">
-    <div class="col">
-      <div class="form-outline">
-        <input type="text" id="form6Example1" class="form-control" />
-        <label class="form-label" for="form6Example1">Activity Name</label>
+  <div className="row mb-4">
+    <div className="col">
+      <div className="form-outline">
+        <input type="text" id="form6Example1" className="form-control" />
+        <label className="form-label" htmlFor="form6Example1">Activity Name</label>
       </div>
     </div>
   </div>
-  <div class="form-outline mb-4">
-    <input type="text" id="form6Example3" class="form-control" />
-    <label class="form-label" for="form6Example3">Address</label>
+  <div className="form-outline mb-4">
+    <input type="text" id="form6Example3" className="form-control" />
+    <label className="form-label" htmlFor="form6Example3">Address</label>
   </div>
-  <div class="form-outline mb-4">
-    <input type="text" id="form6Example4" class="form-control" />
-    <label class="form-label" for="form6Example4">City</label>
+  <div className="form-outline mb-4">
+    <input type="text" id="form6Example4" className="form-control" />
+    <label className="form-label" htmlFor="form6Example4">City</label>
   </div>
-  <div class="form-outline mb-4">
-    <input type="text" id="form6Example4" class="form-control" />
-    <label class="form-label" for="form6Example4">Zip Code</label>
+  <div className="form-outline mb-4">
+    <input type="text" id="form6Example4" className="form-control" />
+    <label className="form-label" htmlFor="form6Example4">Zip Code</label>
   </div>
-  <div class="form-outline mb-4">
-    <input type="text" id="form6Example4" class="form-control" />
-    <label class="form-label" for="form6Example4">State</label>
+  <div className="form-outline mb-4">
+    <input type="text" id="form6Example4" className="form-control" />
+    <label className="form-label" htmlFor="form6Example4">State</label>
   </div>
-  <div class="form-outline mb-4">
-    <input type="text" id="form6Example4" class="form-control" />
-    <label class="form-label" for="form6Example4">Country</label>
-  </div>
-
-  <div class="form-outline mb-4">
-    <input type="number" id="form6Example6" class="form-control" />
-    <label class="form-label" for="form6Example6">Phone Number</label>
+  <div className="form-outline mb-4">
+    <input type="text" id="form6Example4" className="form-control" />
+    <label className="form-label" htmlFor="form6Example4">Country</label>
   </div>
 
+  <div className="form-outline mb-4">
+    <input type="number" id="form6Example6" className="form-control" />
+    <label className="form-label" htmlFor="form6Example6">Phone Number</label>
+  </div>
 
 
-  <button type="submit" class="btn btn-success">Create!</button>
+
+  <button type="submit" className="btn btn-success">Create!</button>
 </form>
         </Modal.Body>
         <Modal.Footer>
@@ -69,7 +69,7 @@ export default function ActivityForm(props) {
   const [modalShow, setModalShow] = React.useState(false);
   return (
       <>
-        <Button variant="primary"  class="btn btn-success" onClick={() => setModalShow(true)}>
+        <Button variant="primary"  className="btn btn-success" onClick={() => setModalShow(true)}>
           Add Activity Here!
         </Button>
 

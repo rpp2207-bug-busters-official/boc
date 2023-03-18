@@ -4,6 +4,8 @@ import login from '../api/login.js';
 import firebase from '../../../firebase/clientApp.js';
 import facebookLogin from './facebookLogin.js';
 import googleLogin from './googleLogin.js';
+import CreateUser from './newUser.js';
+import LoginUser from './loginUser.js';
 
 export default function Login(props) {
 function MyVerticallyCenteredModal(props) {
