@@ -15,6 +15,7 @@ import Login from './Login/Login.js';
 import Register from './Login/register.js';
 import Script from 'next/script';
 
+
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {

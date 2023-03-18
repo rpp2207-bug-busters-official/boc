@@ -4,6 +4,7 @@ import Head from 'next/head';
 import Script from 'next/script';
 import Layout from '../../components/Layout.js';
 
+
 export default function App({ Component, pageProps }) {
   return (
     <>
