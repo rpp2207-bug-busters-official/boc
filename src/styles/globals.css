@@ -109,6 +109,10 @@ a {
 /* chargermap */
 .map-container {
   height: 400px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
 }
 
 .sidebar {
@@ -140,6 +144,54 @@ a {
   background: #fff;
   }
 
+  /* .quake-info {
+    position: absolute;
+    font-family: sans-serif;
+    margin-top: 200px;
+    margin-right: 800px;
+    padding: 5px;
+    width: 20%;
+    border: 2px solid black;
+    font-size: 14px;
+    color: #222;
+    background-color: #fff;
+    border-radius: 3px;
+  } */
+
+#quake-info {
+    position: absolute;
+    font-family: sans-serif;
+    margin-top: 200px;
+    margin-right: 800px;
+    /* padding: 5px; */
+    width: 20%;
+    border: none;
+    /* border: 2px solid black; */
+    font-size: 14px;
+    color: #222;
+    background-color: #fff;
+    border-radius: 3px;
+  }
+#features {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 20%;
+    height: 100px;
+    overflow: auto;
+    background: rgba(255, 255, 255, 0.8);
+}
+/* #map { position: absolute; top: 0; bottom: 0; width: 100%; } */
+
+.mapboxgl-popup {
+  max-width: 400px;
+  font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  }
+
+
+
+/*Activity List*/
 .activity-list {
   background-color: #0f2f7f84;
   padding-bottom: 1%;
@@ -166,7 +218,3 @@ a {
 .activity-body {
   margin: auto;
 }
-  .mapboxgl-popup {
-    max-width: 400px;
-    font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
-    }
