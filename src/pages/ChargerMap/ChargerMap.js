@@ -80,6 +80,8 @@ export default function ChargerMap(props) {
           let description = e.features[0].properties.description;
           let combined = coordinates +'<br />' + sname +'<br />' + description  +'<br />' + provider;
 
+          setLat(e.lngLat.lat);
+          setLng(e.lngLat.lng);
           // Ensure that if the map is zoomed out such that multiple
           // copies of the feature are visible, the popup appears
           // over the copy being pointed to.
