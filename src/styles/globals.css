@@ -106,6 +106,71 @@ a {
   }
 }
 
+#addActivity {
+  background-color: green;
+}
+/* chargermap */
+.map-container {
+  height: 400px;
+}
+
+.sidebar {
+  background-color: rgba(35, 55, 75, 0.9);
+  color: #fff;
+  padding: 6px 12px;
+  font-family: monospace;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 12px;
+  border-radius: 4px;
+}
+
+
+#info {
+  display: table;
+  position: relative;
+  margin: 0px auto;
+  word-wrap: anywhere;
+  white-space: pre-wrap;
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  font-size: 12px;
+  text-align: center;
+  color: #222;
+  background: #fff;
+  }
+
+  #quake-info {
+    position: absolute;
+    font-family: sans-serif;
+    margin-top: 200px;
+    margin-right: 800px;
+    /* padding: 5px; */
+    width: 20%;
+    border: none;
+    /* border: 2px solid black; */
+    font-size: 14px;
+    color: #222;
+    background-color: #fff;
+    border-radius: 3px;
+  }
+#features {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 20%;
+    height: 100px;
+    overflow: auto;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+#addActivity {
+  background-color: green;
+}
 .activity-list {
   background-color: #0f2f7f84;
   padding-bottom: 1%;
@@ -128,6 +193,14 @@ a {
 .star-button {
   font-size:2em;
 }
+
+.activity-body {
+  margin: auto;
+}
+  .mapboxgl-popup {
+    max-width: 400px;
+    font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    }
 
 .activity-body {
   margin: auto;

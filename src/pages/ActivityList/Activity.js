@@ -33,7 +33,7 @@ export default function Activity(props) {
       </div>
 
       <div>
-        <p>*Rating*</p>
+        <p>Rating: {activityObj.rating}</p>
         <p>Show Reviews</p>
       </div>
     </div>
