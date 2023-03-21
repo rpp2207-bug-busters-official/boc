@@ -27,6 +27,55 @@ const activities = [
     time_spent: "3 Hours",
     review: "wouldnt let me ship my pants"
   },
+  {
+    place: "post office",
+    rating: 1,
+    date: "March 15th",
+    time_spent: "3 Hours",
+    review: "wouldnt let me ship my pants"
+  },
+  {
+    place: "post office",
+    rating: 1,
+    date: "March 15th",
+    time_spent: "3 Hours",
+    review: "wouldnt let me ship my pants"
+  },
+  {
+    place: "post office",
+    rating: 1,
+    date: "March 15th",
+    time_spent: "3 Hours",
+    review: "wouldnt let me ship my pants"
+  },
+  {
+    place: "post office",
+    rating: 1,
+    date: "March 15th",
+    time_spent: "3 Hours",
+    review: "wouldnt let me ship my pants"
+  },
+  {
+    place: "post office",
+    rating: 1,
+    date: "March 15th",
+    time_spent: "3 Hours",
+    review: "wouldnt let me ship my pants"
+  },
+  {
+    place: "post office",
+    rating: 1,
+    date: "March 15th",
+    time_spent: "3 Hours",
+    review: "wouldnt let me ship my pants"
+  },
+  {
+    place: "post office",
+    rating: 1,
+    date: "March 15th",
+    time_spent: "3 Hours",
+    review: "wouldnt let me ship my pants"
+  },
 
 ];
 
