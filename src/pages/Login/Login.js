@@ -7,7 +7,7 @@ import googleLogin from './googleLogin.js';
 import CreateUser from './newUser.js';
 import LoginUser from './loginUser.js';
 
-export default function Login(props) {
+export default function Login(props1) {
 function MyVerticallyCenteredModal(props) {
     return (
       <Modal
@@ -46,11 +46,16 @@ function MyVerticallyCenteredModal(props) {
               </div>
             </div>
 
-            <button type="button" className="btn btn-success" onClick={() => {
-              LoginUser(
-                document.getElementById('email').value,
-                document.getElementById('password').value
-              )}}>Sign in</button>
+            <button type="button" className="btn btn-success" onClick={
+              () => {
+                LoginUser(
+                  document.getElementById('email').value,
+                  document.getElementById('password').value
+                );
+                setModalShow(false);
+                props1.updateCookie();
+              }
+            }>Sign in</button>
 
             <div className="text-center">
               <p>Not a member? <a href="#!" style={{color:'green'}}>Register</a></p>

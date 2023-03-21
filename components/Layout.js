@@ -3,7 +3,7 @@ import Navbar from './Navbar.js';
 const Layout = ({ children }) => {
   return (
     <div>
-      <Navbar />
+      <Navbar Cookies={children.props}/>
       { children }
     </div>
   );
