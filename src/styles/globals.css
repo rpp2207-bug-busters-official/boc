@@ -219,3 +219,8 @@ a {
 .activity-body {
   margin: auto;
 }
+
+.error-message {
+  color: rgb(224, 64, 64);
+  font-size: small;
+}

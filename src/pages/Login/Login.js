@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { Button, Modal} from 'react-bootstrap';
 import login from '../api/login.js';
 import firebase from '../../../firebase/clientApp.js';
@@ -10,17 +10,19 @@ import LoginUser from './loginUser.js';
 export default function Login(props1) {
 
 function MyVerticallyCenteredModal(props) {
-  const handleLoginClick = async () => {
-    LoginUser(
+  const [loginError, setLoginError] = useState('');
+  const handleLoginClick = async (loginFunction) => {
+    loginFunction(
       document.getElementById('email').value,
       document.getElementById('password').value
     )
       .then(result => {
+        setLoginError('');
         setModalShow(false);
         props1.updateCookie();
       })
       .catch(err => {
-
+        setLoginError('There was an error when trying to log into your account. Please try again.')
       });
   }
     return (
@@ -54,13 +56,15 @@ function MyVerticallyCenteredModal(props) {
                   <label className="form-check-label" for="form2Example31"> Remember me </label>
                 </div>
               </div> */}
-
+            {loginError !== '' &&
+              <p className='error-message'>{loginError}</p>
+            }
               <div className="col">
                 <a href="#!" style={{color:'green'}}>Forgot password?</a>
               </div>
             </div>
 
-            <button type="button" className="btn btn-success" onClick={handleLoginClick}>Sign in</button>
+            <button type="button" className="btn btn-success" onClick={() => {handleLoginClick(LoginUser)}}>Sign in</button>
 
             <div className="text-center">
               <p>Not a member? <a href="#!" style={{color:'green'}}>Register</a></p>

@@ -3,15 +3,17 @@ import Cookies from './setCookie';
 
 export default function createUser(email, password, username) {
   const auth = getAuth();
-  createUserWithEmailAndPassword(auth, email, password)
+  return createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
       Cookies.setCookie(user.uid);
+      console.log('Hello')
       return updateProfile(user, {
         displayName: username
       });
     })
     .catch((error) => {
+      console.log(error.message)
       const errorCode = error.code;
       const errorMessage = error.message;
       return errorMessage;

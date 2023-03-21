@@ -7,7 +7,23 @@ import googleLogin from './googleLogin.js';
 import CreateUser from './newUser.js';
 
 export default function Register(props) {
+  const [regErr, setRegError] = useState('');
 function MyVerticallyCenteredModal(props) {
+  const handleLoginClick = (loginFunction) => {
+    loginFunction(
+      document.getElementById('email'),
+      document.getElementById('password'),
+      document.getElementById('username')
+    )
+      .then(result => {
+        setRegError('');
+        setModalShow(false);
+        props1.updateCookie();
+      })
+      .catch(err => {
+        setRegError('There was an error when trying to log into your account. Please try again.')
+      });
+  }
     return (
       <Modal
         {...props}
@@ -41,12 +57,7 @@ function MyVerticallyCenteredModal(props) {
     <label className="form-label" htmlFor="form2Example3">Re-Enter Password</label>
   </div>
 
-  <button type="button" className="btn btn-success" onClick={
-    () => {CreateUser(
-      document.getElementById('email').value,
-      document.getElementById('password').value,
-      document.getElementById('username').value)}
-  }>Create Account!</button>
+  <button type="button" className="btn btn-success" onClick={() => {handleLoginClick(CreateUser)}}>Create Account!</button>
 
 </form>
         </Modal.Body>
