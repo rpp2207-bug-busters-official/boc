@@ -9,7 +9,11 @@ function logOut(userId) {
 }
 
 function getCookie() {
-  return Cookies.get('userId');
+  const currCookie = Cookies.get('userId');
+  if (currCookie === '') {
+    return undefined;
+  }
+  return currCookie;
 }
 let obj = {setCookie:setCookie, logOut:logOut, getCookie: getCookie}
 export default obj;

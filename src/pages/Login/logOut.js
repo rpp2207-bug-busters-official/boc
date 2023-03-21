@@ -5,7 +5,7 @@ import Cookies from './setCookie.js';
 export default function logOut(props) {
   const logOut = () => {
     Cookies.logOut();
-    props.props()
+    props.updateCookie();
   }
   return (
     <>

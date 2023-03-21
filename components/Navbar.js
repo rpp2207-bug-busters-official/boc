@@ -6,28 +6,39 @@ import Logout from '../src/pages/Login/logOut.js';
 import react, {useEffect, useState} from 'react';
 
 const Navbar = (props) => {
+  let [cookie, setCookie] = useState(undefined);
+
+  const updateCookie = () => {
+    setCookie(Cookies.getCookie());
+    console.log('CurrentCookie:', Cookies.getCookie());
+  }
+  useEffect(() => {
+    updateCookie();
+    console.log('Cookie has changed:', cookie)
+  }, [cookie]);
+
   return (
     <nav className="navbar bg-body-tertiary">
       <div className='d-flex'>
         <div className="mr-auto p-2">
           <form className="">
             <Link className="btn btn-outline-success me-2" href="/">Find Locations</Link>
-            {props.Cookies.cookie !== undefined &&
+            {cookie !== undefined &&
               <Link className="btn btn-sm btn-outline-secondary" href="/authenticated">View Profile</Link>
             }
           </form>
         </div>
         <div className='ml-auto p-2'>
-        {props.Cookies.cookie === undefined &&
+        {cookie === undefined &&
             <>
-              <LoginButton updateCookie={props.Cookies.updateCookie}/>
+              <LoginButton updateCookie={updateCookie}/>
               &nbsp;
-              <Register updateCookie={props.Cookies.updateCookie}/>
+              <Register updateCookie={updateCookie}/>
             </>
           }
-          {props.Cookies.cookie !== undefined &&
+          {cookie !== undefined &&
             <>
-              <Logout props={props.Cookies.updateCookie}/>
+              <Logout updateCookie={updateCookie}/>
             </>
           }
         </div>

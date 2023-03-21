@@ -8,17 +8,6 @@ import Cookies from './Login/setCookie.js';
 
 
 export default function App({ Component, pageProps }) {
-  let [cookie, setCookie] = useState('');
-
-  useEffect(() => {
-    updateCookie();
-    console.log('herllo');
-    console.log('Cookie has changed:', cookie)
-  }, [cookie]);
-
-  const updateCookie = () => {
-    setCookie(Cookies.getCookie());
-  }
   return (
     <>
       <Head>
@@ -26,7 +15,7 @@ export default function App({ Component, pageProps }) {
       </Head>
 
       <Layout>
-        <Component {...pageProps} cookie={cookie} setCookie={setCookie} updateCookie={updateCookie.bind(this)}/>
+        <Component {...pageProps}/>
       </Layout>
 
 

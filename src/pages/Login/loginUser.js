@@ -3,10 +3,11 @@ import Cookies from './setCookie.js';
 
 export default function signIn(email, password) {
   const auth = getAuth();
-  signInWithEmailAndPassword(auth, email, password)
+  return signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
-      Cookies.setCookie(user.uid);
+      console.log('made it inside')
+      return Cookies.setCookie(user.uid);
     })
     .catch((error) => {
       const errorCode = error.code;
