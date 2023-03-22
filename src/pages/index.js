@@ -28,7 +28,7 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <ChargerMap/>
-        <ActivityList/>
+        {/* <ActivityList/> */}
         <ActivityForm/>
         <Register/>
         <Login/>

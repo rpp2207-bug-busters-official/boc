@@ -1,6 +1,9 @@
 import Script from 'next/script'
 import {Helmet} from 'react-helmet'
 
+// import activity list
+import ActivityList from 'src/pages/ActivityList/ActivityList.js';
+
 import React, { useRef, useEffect, useState } from 'react'
 import 'mapbox-gl/dist/mapbox-gl.css'
 
@@ -14,8 +17,8 @@ export default function ChargerMap(props) {
 
   const mapContainer = useRef(null);
   const map = useRef(null);
-  const [lng, setLng] = useState(-100);
-  const [lat, setLat] = useState(31);
+  const [lng, setLng] = useState(-122.4755859375);
+  const [lat, setLat] = useState(48.74894534343292);
   const [zoom, setZoom] = useState(1);
 
   useEffect(() => {
@@ -136,15 +139,15 @@ export default function ChargerMap(props) {
       });
 
 
-      document.getElementById('quake-info').innerHTML =
-      // JSON.stringify(
-        // JSON.stringify(e.point) +
-        '<div><strong>Name:</strong>Station A<div><br />'
-        + '<div><strong>Related Activities:</strong><div><br />'
-        + '<div>Related Activitie 1:<div><br />'
-        // JSON.stringify(e.lngLat.wrap())
-      // )
-      ;
+      // document.getElementById('quake-info').innerHTML =
+      // // JSON.stringify(
+      //   // JSON.stringify(e.point) +
+      //   // '<div><strong>Name:</strong>Station A<div><br />'
+      //   // + '<div><strong></strong><div><br />'
+      //   // + '<div>Related Activitie 1:<div><br />'
+      //   // JSON.stringify(e.lngLat.wrap())
+      // // )
+      // // ;
 
       // new mapboxgl.Popup()
       //   // .setLngLat(e.lngLat)
@@ -180,7 +183,9 @@ Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
 
     <div ref={mapContainer} className="map-container" />
     </div>
-    <pre id="quake-info"></pre>
+    <pre id="quake-info">
+      <ActivityList longitude={lng} latitude={lat}/>
+    </pre>
     {/* <div class='quake-info'>
   <div><strong>Name:</strong> <span id='name'></span></div>
   <div><strong>Related Activities:</strong></div>

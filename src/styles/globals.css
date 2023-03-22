@@ -146,8 +146,9 @@ a {
   #quake-info {
     position: absolute;
     font-family: sans-serif;
-    margin-top: 200px;
+    margin-top: 115px;
     margin-right: 800px;
+    margin-left: -20px;
     /* padding: 5px; */
     width: 20%;
     border: none;
@@ -174,9 +175,9 @@ a {
 .activity-list {
   background-color: #0f2f7f84;
   padding-bottom: 1%;
-  margin-right: 65%;
-  max-height: 40em;
-  border-radius: 1%;
+  margin-right: auto;
+  max-height: 390px;
+  border-radius: auto;
   overflow-y: auto;
 }
 
