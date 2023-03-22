@@ -1,4 +1,4 @@
-export default registration = ({username, email, password}) => {
+export default function registrationValidation ({username, email, password})  {
   const createPredicate = ([test, errMsg]) => {
     return (a) => {
       return test(a) ? null : errMsg;
@@ -26,10 +26,15 @@ export default registration = ({username, email, password}) => {
       [
         ((b) => { return b.password === b.rePassword}).bind(null),
         'Both passwords must match.'
+      ],
+      [
+        ((b) => { return b.password.length >= 6}).bind(null),
+        'Password must be at least 6 characters long.'
       ]
     ]
   };
   let res = {}
+  let sampleDataOne = {username: username, password: password, email: email};
   let currentElement, validations;
   for (let i = 0; i < Object.keys(validationRules).length; i++) {
     currentElement = Object.keys(validationRules)[i];

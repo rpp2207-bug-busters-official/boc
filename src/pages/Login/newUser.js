@@ -7,7 +7,6 @@ export default function createUser(email, password, username) {
     .then((userCredential) => {
       const user = userCredential.user;
       Cookies.setCookie(user.uid);
-      console.log('Hello')
       return updateProfile(user, {
         displayName: username
       });
@@ -15,6 +14,6 @@ export default function createUser(email, password, username) {
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      return errorMessage;
+      throw new Error(errorMessage);
     });
 }

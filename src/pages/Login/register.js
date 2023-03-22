@@ -5,11 +5,21 @@ import firebase from '../../../firebase/clientApp.js';
 import facebookLogin from './facebookLogin.js';
 import googleLogin from './googleLogin.js';
 import CreateUser from './newUser.js';
+import validation from './registrationValidation.js';
 
 export default function Register(props1) {
   const [regErr, setRegError] = useState('');
 function MyVerticallyCenteredModal(props) {
   const handleLoginClick = (loginFunction) => {
+    let username = document.getElementById('username').value;
+    let password = {password: document.getElementById('password').value, rePassword: document.getElementById('rePassword').value}
+    let email = document.getElementById('email').value
+    let validate = validation({username: username, password: password, email: email});
+
+    if (Object.keys(validate).length !== 0) {
+      setRegError(Object.values(validate).join(' '));
+      return;
+    }
     loginFunction(
       document.getElementById('email').value,
       document.getElementById('password').value,
@@ -21,7 +31,7 @@ function MyVerticallyCenteredModal(props) {
         props1.updateCookie();
       })
       .catch(err => {
-        setRegError('There was an error when trying to log into your account. Please try again.')
+        setRegError('There was an error when trying to create your account. Please try again later.');
       });
   }
     return (
@@ -56,8 +66,10 @@ function MyVerticallyCenteredModal(props) {
     <input type="password" id="rePassword" className="form-control" />
     <label className="form-label" htmlFor="form2Example3">Re-Enter Password</label>
   </div>
-
-  <button type="button" className="btn btn-success" onClick={() => {handleLoginClick(CreateUser)}}>Create Account!</button>
+  {regErr !== '' &&
+    <p className='error-message'>{regErr}</p>
+  }
+  <button type="button" className="btn btn-success" onClick={(e) => {handleLoginClick(CreateUser)}}>Create Account!</button>
 
 </form>
         </Modal.Body>
