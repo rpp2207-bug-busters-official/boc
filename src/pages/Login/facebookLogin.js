@@ -2,7 +2,7 @@ import { getAuth, signInWithPopup, FacebookAuthProvider } from "firebase/auth";
 import React from 'react';
 import Cookies from './setCookie.js';
 
-export default function facebookLogin () {
+export default function facebookLogin (updateCookie) {
   const auth = getAuth();
   const provider = new FacebookAuthProvider();
 
@@ -15,6 +15,7 @@ export default function facebookLogin () {
       const credential = FacebookAuthProvider.credentialFromResult(result);
       const accessToken = credential.accessToken;
       Cookies.setCookie(user.uid);
+      updateCookie();
     })
     .catch((error) => {
       // Handle Errors here.
