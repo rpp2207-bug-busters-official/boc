@@ -1,9 +1,37 @@
 import React from 'react';
 import { Button, Modal} from 'react-bootstrap';
 
-
-
 export default function ActivityForm(props) {
+
+  const creatNewActivity = async () => {
+    var newEntry = {
+      longitude: null,
+      latitude: null,
+      ActivityName: null ,
+      address: null,
+      City: null ,
+      ZipCode: null ,
+      State: null,
+      Country: null,
+      Phone: null ,
+    }
+
+    console.log(process.env.NEXT_PUBLIC_OPTIONSTACK_KEY, "keyyyy")
+    console.log( document.getElementById("form6Example1"), "ththth")
+    fetch(`http://api.positionstack.com/v1/forward?access_key=${process.env.NEXT_PUBLIC_OPTIONSTACK_KEY}&query=96MaderaCtDanville,CA`)
+    .then(response => response.json())
+    .then(response => {console.log(response.data[0].longitude, response.data[0].latitude, "hiii")
+          newEntry.longitude = response.data[0].longitude;
+          newEntry.latitude = response.data[0].latitude;
+
+  })
+      .catch(err => console.error(err));
+
+      return(
+        <div>cratedddd</div>
+
+      )
+    };
 
   function MyVerticallyCenteredModal(props) {
     return (
@@ -29,11 +57,11 @@ export default function ActivityForm(props) {
     </div>
   </div>
   <div className="form-outline mb-4">
-    <input type="text" id="form6Example3" className="form-control" />
+    <input type="text" id="form6Example2" className="form-control" />
     <label className="form-label" htmlFor="form6Example3">Address</label>
   </div>
   <div className="form-outline mb-4">
-    <input type="text" id="form6Example4" className="form-control" />
+    <input type="text" id="form6Example3" className="form-control" />
     <label className="form-label" htmlFor="form6Example4">City</label>
   </div>
   <div className="form-outline mb-4">
@@ -41,22 +69,22 @@ export default function ActivityForm(props) {
     <label className="form-label" htmlFor="form6Example4">Zip Code</label>
   </div>
   <div className="form-outline mb-4">
-    <input type="text" id="form6Example4" className="form-control" />
+    <input type="text" id="form6Example5" className="form-control" />
     <label className="form-label" htmlFor="form6Example4">State</label>
   </div>
   <div className="form-outline mb-4">
-    <input type="text" id="form6Example4" className="form-control" />
+    <input type="text" id="form6Example6" className="form-control" />
     <label className="form-label" htmlFor="form6Example4">Country</label>
   </div>
 
   <div className="form-outline mb-4">
-    <input type="number" id="form6Example6" className="form-control" />
+    <input type="number" id="form6Example7" className="form-control" />
     <label className="form-label" htmlFor="form6Example6">Phone Number</label>
   </div>
 
 
 
-  <button type="submit" className="btn btn-success">Create!</button>
+  <button className="btn btn-success" onClick={creatNewActivity}>Create!</button>
 </form>
         </Modal.Body>
         <Modal.Footer>
