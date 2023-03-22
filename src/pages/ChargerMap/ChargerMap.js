@@ -6,6 +6,8 @@ import 'mapbox-gl/dist/mapbox-gl.css'
 
 import mapboxgl from '!mapbox-gl' // eslint-disable-line import/no-webpack-loader-syntax
 
+import ActivityList from '../ActivityList/ActivityList.js';
+
 // const path = require('path');
 // require('dotenv').config({ path: path.resolve(__dirname, '../../../.env') });
 // mapboxgl.accessToken = 'pk.eyJ1IjoicmxodXRvbmciLCJhIjoiY2xmOTJib2JpMmJ2eDNxbGhtdDRvanp4bCJ9.34AL9vkcKwIOO4xkure1kg';
@@ -17,6 +19,7 @@ export default function ChargerMap(props) {
   const [lng, setLng] = useState(-100);
   const [lat, setLat] = useState(31);
   const [zoom, setZoom] = useState(1);
+  const [activitiesOpened, setActivitiesOpened] = useState(false);
 
   useEffect(() => {
     if (map.current) return; // initialize map only once
@@ -134,15 +137,17 @@ export default function ChargerMap(props) {
       });
 
 
-      document.getElementById('quake-info').innerHTML =
-      // JSON.stringify(
-        // JSON.stringify(e.point) +
-        '<div><strong>Name:</strong>Station A<div><br />'
-        + '<div><strong>Related Activities:</strong><div><br />'
-        + '<div>Related Activitie 1:<div><br />'
-        // JSON.stringify(e.lngLat.wrap())
-      // )
-      ;
+      // document.getElementById('quake-info').innerHTML =
+      // // JSON.stringify(
+      //   // JSON.stringify(e.point) +
+      //   '<div><strong>Name:</strong>Station A<div><br />'
+      //   + '<div><strong>Related Activities:</strong><div><br />'
+      //   + '<div>Related Activitie 1:<div><br />'
+      //   // JSON.stringify(e.lngLat.wrap())
+      // // )
+      // ;
+
+      setActivitiesOpened(true);
 
       // new mapboxgl.Popup()
       //   // .setLngLat(e.lngLat)
@@ -178,7 +183,9 @@ Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
 
     <div ref={mapContainer} className="map-container" />
     </div>
-    <pre id="quake-info"></pre>
+    <pre id="quake-info">
+      {activitiesOpened ? <ActivityList/> : null}
+    </pre>
     {/* <div class='quake-info'>
   <div><strong>Name:</strong> <span id='name'></span></div>
   <div><strong>Related Activities:</strong></div>

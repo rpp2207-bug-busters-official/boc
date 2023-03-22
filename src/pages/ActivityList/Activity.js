@@ -1,8 +1,10 @@
 import {AiFillStar} from 'react-icons/ai';
 import {useState} from 'react';
+import Reviews from '../Reviews/Reviews.js';
 
 export default function Activity(props) {
   const [isFavorite, setIsFavorite] = useState(false);
+  const [isReviewOpen, setIsReviewOpen] = useState(false);
 
   let formatPhoneNumber = (str) => {
     //Filter only numbers from the input
@@ -21,6 +23,11 @@ export default function Activity(props) {
     return null;
   }
 
+  var changeReviewOpened = () => {
+    console.log('hi');
+    setIsReviewOpen(!isReviewOpen);
+  }
+
   var activityObj = props.action;
   return (
     <div className="activity-widget">
@@ -34,8 +41,11 @@ export default function Activity(props) {
 
       <div>
         <p>Rating: {activityObj.rating}</p>
-        <p>Show Reviews</p>
+        <p onClick={() => {setIsReviewOpen(!isReviewOpen)}}>Show Reviews</p>
       </div>
+
+      {/* {isReviewOpen ? <Reviews/> : null} */}
+      <Reviews/>
     </div>
   );
 
