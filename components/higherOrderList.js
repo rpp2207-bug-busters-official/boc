@@ -5,6 +5,8 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
 const HigherOrderList = (props) => {
+  let [allFav, setAllFav] = useState([]);
+
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = (body, place) => {
@@ -58,7 +60,7 @@ const HigherOrderList = (props) => {
 
   return (
       <div className="list-group" style={{backgroundColor: "#467850", width: "20rem"}}>
-          <h3 style={{textAlign: "center", color: "white"}}>My Activities</h3>
+          <h3 style={{textAlign: "center", color: "white"}}>{props.title}</h3>
           {rendered.map((act, key) => {
               return (
                   <div

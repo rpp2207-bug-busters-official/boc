@@ -23,7 +23,7 @@ const MyActivities = () => {
   }
 
   return (
-    <HigherOrderList Card={CardComponent}/>
+    <HigherOrderList Card={CardComponent} title='My Acitivties'/>
   )
 }
 
