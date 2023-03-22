@@ -6,14 +6,14 @@ import facebookLogin from './facebookLogin.js';
 import googleLogin from './googleLogin.js';
 import CreateUser from './newUser.js';
 
-export default function Register(props) {
+export default function Register(props1) {
   const [regErr, setRegError] = useState('');
 function MyVerticallyCenteredModal(props) {
   const handleLoginClick = (loginFunction) => {
     loginFunction(
-      document.getElementById('email'),
-      document.getElementById('password'),
-      document.getElementById('username')
+      document.getElementById('email').value,
+      document.getElementById('password').value,
+      document.getElementById('username').value
     )
       .then(result => {
         setRegError('');

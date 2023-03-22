@@ -13,7 +13,6 @@ export default function createUser(email, password, username) {
       });
     })
     .catch((error) => {
-      console.log(error.message)
       const errorCode = error.code;
       const errorMessage = error.message;
       return errorMessage;
