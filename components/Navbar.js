@@ -10,11 +10,9 @@ const Navbar = (props) => {
 
   const updateCookie = () => {
     setCookie(Cookies.getCookie());
-    console.log('CurrentCookie:', Cookies.getCookie());
   }
   useEffect(() => {
     updateCookie();
-    console.log('Cookie has changed:', cookie)
   }, [cookie]);
 
   return (
