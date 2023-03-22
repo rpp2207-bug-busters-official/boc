@@ -26,11 +26,14 @@ export default function ActivityList(props) {
   };
 
   useEffect(() => {
+    setLatitude(props.latitude);
+    setLongitude(props.longitude);
+    console.log('Current Activities:', activities)
     getNearbyActivities()
       .then(() => {
-        console.log('latitude', latitude)
+        console.log('Current Activities', activities)
       })
-  }, [latitude])
+  }, [props.latitude, props.longitude])
 
 
   return (
