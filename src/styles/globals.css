@@ -169,6 +169,19 @@ a {
     background: rgba(255, 255, 255, 0.8);
 }
 
+.geocoder {
+  position: absolute;
+  z-index: 1;
+  width: 50%;
+  left: 50%;
+  margin-left: 25%;
+  top: 100px;
+  }
+
+.mapboxgl-ctrl-geocoder {
+  min-width: 100%;
+  }
+
 #addActivity {
   background-color: green;
 }
