@@ -8,22 +8,27 @@ const Favorites = () => {
             <div
                 className="list-group-item list-group-item-action active"
                 aria-current="true"
-                key={key}
+
                 style={{backgroundColor: "#69B578", color: "black", borderColor: "#467850"}}
             >
                 <div>
                     <h5
                         className="mb-1"
                         style={{display: "inline"}}
-                    >{fav.name}</h5>
+                    >{props.fav.name}</h5>
                     <h6
                         style={{display: "inline", float: "right", fontWeight: "bold"}}
-                    >{fav.rating}</h6>
+                    >{props.fav.rating}</h6>
                 </div>
-                <p className="mb-1">{fav.description}</p>
+                <p className="mb-1">{props.fav.description}</p>
             </div>
         );
     }
+
+    return (
+        // <HigherOrderList Card={FavoriteCard} title='Favorite Activites'/>
+        <p>hi</p>
+    )
 }
 
 export default Favorites;

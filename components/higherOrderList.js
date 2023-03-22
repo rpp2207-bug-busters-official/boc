@@ -56,37 +56,28 @@ const HigherOrderList = (props) => {
       } else {
           setRendered(activities);
       }
-  }, [activities])
+  }, [])
 
   return (
       <div className="list-group" style={{backgroundColor: "#467850", width: "20rem"}}>
           <h3 style={{textAlign: "center", color: "white"}}>{props.title}</h3>
           {rendered.map((act, key) => {
               return (
-                  <div
-                      className="list-group-item list-group-item-action active"
-                      aria-current="true"
-                      key={key}
-                      style={{backgroundColor: "#69B578", color: "black", borderColor: "#467850"}}
-                  >
-                      <div>
-                          <h5
-                              className="mb-1"
-                              style={{display: "inline"}}
-                          >{act.place}</h5>
-
-                          <h6
-                              style={{display: "inline", float: "right", fontWeight: "bold"}}
-                          >{act.rating}</h6>
-                      </div>
-                      <Button variant="primary" style={{backgroundColor: "green"}} onClick={() => handleShow(act.review, act.place)}>
-                        See Review
-                      </Button>
-                  </div>
+                <props.Card key={key} act={act} handleShow={handleShow} setKey={key}/>
               );
           })}
 
-      <props.Card show={show} handleClose={handleClose} reviewTitle={reviewTitle} reviewBody={reviewBody}/>
+        <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+                <Modal.Title>{reviewTitle}</Modal.Title>
+            </Modal.Header>
+        <Modal.Body>{reviewBody}</Modal.Body>
+        <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+            Close
+            </Button>
+        </Modal.Footer>
+        </Modal>
 
 
           <div style={{width: "100%", textAlign: "center"}}>

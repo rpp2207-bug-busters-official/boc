@@ -3,26 +3,28 @@ import CompletedActivites from '../../components/completedActivites.js';
 import Favorites from '../../components/Favorites.js';
 import Cookies from './Login/setCookie.js';
 import {useRouter} from 'next/router';
-import react, { useEffect } from 'react';
+import react, { useEffect, useState } from 'react';
 
 const Authenticated  = () => {
   let router = useRouter();
-  let cookie = Cookies.getCookie();
+  const [cookie, setCookie] = useState(undefined);
   useEffect(() => {
-    if (Cookies.getCookie() === undefined) {
+    let currCookie = Cookies.getCookie();
+    setCookie(currCookie);
+    if (currCookie === undefined) {
       router.push('/')
     }
-  }, [router]);
+  }, []);
 
 
   return (
     <>
       {cookie !== undefined &&
-        <div>
+        <>
           <Favorites />
           <MyActivities />
           <CompletedActivites/>
-        </div>
+        </>
       }
     </>
   );
