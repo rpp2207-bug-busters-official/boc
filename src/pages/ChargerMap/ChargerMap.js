@@ -6,12 +6,11 @@ import ActivityList from 'src/pages/ActivityList/ActivityList.js';
 
 import React, { useRef, useEffect, useState } from 'react'
 import 'mapbox-gl/dist/mapbox-gl.css'
+import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
+import * as MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 
 import mapboxgl from '!mapbox-gl' // eslint-disable-line import/no-webpack-loader-syntax
 
-// const path = require('path');
-// require('dotenv').config({ path: path.resolve(__dirname, '../../../.env') });
-// mapboxgl.accessToken = 'pk.eyJ1IjoicmxodXRvbmciLCJhIjoiY2xmOTJib2JpMmJ2eDNxbGhtdDRvanp4bCJ9.34AL9vkcKwIOO4xkure1kg';
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_KEY;
 export default function ChargerMap(props) {
 
@@ -30,22 +29,23 @@ export default function ChargerMap(props) {
       center: [lng, lat],
       zoom: zoom
     });
+    map.current.addControl(
+      new MapboxGeocoder({
+      accessToken: mapboxgl.accessToken,
+      mapboxgl: mapboxgl
+      })
+    );
+
 
     map.current.on('load', () => {
       map.current.loadImage(
         '/images/station-green.png',
         (error, image) => {
         if (error) throw error;
-
-        // Add the image to the map style.
         map.current.addImage('station', image);
-
-
         map.current.addSource('usstations', {
           type: 'geojson',
-          // Use a URL for the value for the `data` property.
-          data: 'https://raw.githubusercontent.com/rpp2207-bug-busters-official/boc/main/sample-data/us.geojson'
-          // data: 'https://drive.google.com/file/d/1ZwjiS2V8YgXVzmAFVivWVUhZS6FqybG1/view?usp=share_link'
+          data: 'https://raw.githubusercontent.com/rlhutong/data/master/tx.geojson'
         });
 
         map.current.addLayer({
@@ -60,28 +60,33 @@ export default function ChargerMap(props) {
           // 'circle-stroke-color': 'white'
           'layout': {
             'icon-image': 'station', // reference the image
-            'icon-size': 0.05
+            'icon-size': 0.1
             }
         });
+
+
 
         const popup = new mapboxgl.Popup({
           closeButton: false,
           closeOnClick: false
           });
 
+
+
         map.current.on('mouseenter', 'usstations-layer', (e) => {
           // Change the cursor style as a UI indicator.
           map.current.getCanvas().style.cursor = 'pointer';
 
-          // Copy coordinates array.
           let sname = e.features[0].properties.name;
           let provider = "Other";
-          if((e.features[0].properties.poi.operatorInfo)&&(e.features[0].properties.poi.operatorInfo.title)){
-            provider = e.features[0].properties.poi.operatorInfo.title;
+          // if((e.features[0].properties.poi.operatorInfo)&&(e.features[0].properties.poi.operatorInfo.title)){
+          if((e.features[0].properties.poi)){
+          provider = JSON.parse(e.features[0].properties.poi).operatorInfo.title;
           }
+          let connection = e.features[0].properties.connectionType;
           let coordinates = e.features[0].geometry.coordinates.slice();
           let description = e.features[0].properties.description;
-          let combined = coordinates +'<br />' + sname +'<br />' + description  +'<br />' + provider;
+          let combined = e.features[0].id + '<br />' + sname +'<br />' + coordinates + '<br />' + connection + '<br />' + description  +'<br />' + provider;
 
           setLat(e.lngLat.lat);
           setLng(e.lngLat.lng);
@@ -92,8 +97,7 @@ export default function ChargerMap(props) {
           coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
           }
 
-          // Populate the popup and set its coordinates
-          // based on the feature found.
+
           popup.setLngLat(coordinates).setHTML(combined).addTo(map.current);
           });
 
@@ -118,15 +122,14 @@ export default function ChargerMap(props) {
       })
     );
     map.current.addControl(new mapboxgl.NavigationControl());
-    // map.current.addControl(new mapboxGeocoder)
+
     // map.current.on('move', () => {
     //   setLng(map.current.getCenter().lng.toFixed(4));
     //   setLat(map.current.getCenter().lat.toFixed(4));
     //   setZoom(map.current.getZoom().toFixed(2));
     //   });
-    // map.current.on('mousemove', (e) => {
-      map.current.on('click', (e) => {
-      // document.getElementById('info').innerHTML =
+
+         // document.getElementById('info').innerHTML =
       // // `e.point` is the x, y coordinates of the `mousemove` event
       // // relative to the top-left corner of the map.
       // JSON.stringify(e.point) +
@@ -134,32 +137,30 @@ export default function ChargerMap(props) {
       // // `e.lngLat` is the longitude, latitude geographical position of the event.
       // // JSON.stringify(e.lng);
       // JSON.stringify(e.lngLat.wrap());
+
+      map.current.on('click', (e) => {
+
       map.current.flyTo({
-        center: e.lngLat
+        center: e.lngLat,
+        zoom: 16
       });
 
-
+      setLat(e.lngLat.lat);
+      setLng(e.lngLat.lng);
+      setZoom(map.current.getZoom());
       // document.getElementById('quake-info').innerHTML =
-      // // JSON.stringify(
+        // // JSON.stringify(
       //   // JSON.stringify(e.point) +
-      //   // '<div><strong>Name:</strong>Station A<div><br />'
-      //   // + '<div><strong></strong><div><br />'
-      //   // + '<div>Related Activitie 1:<div><br />'
+        //   // lat +'<div><strong>Name:</strong>Station A<div><br />'
+        //   // + '<div><strong></strong><div><br />'
+        //   // + '<div>Related Activitie 1:<div><br />'
       //   // JSON.stringify(e.lngLat.wrap())
-      // // )
-      // // ;
-
-      // new mapboxgl.Popup()
-      //   // .setLngLat(e.lngLat)
-      //   .setLngLat(new mapboxgl.LngLat(map.current.getBounds().getWest(),map.current.getCenter().lat))
-      //   .setHTML('name: station A and more nearby activities')
-      //   .addTo(map.current);
+        // // )
+        // // ;
 
 
     });
 
-    // const nameDisplay = document.getElementById('name');
-    // nameDisplay.textContent = 'Related Activities';
   });
 
   return (
@@ -168,6 +169,8 @@ export default function ChargerMap(props) {
   <div className="jumbotron text-center">
     <Script src="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js"></Script>
     <Script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></Script>
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css"></link>
+
     <h1>Charge and Tarry</h1>
     <p>Search box  |  Filter</p>
   </div>
@@ -176,9 +179,9 @@ export default function ChargerMap(props) {
 
 {/* <div className="row"> */}
 
-{/* <div className="sidebar">
+<div className="sidebar">
 Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
-</div> */}
+</div>
   {/* <div> */}
 
     <div ref={mapContainer} className="map-container" />
