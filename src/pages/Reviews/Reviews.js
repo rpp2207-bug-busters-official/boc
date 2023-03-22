@@ -1,7 +1,7 @@
 import Review from './Review.js';
 
 export default function Reviews (props) {
-  var reviews = [
+  const reviews = [
     {
       'username': 'Mango',
       'comment': 'Place smells weird, but the food was amazing',
@@ -41,8 +41,11 @@ export default function Reviews (props) {
   ]
   return (
     <div>
-      {reviews.map(review => {
-        <Review data={review}/>
+      Review List
+      {reviews.map((action) => {
+        return (
+          <Review data={action} key='mei'/>
+        )
       })}
     </div>
   );
