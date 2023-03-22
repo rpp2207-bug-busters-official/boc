@@ -5,7 +5,6 @@ import Cookies from './setCookie.js';
 export default function facebookLogin (updateCookie) {
   const auth = getAuth();
   const provider = new FacebookAuthProvider();
-
   signInWithPopup(auth, provider)
     .then((result) => {
       // The signed-in user info.
@@ -25,5 +24,8 @@ export default function facebookLogin (updateCookie) {
       const email = error.customData.email;
       // The AuthCredential type that was used.
       const credential = FacebookAuthProvider.credentialFromError(error);
+      // console.log(error);
+      // console.log(errorCode);
+      // console.log(errorMessage);
     });
 }

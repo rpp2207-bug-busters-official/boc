@@ -1,4 +1,5 @@
 import MyActivities from '../../components/MyActivities.js';
+import CompletedActivites from '../../components/completedActivites.js';
 import Favorites from '../../components/Favorites.js';
 import Cookies from './Login/setCookie.js';
 import {useRouter} from 'next/router';
@@ -20,6 +21,7 @@ const Authenticated  = () => {
         <div>
           <Favorites />
           <MyActivities />
+          <CompletedActivites/>
         </div>
       }
     </>
