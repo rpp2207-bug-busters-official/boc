@@ -45,9 +45,7 @@ export default function ChargerMap(props) {
         map.current.addImage('station', image);
         map.current.addSource('usstations', {
           type: 'geojson',
-          // Use a URL for the value for the `data` property.
-          data: 'https://raw.githubusercontent.com/rpp2207-bug-busters-official/boc/main/sample-data/us.geojson'
-          // data: 'https://raw.githubusercontent.com/rlhutong/data/master/tx.geojson'
+          data: 'https://raw.githubusercontent.com/rlhutong/data/master/tx.geojson'
         });
 
         map.current.addLayer({
@@ -81,12 +79,14 @@ export default function ChargerMap(props) {
 
           let sname = e.features[0].properties.name;
           let provider = "Other";
-          if((e.features[0].properties.poi.operatorInfo)&&(e.features[0].properties.poi.operatorInfo.title)){
-            provider = e.features[0].properties.poi.operatorInfo.title;
+          // if((e.features[0].properties.poi.operatorInfo)&&(e.features[0].properties.poi.operatorInfo.title)){
+          if((e.features[0].properties.poi)){
+          provider = JSON.parse(e.features[0].properties.poi).operatorInfo.title;
           }
+          let connection = e.features[0].properties.connectionType;
           let coordinates = e.features[0].geometry.coordinates.slice();
           let description = e.features[0].properties.description;
-          let combined = coordinates +'<br />' + sname +'<br />' + description  +'<br />' + provider;
+          let combined = e.features[0].id + '<br />' + sname +'<br />' + coordinates + '<br />' + connection + '<br />' + description  +'<br />' + provider;
 
           setLat(e.lngLat.lat);
           setLng(e.lngLat.lng);
@@ -122,15 +122,14 @@ export default function ChargerMap(props) {
       })
     );
     map.current.addControl(new mapboxgl.NavigationControl());
-    // map.current.addControl(new mapboxGeocoder)
+
     // map.current.on('move', () => {
     //   setLng(map.current.getCenter().lng.toFixed(4));
     //   setLat(map.current.getCenter().lat.toFixed(4));
     //   setZoom(map.current.getZoom().toFixed(2));
     //   });
-    // map.current.on('mousemove', (e) => {
-      map.current.on('click', (e) => {
-      // document.getElementById('info').innerHTML =
+
+         // document.getElementById('info').innerHTML =
       // // `e.point` is the x, y coordinates of the `mousemove` event
       // // relative to the top-left corner of the map.
       // JSON.stringify(e.point) +
@@ -139,35 +138,29 @@ export default function ChargerMap(props) {
       // // JSON.stringify(e.lng);
       // JSON.stringify(e.lngLat.wrap());
 
+      map.current.on('click', (e) => {
+
       map.current.flyTo({
         center: e.lngLat,
-        zoom: 8
+        zoom: 16
       });
 
       setLat(e.lngLat.lat);
       setLng(e.lngLat.lng);
-
+      setZoom(map.current.getZoom());
       // document.getElementById('quake-info').innerHTML =
         // // JSON.stringify(
       //   // JSON.stringify(e.point) +
-        //   // '<div><strong>Name:</strong>Station A<div><br />'
+        //   // lat +'<div><strong>Name:</strong>Station A<div><br />'
         //   // + '<div><strong></strong><div><br />'
         //   // + '<div>Related Activitie 1:<div><br />'
       //   // JSON.stringify(e.lngLat.wrap())
         // // )
         // // ;
 
-      // new mapboxgl.Popup()
-      //   // .setLngLat(e.lngLat)
-      //   .setLngLat(new mapboxgl.LngLat(map.current.getBounds().getWest(),map.current.getCenter().lat))
-      //   .setHTML('name: station A and more nearby activities')
-      //   .addTo(map.current);
-
 
     });
 
-    // const nameDisplay = document.getElementById('name');
-    // nameDisplay.textContent = 'Related Activities';
   });
 
   return (
