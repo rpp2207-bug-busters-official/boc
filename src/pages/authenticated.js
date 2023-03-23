@@ -20,11 +20,19 @@ const Authenticated  = () => {
   return (
     <>
       {cookie !== undefined &&
-        <>
-          <Favorites />
-          <MyActivities />
-          <CompletedActivites/>
-        </>
+        <div className='container'>
+          <div className='row'>
+            <div className='col-sm'>
+              <Favorites />
+            </div>
+            <div className='col-sm'>
+              <MyActivities />
+            </div>
+            <div className='col-sm'>
+              <CompletedActivites/>
+            </div>
+          </div>
+        </div>
       }
     </>
   );
