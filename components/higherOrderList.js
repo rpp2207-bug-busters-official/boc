@@ -69,7 +69,7 @@ const HigherOrderList = (props) => {
   }, [])
 
   return (
-      <div className="list-group" style={{backgroundColor: "#467850", width: "20rem"}}>
+      <div className="list-group" style={{backgroundColor: "#467850", width: "25rem"}}>
           <h3 style={{textAlign: "center", color: "white"}}>{props.title}</h3>
           {rendered.map((act, key) => {
               return (
