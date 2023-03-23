@@ -3,6 +3,7 @@ import MyActivityReview from './MyActivityReview.js';
 import { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import fav from '../sample-data/sample-favorites.js';
 
 const HigherOrderList = (props) => {
   let [allFav, setAllFav] = useState([]);
@@ -44,18 +45,28 @@ const HigherOrderList = (props) => {
       ]);
   }
 
+  const renderData = (data) => {
+    if (data.length > 4) {
+        setRendered([
+            data[0],
+            data[1],
+            data[2],
+            data[3]
+        ])
+    } else {
+        setRendered(data);
+    }
+  }
   useEffect(() => {
-      setallAct(activities);
-      if (activities.length > 4) {
-          setRendered([
-              activities[0],
-              activities[1],
-              activities[2],
-              activities[3]
-          ]);
-      } else {
-          setRendered(activities);
-      }
+    console.log('Here is the title: ', props.title === 'Favorites')
+    if (props.title === 'Favorites') {
+        setallAct(fav);
+        renderData(fav);
+        setAllFav(fav);
+    } else {
+        setallAct(activities);
+        renderData(activities);
+    }
   }, [])
 
   return (
