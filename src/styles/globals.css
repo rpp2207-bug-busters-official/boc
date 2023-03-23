@@ -150,8 +150,9 @@ a {
   #quake-info {
     position: absolute;
     font-family: sans-serif;
-    margin-top: 200px;
+    margin-top: 115px;
     margin-right: 800px;
+    margin-left: -20px;
     /* padding: 5px; */
     width: 20%;
     border: none;
@@ -171,16 +172,28 @@ a {
     overflow: auto;
     background: rgba(255, 255, 255, 0.8);
 }
-/* #map { position: absolute; top: 0; bottom: 0; width: 100%; } */
 
-.mapboxgl-popup {
-  max-width: 400px;
-  font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+.geocoder {
+  position: absolute;
+  z-index: 1;
+  width: 50%;
+  left: 50%;
+  margin-left: 25%;
+  top: 100px;
   }
 
+.mapboxgl-ctrl-geocoder {
+  min-width: 100%;
+  }
+
+  mapboxgl-popup {
+    max-width: 400px;
+    font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    }
 
 
-/*Activity List*/
+
+  /*Activity List*/
 
 #addActivity {
   background-color: green;
@@ -188,9 +201,9 @@ a {
 .activity-list {
   background-color: #0f2f7f84;
   padding-bottom: 1%;
-  margin-right: 65%;
-  max-height: 40em;
-  border-radius: 1%;
+  margin-right: auto;
+  max-height: 390px;
+  border-radius: auto;
   overflow-y: auto;
 }
 
@@ -223,4 +236,7 @@ a {
 .error-message {
   color: rgb(224, 64, 64);
   font-size: small;
+}
+.review.button:hover {
+  color:rgba(255, 255, 255, 1);
 }
