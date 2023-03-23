@@ -63,6 +63,9 @@ const HigherOrderList = (props) => {
     } else if (props.title === 'My Activities') {
         setallAct(activities);
         renderData(activities);
+    } else if (props.title === 'Completed Activities') {
+        setallAct(activities);
+        renderData(activities);
     }
   }, [])
 
