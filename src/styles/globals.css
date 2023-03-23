@@ -146,8 +146,9 @@ a {
   #quake-info {
     position: absolute;
     font-family: sans-serif;
-    margin-top: 200px;
+    margin-top: 115px;
     margin-right: 800px;
+    margin-left: -20px;
     /* padding: 5px; */
     width: 20%;
     border: none;
@@ -168,15 +169,28 @@ a {
     background: rgba(255, 255, 255, 0.8);
 }
 
+.geocoder {
+  position: absolute;
+  z-index: 1;
+  width: 50%;
+  left: 50%;
+  margin-left: 25%;
+  top: 100px;
+  }
+
+.mapboxgl-ctrl-geocoder {
+  min-width: 100%;
+  }
+
 #addActivity {
   background-color: green;
 }
 .activity-list {
   background-color: #0f2f7f84;
   padding-bottom: 1%;
-  margin-right: 65%;
-  max-height: 40em;
-  border-radius: 1%;
+  margin-right: auto;
+  max-height: 390px;
+  border-radius: auto;
   overflow-y: auto;
 }
 
@@ -204,4 +218,7 @@ a {
 
 .activity-body {
   margin: auto;
+}
+.review.button:hover {
+  color:rgba(255, 255, 255, 1);
 }
