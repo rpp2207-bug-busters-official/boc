@@ -14,6 +14,7 @@ import mapboxgl from '!mapbox-gl' // eslint-disable-line import/no-webpack-loade
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_KEY;
 export default function ChargerMap(props) {
 
+  const layer = 'us2-5avts3';
   const mapContainer = useRef(null);
   const map = useRef(null);
   const [lng, setLng] = useState(-122.4755859375);
@@ -27,6 +28,7 @@ export default function ChargerMap(props) {
       container: mapContainer.current,
       // style: 'mapbox://styles/mapbox/streets-v12',
       style:'mapbox://styles/rlhutong/clfdie9qk000b01qlk82ydzeb',
+      // style:'mapbox://styles/rlhutong/clfitz1yp001201o96kahnp76',
       center: [lng, lat],
       zoom: zoom
     });
@@ -37,78 +39,156 @@ export default function ChargerMap(props) {
       })
     );
 
-
-    map.current.on('load', () => {
-      map.current.loadImage(
-        '/images/station-green.png',
-        (error, image) => {
-        if (error) throw error;
-        map.current.addImage('station', image);
-        map.current.addSource('usstations', {
-          type: 'geojson',
-          data: 'https://raw.githubusercontent.com/rlhutong/data/master/tx.geojson'
+    map.current.on('load', function(){
+      const popup = new mapboxgl.Popup({
+        closeButton: false,
+        closeOnClick: false
         });
 
-        map.current.addLayer({
-          'id': 'usstations-layer',
-          // 'type': 'circle',
-          'type':'symbol',
-          'source': 'usstations',
-          // 'paint': {
-          // 'circle-radius': 4,
-          // 'circle-stroke-width': 2,
-          // 'circle-color': 'red',
-          // 'circle-stroke-color': 'white'
-          'layout': {
-            'icon-image': 'station', // reference the image
-            'icon-size': 0.1
-            }
-        });
+      function checkEmpty(info) {
+        return (info) ? info : "No data";
+      }
 
+      function showPopup(e) {
+        // Updates the cursor to a hand (interactivity)
+        map.current.getCanvas().style.cursor = 'pointer';
 
+    let sname = e.features[0].properties.name;
+    let provider = "Other";
+    if(e.features[0].properties.poi){
+      let poi = e.features[0].properties.poi;
+      let start="operatorInfo";
+      if (poi.includes("operatorInfo")){
+        let cleanup = '{"' + poi.substring(poi.indexOf(start));
+        provider = JSON.parse(cleanup).operatorInfo.title;
+      }
+    }
+    let connection = e.features[0].properties.connectionType;
+    let coordinates = e.features[0].geometry.coordinates.slice();
+    let description = e.features[0].properties.description;
+    let level = e.features[0].properties.level;
+    let avail = "Available";
+    if (level !== 2) {
+      avail = "Occupied";
+    }
 
-        const popup = new mapboxgl.Popup({
-          closeButton: false,
-          closeOnClick: false
-          });
+    let combined = avail + '<br />' + provider + '<br />' + sname +'<br />' + connection + '<br />' + description  +'<br />';
 
-
-
-        map.current.on('mouseenter', 'usstations-layer', (e) => {
-          // Change the cursor style as a UI indicator.
-          map.current.getCanvas().style.cursor = 'pointer';
-
-          let sname = e.features[0].properties.name;
-          let provider = "Other";
-          // if((e.features[0].properties.poi.operatorInfo)&&(e.features[0].properties.poi.operatorInfo.title)){
-          if((e.features[0].properties.poi)){
-          provider = JSON.parse(e.features[0].properties.poi).operatorInfo.title;
-          }
-          let connection = e.features[0].properties.connectionType;
-          let coordinates = e.features[0].geometry.coordinates.slice();
-          let description = e.features[0].properties.description;
-          let combined = e.features[0].id + '<br />' + sname +'<br />' + coordinates + '<br />' + connection + '<br />' + description  +'<br />' + provider;
-
-          setLat(e.lngLat.lat);
-          setLng(e.lngLat.lng);
-          // Ensure that if the map is zoomed out such that multiple
-          // copies of the feature are visible, the popup appears
-          // over the copy being pointed to.
-          while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+        // Ensure that if the map is zoomed out such that multiple
+        // copies of the feature are visible, the popup appears
+        // over the copy being pointed to.
+        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
           coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-          }
+        }
+        // Show the popup at the coordinates with some data
+        popup.setLngLat(coordinates)
+          .setHTML(checkEmpty(combined))
+          .addTo(map.current);
+      }
+
+      function hidePopup() {
+        map.current.getCanvas().style.cursor = '';
+        popup.remove();
+      }
+
+      map.current.on('mouseenter', layer, showPopup);
+      map.current.on('mouseleave', layer, hidePopup);
 
 
-          popup.setLngLat(coordinates).setHTML(combined).addTo(map.current);
-          });
+      // let filter = ['==', 'severity', 3];
+      let filter = ['match', ['get', 'level'], ['1','3'], true, false];
+      // let filter = ["all",['in', 'Shell', ['string', ['get', 'poi']]]];
+        // ["in", "level", '1','2','3'],
 
-          map.current.on('mouseleave', 'places', () => {
-            map.current.getCanvas().style.cursor = '';
-            popup.remove();
-          });
-      });
+
+      map.current.setFilter(layer,filter);
+
+      // map.current.setFilter(layer, ['==','level', '2']);
+      // map.current.setFilter(layer, ['==','level', '1']);
+      // map.current.setFilter(layer, ['==','level', '3']);
+      // map.current.setFilter(layer, ['in', '2', ['string', ['get', 'level']]]);
+      // map.current.setFilter('us2-5avts3', ['==',['get','connectionType'], 'CHAdeMO']);
+      // map.current.setFilter('us2-5avts3', ['in', 'Type 1', ['string', ['get', 'connectionType']]]);
+      // map.current.setFilter(layer, ['in', 'Shell', ['string', ['get', 'poi']]]);
+
     });
 
+    //  map.current.on('load', () => {
+    //   map.current.loadImage(
+    //     '/images/station-green.png',
+    //     (error, image) => {
+    //     if (error) throw error;
+    //     map.current.addImage('station', image);
+    //     map.current.addSource('usstations', {
+    //       // type: 'geojson',
+    //       type:'vector',
+    //       // data: 'https://raw.githubusercontent.com/rlhutong/data/master/tx.geojson'
+    //       url:'mapbox://rlhutong.br24srho'
+    //     });
+
+    //     map.current.addLayer({
+    //       'id': 'usstations-layer',
+    //       // 'type': 'circle',
+    //       'type':'symbol',
+    //       'source': 'usstations',
+    //       'source-layer':'us2-5avts3',
+    //       // 'paint': {
+    //       // 'circle-radius': 4,
+    //       // 'circle-stroke-width': 2,
+    //       // 'circle-color': 'red',
+    //       // 'circle-stroke-color': 'white'
+    //       // }
+    //         'layout': {
+    //           'icon-image': 'station', // reference the image
+    //           'icon-size': 0.1
+    //           }
+    //     });
+
+
+
+    //     const popup = new mapboxgl.Popup({
+    //       closeButton: false,
+    //       closeOnClick: false
+    //       });
+
+
+
+    //     map.current.on('mouseenter', 'usstations-layer', (e) => {
+    //       // Change the cursor style as a UI indicator.
+    //       map.current.getCanvas().style.cursor = 'pointer';
+
+    //       let sname = e.features[0].properties.name;
+    //       let provider = "Other";
+    //       if(e.features[0].properties.poi){
+    //         let poi = e.features[0].properties.poi;
+    //         let start="operatorInfo";
+    //         if (poi.includes("operatorInfo")){
+    //           let cleanup = '{"' + poi.substring(poi.indexOf(start));
+    //           provider = JSON.parse(cleanup).operatorInfo.title;
+    //         }
+    //       }
+    //       let connection = e.features[0].properties.connectionType;
+    //       let coordinates = e.features[0].geometry.coordinates.slice();
+    //       let description = e.features[0].properties.description;
+    //       let combined = provider + '<br />' + sname +'<br />' + connection + '<br />' + description  +'<br />';
+
+    //       // Ensure that if the map is zoomed out such that multiple
+    //       // copies of the feature are visible, the popup appears
+    //       // over the copy being pointed to.
+    //       while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+    //       coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+    //       }
+
+
+    //       popup.setLngLat(coordinates).setHTML(combined).addTo(map.current);
+    //       });
+
+    //       map.current.on('mouseleave', 'usstations-layer', () => {
+    //         map.current.getCanvas().style.cursor = '';
+    //         popup.remove();
+    //       });
+    //   });
+    // });
 
 
     map.current.addControl(
@@ -116,51 +196,24 @@ export default function ChargerMap(props) {
       positionOptions: {
       enableHighAccuracy: true
       },
-      // When active the map will receive updates to the device's location as it changes.
       trackUserLocation: true,
-      // Draw an arrow next to the location dot to indicate which direction the device is heading.
       showUserHeading: true
       })
     );
     map.current.addControl(new mapboxgl.NavigationControl());
 
-    // map.current.on('move', () => {
-    //   setLng(map.current.getCenter().lng.toFixed(4));
-    //   setLat(map.current.getCenter().lat.toFixed(4));
-    //   setZoom(map.current.getZoom().toFixed(2));
-    //   });
+    map.current.on('click', (e) => {
 
-         // document.getElementById('info').innerHTML =
-      // // `e.point` is the x, y coordinates of the `mousemove` event
-      // // relative to the top-left corner of the map.
-      // JSON.stringify(e.point) +
-      // '<br />' +
-      // // `e.lngLat` is the longitude, latitude geographical position of the event.
-      // // JSON.stringify(e.lng);
-      // JSON.stringify(e.lngLat.wrap());
-
-      map.current.on('click', (e) => {
-
-      map.current.flyTo({
-        center: e.lngLat,
-        zoom: 16
-      });
-
-      setLat(e.lngLat.lat);
-      setLng(e.lngLat.lng);
-      setZoom(map.current.getZoom());
-      // document.getElementById('quake-info').innerHTML =
-        // // JSON.stringify(
-      //   // JSON.stringify(e.point) +
-        //   // lat +'<div><strong>Name:</strong>Station A<div><br />'
-        //   // + '<div><strong></strong><div><br />'
-        //   // + '<div>Related Activitie 1:<div><br />'
-      //   // JSON.stringify(e.lngLat.wrap())
-        // // )
-        // // ;
-
-
+    map.current.flyTo({
+      center: e.lngLat,
+      zoom: 16
     });
+
+    setLat(e.lngLat.lat);
+    setLng(e.lngLat.lng);
+    setZoom(map.current.getZoom());
+    });
+
 
   });
 
@@ -180,9 +233,9 @@ export default function ChargerMap(props) {
 
 {/* <div className="row"> */}
 
-<div className="sidebar">
+{/* <div className="sidebar">
 Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
-</div>
+</div> */}
   {/* <div> */}
 
     <div ref={mapContainer} className="map-container" />
