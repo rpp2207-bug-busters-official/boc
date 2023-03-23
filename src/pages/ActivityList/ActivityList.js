@@ -29,6 +29,7 @@ export default function ActivityList(props) {
     setLatitude(props.latitude);
     setLongitude(props.longitude);
     console.log('Current Activities:', activities)
+    console.log(props.latitude)
     getNearbyActivities()
       .then(() => {
         console.log('Current Activities', activities)
