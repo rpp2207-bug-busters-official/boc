@@ -1,8 +1,11 @@
 import {AiFillStar} from 'react-icons/ai';
 import {useState} from 'react';
+import Reviews from '../Reviews/Reviews.js';
+import { Button, Modal} from 'react-bootstrap';
 
 export default function Activity(props) {
   const [isFavorite, setIsFavorite] = useState(false);
+  const [isReviewOpen, setIsReviewOpen] = useState(false);
 
   let formatPhoneNumber = (str) => {
     //Filter only numbers from the input
@@ -21,6 +24,36 @@ export default function Activity(props) {
     return null;
   }
 
+  var changeReviewOpened = () => {
+    console.log('hi');
+    setIsReviewOpen(!isReviewOpen);
+  }
+
+  function MyVerticallyCenteredModal(props) {
+    return (
+      <Modal
+        {...props}
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">
+            Show Reviews
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Reviews/>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button  variant="secondary" onClick={props.onHide}>Close</Button>
+        </Modal.Footer>
+      </Modal>
+    );
+  }
+
+  const [modalShow, setModalShow] = useState(false);
+
   var activityObj = props.action;
   return (
     <div className="activity-widget">
@@ -34,8 +67,21 @@ export default function Activity(props) {
 
       <div>
         <p>Rating: {activityObj.rating}</p>
-        <p>Show Reviews</p>
       </div>
+
+      <>
+        <Button className="btn btn-success" onClick={() => setModalShow(true)}>
+          Show Reviews
+        </Button>
+
+  <MyVerticallyCenteredModal
+          show={modalShow}
+          onHide={() => setModalShow(false)}
+        />
+      </>
+
+
+      {isReviewOpen ? <Reviews/> : null}
     </div>
   );
 

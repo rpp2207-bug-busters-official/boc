@@ -19,6 +19,7 @@ export default function ChargerMap(props) {
   const [lng, setLng] = useState(-122.4755859375);
   const [lat, setLat] = useState(48.74894534343292);
   const [zoom, setZoom] = useState(1);
+  const [activitiesOpened, setActivitiesOpened] = useState(false);
 
   useEffect(() => {
     if (map.current) return; // initialize map only once
