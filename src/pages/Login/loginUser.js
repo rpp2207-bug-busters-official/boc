@@ -6,7 +6,7 @@ export default function signIn(email, password) {
   return signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
-      return Cookies.setCookie(user.uid);
+      return Cookies.setCookie(user.uid, user.displayName);
     })
     .catch((error) => {
       const errorCode = error.code;

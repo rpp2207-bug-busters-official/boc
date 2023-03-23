@@ -13,7 +13,7 @@ export default function facebookLogin (updateCookie) {
       // This gives you a Facebook Access Token. You can use it to access the Facebook API.
       const credential = FacebookAuthProvider.credentialFromResult(result);
       const accessToken = credential.accessToken;
-      Cookies.setCookie(user.uid);
+      Cookies.setCookie(user.uid, user.displayName);
       updateCookie();
     })
     .catch((error) => {

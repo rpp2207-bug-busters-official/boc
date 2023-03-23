@@ -20,6 +20,8 @@ const Authenticated  = () => {
   return (
     <>
       {cookie !== undefined &&
+      <>
+        <p className='lead text-center'>Welcome back, {Cookies.getUsername()}!</p>
         <div className='container'>
           <div className='row'>
             <div className='col-sm'>
@@ -33,6 +35,7 @@ const Authenticated  = () => {
             </div>
           </div>
         </div>
+      </>
       }
     </>
   );

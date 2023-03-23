@@ -56,7 +56,6 @@ const HigherOrderList = (props) => {
     }
   }
   useEffect(() => {
-    console.log('Here is the title: ', props.title === 'Favorites')
     if (props.title === 'Favorite Activites') {
         setallAct(fav);
         renderData(fav);

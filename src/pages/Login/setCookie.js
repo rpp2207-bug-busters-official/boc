@@ -1,7 +1,10 @@
 import Cookies from 'js-cookie';
 
-function setCookie(userId) {
+function setCookie(userId, userName) {
   Cookies.set('userId', userId, {expires: 1});
+  if (userName !== undefined) {
+    Cookies.set('username', userName, {expires: 1});
+  }
 }
 
 function logOut(userId) {
@@ -15,5 +18,14 @@ function getCookie() {
   }
   return currCookie;
 }
-let obj = {setCookie:setCookie, logOut:logOut, getCookie: getCookie}
+
+function getUsername() {
+  return Cookies.get('username');
+}
+let obj = {
+  setCookie:setCookie,
+  logOut:logOut,
+  getCookie: getCookie,
+  getUsername: getUsername
+}
 export default obj;
