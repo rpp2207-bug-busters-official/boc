@@ -16,31 +16,25 @@ const Navbar = (props) => {
   }, [cookie]);
 
   return (
-    <nav className="navbar bg-body-tertiary">
-      <div className='d-flex'>
-        <div className="mr-auto p-2">
-          <form className="">
+    <nav className="navbar bg-body-tertiary justify-content-between">
+          <form>
             <Link className="btn btn-outline-success me-2" href="/">Find Locations</Link>
             {cookie !== undefined &&
               <Link className="btn btn-sm btn-outline-secondary" href="/authenticated">View Profile</Link>
             }
           </form>
-        </div>
-        <div className='ml-auto p-2'>
         {cookie === undefined &&
-            <>
+            <div>
               <LoginButton updateCookie={updateCookie}/>
               &nbsp;
               <Register updateCookie={updateCookie}/>
-            </>
+            </div>
           }
           {cookie !== undefined &&
-            <>
+            <div>
               <Logout updateCookie={updateCookie}/>
-            </>
+            </div>
           }
-        </div>
-      </div>
 
     </nav>
   );
