@@ -1,0 +1,397 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+      {
+          "type": "Feature",
+          "id": "239576",
+          "geometry": {
+              "type": "Point",
+              "coordinates": [
+                  -97.733411,
+                  30.264999
+              ]
+          },
+          "properties": {
+              "name": "ENDEAVOR REG 901 E 6TH ST 3",
+              "description": "901 E 6th St,Austin,TX,78702,United States",
+              "url": "https://openchargemap.org/site/poi/details/239576",
+              "level": "2",
+              "connectionType": "Type 1 (J1772)",
+              "poi": {
+                  "dataProvider": {
+                      "websiteURL": "http://www.afdc.energy.gov/",
+                      "dataProviderStatusType": {
+                          "isProviderEnabled": true,
+                          "id": 20,
+                          "title": "Automated Import"
+                      },
+                      "isRestrictedEdit": false,
+                      "isOpenDataLicensed": true,
+                      "isApprovedImport": true,
+                      "license": "This data is provided by the National Renewable Energy Laboratory (\"NREL\"), which is operated by the Alliance for Sustainable Energy, LLC (\"Alliance\"), for the U.S. Department of Energy (\"DOE\"), and may be used for any purpose whatsoever.",
+                      "dateLastImported": "2023-03-07T03:45:11.71Z",
+                      "id": 2,
+                      "title": "afdc.energy.gov"
+                  },
+                  "operatorInfo": {
+                      "websiteURL": "http://www.chargepoint.net/",
+                      "phonePrimaryContact": "1-408-841-4500",
+                      "isPrivateIndividual": false,
+                      "isRestrictedEdit": false,
+                      "id": 5,
+                      "title": "ChargePoint"
+                  },
+                  "usageType": {
+                      "id": 1,
+                      "title": "Public"
+                  },
+                  "statusType": {
+                      "isOperational": true,
+                      "isUserSelectable": true,
+                      "id": 50,
+                      "title": "Operational"
+                  },
+                  "submissionStatus": {
+                      "isLive": true,
+                      "id": 100,
+                      "title": "Imported and Published"
+                  },
+                  "isRecentlyVerified": true,
+                  "dateLastVerified": "2023-03-07T04:55:00Z",
+                  "id": 239576,
+                  "uuid": "CE7396B3-19E1-42D3-8FB0-BEFD72030168",
+                  "dataProviderID": 2,
+                  "dataProvidersReference": "186799",
+                  "operatorID": 5,
+                  "usageTypeID": 1,
+                  "addressInfo": {
+                      "id": 239960,
+                      "title": "ENDEAVOR REG 901 E 6TH ST 3",
+                      "addressLine1": "901 E 6th St",
+                      "town": "Austin",
+                      "stateOrProvince": "TX",
+                      "postcode": "78702",
+                      "countryID": 2,
+                      "country": {
+                          "isoCode": "US",
+                          "continentCode": "NA",
+                          "id": 2,
+                          "title": "United States"
+                      },
+                      "latitude": 30.264999,
+                      "longitude": -97.733411,
+                      "contactTelephone1": "888-758-4389",
+                      "accessComments": "24 hours daily",
+                      "relatedURL": "http://www.chargepoint.com/",
+                      "distance": 0.11528706507979185,
+                      "distanceUnit": 2
+                  },
+                  "connections": [
+                      {
+                          "id": 395453,
+                          "connectionTypeID": 1,
+                          "connectionType": {
+                              "formalName": "SAE J1772-2009",
+                              "id": 1,
+                              "title": "Type 1 (J1772)"
+                          },
+                          "levelID": 2,
+                          "level": {
+                              "comments": "Over 2 kW, usually non-domestic socket type",
+                              "isFastChargeCapable": false,
+                              "id": 2,
+                              "title": "Level 2 : Medium (Over 2kW)"
+                          },
+                          "amps": 16,
+                          "voltage": 230,
+                          "powerKW": 3.7,
+                          "currentTypeID": 10,
+                          "currentType": {
+                              "description": "Alternating Current - Single Phase",
+                              "id": 10,
+                              "title": "AC (Single-Phase)"
+                          },
+                          "quantity": 2
+                      }
+                  ],
+                  "statusTypeID": 50,
+                  "dateLastStatusUpdate": "2023-03-07T04:55:00Z",
+                  "dataQualityLevel": 3,
+                  "dateCreated": "2023-03-07T03:27:00Z",
+                  "submissionStatusTypeID": 100
+              }
+          }
+      },
+      {
+          "type": "Feature",
+          "id": "8346",
+          "geometry": {
+              "type": "Point",
+              "coordinates": [
+                  -97.73420715,
+                  30.26498985
+              ]
+          },
+          "properties": {
+              "name": "1601 N Interstate 35",
+              "description": "1601 N Interstate 35,Austin,Texas,78702,United States",
+              "url": "https://openchargemap.org/site/poi/details/8346",
+              "level": "2",
+              "connectionType": "Type 1 (J1772)",
+              "poi": {
+                  "dataProvider": {
+                      "websiteURL": "http://www.carstations.com",
+                      "dataProviderStatusType": {
+                          "isProviderEnabled": true,
+                          "id": 20,
+                          "title": "Automated Import"
+                      },
+                      "isRestrictedEdit": false,
+                      "isOpenDataLicensed": false,
+                      "dateLastImported": "2017-11-04T14:07:02.687Z",
+                      "id": 15,
+                      "title": "CarStations.com"
+                  },
+                  "operatorInfo": {
+                      "websiteURL": "http://www.chargepoint.net/",
+                      "phonePrimaryContact": "1-408-841-4500",
+                      "isPrivateIndividual": false,
+                      "isRestrictedEdit": false,
+                      "id": 5,
+                      "title": "ChargePoint"
+                  },
+                  "statusType": {
+                      "isUserSelectable": true,
+                      "id": 0,
+                      "title": "Unknown"
+                  },
+                  "submissionStatus": {
+                      "isLive": true,
+                      "id": 100,
+                      "title": "Imported and Published"
+                  },
+                  "isRecentlyVerified": false,
+                  "dateLastVerified": "2017-11-04T14:03:00Z",
+                  "id": 8346,
+                  "uuid": "BF3C4B16-8469-44FF-9A2F-29DA6F00B91B",
+                  "dataProviderID": 15,
+                  "dataProvidersReference": "11192",
+                  "operatorID": 5,
+                  "addressInfo": {
+                      "id": 8243,
+                      "title": "1601 N Interstate 35",
+                      "addressLine1": "1601 N Interstate 35",
+                      "town": "Austin",
+                      "stateOrProvince": "Texas",
+                      "postcode": "78702",
+                      "countryID": 2,
+                      "country": {
+                          "isoCode": "US",
+                          "continentCode": "NA",
+                          "id": 2,
+                          "title": "United States"
+                      },
+                      "latitude": 30.26498985,
+                      "longitude": -97.73420715,
+                      "contactTelephone1": "",
+                      "relatedURL": "http://carstations.com/11192",
+                      "distance": 0.1270986785749612,
+                      "distanceUnit": 2
+                  },
+                  "connections": [
+                      {
+                          "id": 5775,
+                          "connectionTypeID": 1,
+                          "connectionType": {
+                              "formalName": "SAE J1772-2009",
+                              "id": 1,
+                              "title": "Type 1 (J1772)"
+                          },
+                          "reference": "J1772",
+                          "levelID": 2,
+                          "level": {
+                              "comments": "Over 2 kW, usually non-domestic socket type",
+                              "isFastChargeCapable": false,
+                              "id": 2,
+                              "title": "Level 2 : Medium (Over 2kW)"
+                          }
+                      },
+                      {
+                          "id": 6644,
+                          "connectionTypeID": 9,
+                          "connectionType": {
+                              "isDiscontinued": false,
+                              "isObsolete": false,
+                              "id": 9,
+                              "title": "NEMA 5-20R"
+                          },
+                          "reference": "NEMA5",
+                          "levelID": 1,
+                          "level": {
+                              "comments": "Under 2 kW, usually domestic socket types",
+                              "isFastChargeCapable": false,
+                              "id": 1,
+                              "title": "Level 1 : Low (Under 2kW)"
+                          },
+                          "quantity": 1
+                      }
+                  ],
+                  "statusTypeID": 0,
+                  "dateLastStatusUpdate": "2017-11-04T14:03:00Z",
+                  "dataQualityLevel": 1,
+                  "dateCreated": "2011-11-11T12:06:00Z",
+                  "submissionStatusTypeID": 100
+              }
+          }
+      },
+      {
+          "type": "Feature",
+          "id": "239573",
+          "geometry": {
+              "type": "Point",
+              "coordinates": [
+                  -97.733688,
+                  30.264185
+              ]
+          },
+          "properties": {
+              "name": "PIE AE SALTILLO DCFC 4",
+              "description": "901 E 5th St,Austin,TX,78702,United States",
+              "url": "https://openchargemap.org/site/poi/details/239573",
+              "level": "3",
+              "connectionType": "CHAdeMO",
+              "poi": {
+                  "dataProvider": {
+                      "websiteURL": "http://www.afdc.energy.gov/",
+                      "dataProviderStatusType": {
+                          "isProviderEnabled": true,
+                          "id": 20,
+                          "title": "Automated Import"
+                      },
+                      "isRestrictedEdit": false,
+                      "isOpenDataLicensed": true,
+                      "isApprovedImport": true,
+                      "license": "This data is provided by the National Renewable Energy Laboratory (\"NREL\"), which is operated by the Alliance for Sustainable Energy, LLC (\"Alliance\"), for the U.S. Department of Energy (\"DOE\"), and may be used for any purpose whatsoever.",
+                      "dateLastImported": "2023-03-07T03:45:11.71Z",
+                      "id": 2,
+                      "title": "afdc.energy.gov"
+                  },
+                  "operatorInfo": {
+                      "websiteURL": "http://www.chargepoint.net/",
+                      "phonePrimaryContact": "1-408-841-4500",
+                      "isPrivateIndividual": false,
+                      "isRestrictedEdit": false,
+                      "id": 5,
+                      "title": "ChargePoint"
+                  },
+                  "usageType": {
+                      "id": 1,
+                      "title": "Public"
+                  },
+                  "statusType": {
+                      "isOperational": true,
+                      "isUserSelectable": true,
+                      "id": 50,
+                      "title": "Operational"
+                  },
+                  "submissionStatus": {
+                      "isLive": true,
+                      "id": 100,
+                      "title": "Imported and Published"
+                  },
+                  "isRecentlyVerified": true,
+                  "dateLastVerified": "2023-03-07T04:55:00Z",
+                  "id": 239573,
+                  "uuid": "84E34A92-2EAF-40C7-A08B-F688B28DE8F7",
+                  "dataProviderID": 2,
+                  "dataProvidersReference": "155494",
+                  "operatorID": 5,
+                  "usageTypeID": 1,
+                  "addressInfo": {
+                      "id": 239957,
+                      "title": "PIE AE SALTILLO DCFC 4",
+                      "addressLine1": "901 E 5th St",
+                      "town": "Austin",
+                      "stateOrProvince": "TX",
+                      "postcode": "78702",
+                      "countryID": 2,
+                      "country": {
+                          "isoCode": "US",
+                          "continentCode": "NA",
+                          "id": 2,
+                          "title": "United States"
+                      },
+                      "latitude": 30.264185,
+                      "longitude": -97.733688,
+                      "contactTelephone1": "888-758-4389",
+                      "accessComments": "24 hours daily",
+                      "relatedURL": "http://www.chargepoint.com/",
+                      "distance": 0.172757345713334,
+                      "distanceUnit": 2
+                  },
+                  "connections": [
+                      {
+                          "id": 395449,
+                          "connectionTypeID": 2,
+                          "connectionType": {
+                              "formalName": "IEC 62196-3 Configuration AA",
+                              "id": 2,
+                              "title": "CHAdeMO"
+                          },
+                          "levelID": 3,
+                          "level": {
+                              "comments": "40KW and Higher",
+                              "isFastChargeCapable": true,
+                              "id": 3,
+                              "title": "Level 3:  High (Over 40kW)"
+                          },
+                          "amps": 100,
+                          "voltage": 400,
+                          "powerKW": 40.0,
+                          "currentTypeID": 30,
+                          "currentType": {
+                              "description": "Direct Current",
+                              "id": 30,
+                              "title": "DC"
+                          },
+                          "quantity": 1
+                      },
+                      {
+                          "id": 395450,
+                          "connectionTypeID": 32,
+                          "connectionType": {
+                              "formalName": "IEC 62196-3 Configuration EE",
+                              "isDiscontinued": false,
+                              "isObsolete": false,
+                              "id": 32,
+                              "title": "CCS (Type 1)"
+                          },
+                          "levelID": 3,
+                          "level": {
+                              "comments": "40KW and Higher",
+                              "isFastChargeCapable": true,
+                              "id": 3,
+                              "title": "Level 3:  High (Over 40kW)"
+                          },
+                          "amps": 100,
+                          "voltage": 400,
+                          "powerKW": 40.0,
+                          "currentTypeID": 30,
+                          "currentType": {
+                              "description": "Direct Current",
+                              "id": 30,
+                              "title": "DC"
+                          },
+                          "quantity": 1
+                      }
+                  ],
+                  "statusTypeID": 50,
+                  "dateLastStatusUpdate": "2023-03-07T04:55:00Z",
+                  "dataQualityLevel": 3,
+                  "dateCreated": "2023-03-07T03:27:00Z",
+                  "submissionStatusTypeID": 100
+              }
+          }
+      }
+  ]
+}
