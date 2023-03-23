@@ -26,7 +26,7 @@ const Favorites = () => {
     }
 
     return (
-        <HigherOrderList Card={FavoriteCard} title='Favorites'/>
+        <HigherOrderList Card={FavoriteCard} title='Favorite Activites'/>
     )
 }
 

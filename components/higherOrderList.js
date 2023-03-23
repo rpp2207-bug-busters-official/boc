@@ -6,8 +6,6 @@ import Modal from 'react-bootstrap/Modal';
 import fav from '../sample-data/sample-favorites.js';
 
 const HigherOrderList = (props) => {
-  let [allFav, setAllFav] = useState([]);
-
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = (body, place) => {
@@ -59,11 +57,10 @@ const HigherOrderList = (props) => {
   }
   useEffect(() => {
     console.log('Here is the title: ', props.title === 'Favorites')
-    if (props.title === 'Favorites') {
+    if (props.title === 'Favorite Activites') {
         setallAct(fav);
         renderData(fav);
-        setAllFav(fav);
-    } else {
+    } else if (props.title === 'My Activities') {
         setallAct(activities);
         renderData(activities);
     }
