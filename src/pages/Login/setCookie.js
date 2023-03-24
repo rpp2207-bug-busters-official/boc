@@ -1,9 +1,19 @@
 import Cookies from 'js-cookie';
 
-function setCookie(userId, userName) {
-  Cookies.set('userId', userId, {expires: 1});
+function setCookie(userId, userName, rememberMe) {
+  console.log('This is a cookie thing', rememberMe);
+  if (rememberMe) {
+    Cookies.set('userId', userId, {expires: 30});
+  } else {
+    Cookies.set('userId', userId, {expires: 1});
+  }
+
   if (userName !== undefined) {
-    Cookies.set('username', userName, {expires: 1});
+    if (rememberMe) {
+      Cookies.set('username', userName, {expires: 30});
+    } else {
+      Cookies.set('username', userName, {expires: 1});
+    }
   }
 }
 
