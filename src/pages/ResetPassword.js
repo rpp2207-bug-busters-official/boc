@@ -20,13 +20,10 @@ export default function ResetPasswordPage () {
         setTimeout(()=>{
           router.push('/');
         }, 2500);
-
-        console.log('Success');
       })
       .catch(err => {
         setError('Something went wrong. Please try again later.');
         setSucc('')
-        console.log('error', err);
       })
   }
 
@@ -63,7 +60,7 @@ export default function ResetPasswordPage () {
                     <p className='error-message'>{error}</p>
                   }
                   {succ !== '' &&
-                    <p style={{color:'green'}}>{succ}. Click <Link href='/'>here</Link> to go back to the homepage, or wait to be redirected.</p>
+                    <p style={{color:'green'}}>{succ} Click <Link href='/'>here</Link> to go back to the homepage, or wait to be redirected.</p>
                   }
                   <Button variant='success' onClick={validate}>Reset Password</Button>
               </div>

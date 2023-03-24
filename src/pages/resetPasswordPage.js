@@ -33,7 +33,7 @@ export default function ResetPasswordPage() {
               <div className="card-header h5 text-white bg-success">Password Reset</div>
               <div className="card-body px-5">
                   <p className="card-text py-2">
-                      Enter your email address and we'll send you an email with instructions to reset your password.
+                      Enter your email address and we&#39;ll send you an email with instructions to reset your password.
                   </p>
                   <div className="form-outline">
                       <input type="email" id="email" className="form-control my-3" />
