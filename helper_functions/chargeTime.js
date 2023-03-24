@@ -1,17 +1,20 @@
-module.exports = {
-  chargeTime: (carInfo) => {
 
-    // car info should look like this:
+const chargeTime = (carInfo) => {
 
-    // {
-    //   batteryCapacity: 54 (in kWh),
-    //   chargePower: 23 (in kW)
-    //   currentPerecentage: 50%
-    // }
+  let hours;
+  let minutes;
+  let seconds;
 
-    // Formula: charge time = (battery capacity × depth of discharge) ÷ (charge current × charge efficiency)
+  let time = (carInfo.batteryCapacity * ((carInfo.desiredCharge / 100 ) - (carInfo.currentPerecentage / 100))) / (carInfo.chargePower * 0.9);
 
-    return (carInfo.batteryCapacity * carInfo.currentPerecentage ) + (carInfo.chargePower * 0.9)
+  let split = time.toString().split('.');
 
-  }
+  hours = Number(split[0]);
+  minutes = (Number(split[1].slice(0, 2)) / 100) * 60;
+  seconds = (hours * 3600) + (minutes * 60);
+
+  return seconds;
+
 }
+
+export default chargeTime;

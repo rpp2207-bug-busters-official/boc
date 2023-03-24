@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Alert from 'react-bootstrap/Alert';
 import Form from 'react-bootstrap/Form';
+import chargeTime from '../helper_functions/chargeTime.js';
 
 const Timer = () => {
 
@@ -8,24 +9,49 @@ const Timer = () => {
   const [ time, setTime ] = useState(0);
   const [ hours, setHours ] = useState(0);
   const [ clock, setClock ] = useState("");
-
   const [ show, setShow ] = useState(false);
-
   const [ email, inputEmail ] = useState(false);
-
   const [ chargeType, setChargeType ] = useState("default");
-
   const [ running, setRunning ] = useState(false);
+  const [ userEmail, setUserEmail ] = useState("");
+
+  const [ batteryCapacity, setCapacity ] = useState(0);
+  const [ currentCharge, setCharge ] = useState(0);
+  const [ desiredCharge, setDesiredCharge ] = useState(0);
+  const [ chargePower, setPower ] = useState(0);
 
 
   const startCharge = () => {
 
+    // let time = 1800;
+    let time = 4;
+
+    if (batteryCapacity && currentCharge && chargePower) {
+
+      time = chargeTime({
+        batteryCapacity: Number(batteryCapacity),
+        currentPerecentage: Number(currentCharge),
+        chargePower: Number(chargePower),
+        desiredCharge: Number(desiredCharge)
+      })
+    }
+
     setRunning(!running);
 
-    if (chargeType === "default") {
-      timer(1800);
+    timer(time);
+
+  }
+
+  const updateChargeData = (e) => {
+
+    if (e.target.name === "battery_cap") {
+      setCapacity(e.target.value);
+    } else if (e.target.name === "current_charge") {
+      setCharge(e.target.value);
+    } else if (e.target.name === "desired_charge") {
+      setDesiredCharge(e.target.value)
     } else {
-      console.log('trying to run custom')
+      setPower(e.target.value);
     }
 
   }
@@ -43,7 +69,21 @@ const Timer = () => {
 
       }, 1000)
     } else {
+
      setShow(!show)
+
+      if (userEmail !== "") {
+
+        fetch('/api/notifyCharge', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({email: userEmail}),
+        })
+
+      }
+
     }
 
   }
@@ -68,10 +108,11 @@ const Timer = () => {
   }
 
   const selectOption = (e) => {
-    // console.log(e)
-    console.log(e.target.value)
     setChargeType(e.target.value)
+  }
 
+  const getEmail = (e) => {
+    setUserEmail(e.target.value);
   }
 
   return (
@@ -94,7 +135,7 @@ const Timer = () => {
     {
       show ?
 
-      <Alert variant="danger" onClose={() => setShow(false)} dismissible>
+      <Alert variant="primary" onClose={() => setShow(false)} dismissible>
         <Alert.Heading>Your charge is done</Alert.Heading>
         <p>
           Your charge time has been reached.
@@ -113,18 +154,22 @@ const Timer = () => {
     {
       chargeType === "custom" ?
 
-      <Form>
+      <Form onChange={updateChargeData}>
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
           <Form.Label>Battery Capacity:</Form.Label>
-          <Form.Control type="capacity" placeholder="3.7 kWh" />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-          <Form.Label>Current Charge %: </Form.Label>
-          <Form.Control type="capacity" placeholder="50%" />
+          <Form.Control type="capacity" placeholder="3.7 kWh" name="battery_cap"/>
         </Form.Group>
         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
           <Form.Label>Charge Power: </Form.Label>
-          <Form.Control type="capacity" placeholder="4 kw" />
+          <Form.Control type="capacity" placeholder="4 kw" name="charge_pow"/>
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+          <Form.Label>Current Charge %: </Form.Label>
+          <Form.Control type="capacity" placeholder="50%" name="current_charge"/>
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+          <Form.Label>Desired Charge %: </Form.Label>
+          <Form.Control type="capacity" placeholder="75%" name="desired_charge"/>
         </Form.Group>
       </Form>
       :
@@ -137,7 +182,7 @@ const Timer = () => {
       {email ?
 
         <Form>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Group className="mb-3" controlId="formBasicEmail" onChange={getEmail}>
             <Form.Label>Email address</Form.Label>
             <Form.Control type="email" placeholder="Enter email" />
             <Form.Text className="text-muted">
