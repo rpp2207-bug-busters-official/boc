@@ -186,6 +186,15 @@ a {
   min-width: 100%;
   }
 
+  mapboxgl-popup {
+    max-width: 400px;
+    font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    }
+
+
+
+  /*Activity List*/
+
 #addActivity {
   background-color: green;
 }
