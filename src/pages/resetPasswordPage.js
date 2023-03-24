@@ -2,9 +2,11 @@ import react, { useEffect, useState } from 'react';
 import { Button, Modal} from 'react-bootstrap';
 import Link from 'next/link';
 import resetPass from './Login/resetPassword.js'
+import {useRouter} from 'next/router';
 
 
 export default function ResetPasswordPage() {
+  let router = useRouter();
   const [resetPassMsg, setResetPassMsg] = useState('');
   const [displayCard, setDisplayCard] = useState(true);
   const resetPassword = () => {
@@ -12,6 +14,9 @@ export default function ResetPasswordPage() {
       .then(succ => {
         setResetPassMsg('Your email has been send. Follow the instructions to reset your password.');
         setDisplayCard(false);
+        setTimeout(() => {
+          router.push('/');
+        }, 5000)
       })
       .catch(err => {
         setResetPassMsg('There was an error when trying to reset your password, please try again later.');
@@ -48,7 +53,7 @@ export default function ResetPasswordPage() {
       </>
       }
       {displayCard === false &&
-        <p>Your email has been sent. Check you inbox for an email. Click <Link href='/'>here</Link> to return back to the homepage.</p>
+        <p>Your email has been sent. Check you inbox for an email. Click <Link href='/'>here</Link> to return back to the homepage or wait to be redirected.</p>
       }
     </>
   )
