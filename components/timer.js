@@ -23,8 +23,7 @@ const Timer = () => {
 
   const startCharge = () => {
 
-    // let time = 1800;
-    let time = 4;
+    let time = 1800;
 
     if (batteryCapacity && currentCharge && chargePower) {
 
