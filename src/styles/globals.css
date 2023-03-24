@@ -231,3 +231,9 @@ a {
 .review.button:hover {
   color:rgba(255, 255, 255, 1);
 }
+
+.navbar {
+  /* margin: 10px; */
+  /* background-color: rgb(255, 203, 107) */
+  background-image: linear-gradient(to bottom right, #FFCB6B, #FFCB9F)
+}

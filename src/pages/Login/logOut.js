@@ -1,6 +1,7 @@
 import React from 'react';
 import {Button} from 'react-bootstrap';
 import Cookies from './setCookie.js';
+import Link from 'next/link';
 
 export default function logOut(props) {
   const logOut = () => {
@@ -9,7 +10,7 @@ export default function logOut(props) {
   }
   return (
     <>
-      <Button variant='outline-secondary' onClick={logOut}>Logout</Button>
+      <Link  onClick={logOut} style={{"margin-left":"10px"}} href='/' className='nav-link'>Logout</Link>
     </>
   )
 }

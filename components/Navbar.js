@@ -16,26 +16,38 @@ const Navbar = (props) => {
   }, [cookie]);
 
   return (
-    <nav className="navbar bg-body-tertiary justify-content-between">
-          <form>
-            <Link className="btn btn-outline-success me-2" href="/">Find Locations</Link>
-            {cookie !== undefined &&
-              <Link className="btn btn-sm btn-outline-secondary" href="/authenticated">View Profile</Link>
-            }
-          </form>
-        {cookie === undefined &&
-            <div>
-              <LoginButton updateCookie={updateCookie}/>
-              &nbsp;
-              <Register updateCookie={updateCookie}/>
-            </div>
-          }
-          {cookie !== undefined &&
-            <div>
-              <Logout updateCookie={updateCookie}/>
-            </div>
-          }
+    <nav className="navbar navbar-expand-lg navbar-light bg-light" style={{padding:'10px', 'background-image':'#FFCB6B'}}>
+          <Link style={{color:'white'}} href="/" className='navbar-brand'>C&T</Link>
+          <ul className='navbar-nav'>
 
+              {/* <li className='nav-item active'>
+                <Link className="nav-link" href="/">Find Locations</Link>
+              </li> */}
+                {cookie !== undefined &&
+                  <li className='nav-item active'>
+                    <Link className="nav-link" href="/authenticated">View Profile</Link>
+                  </li>
+                }
+
+              {cookie === undefined &&
+                  <>
+                    <li className='nav-item active'>
+                      <LoginButton updateCookie={updateCookie}/>
+                    </li>
+                    &nbsp;
+                    <li className='nav-item active'>
+                      <Register updateCookie={updateCookie} clasName='nav-link'/>
+                    </li>
+                  </>
+                }
+                {cookie !== undefined &&
+                  <>
+                    <li className='nav-item active'>
+                      <Logout updateCookie={updateCookie} clasName='nav-link'/>
+                    </li>
+                  </>
+                }
+          </ul>
     </nav>
   );
 }
