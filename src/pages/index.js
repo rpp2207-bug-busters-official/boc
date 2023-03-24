@@ -32,8 +32,6 @@ export default function Home() {
         {/* <ActivityList/> */}
         <Reviews/>
         <ActivityForm/>
-        {/* <Register/> */}
-        {/* <Login/> */}
       </main>
     </>
   )

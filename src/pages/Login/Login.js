@@ -6,11 +6,13 @@ import facebookLogin from './facebookLogin.js';
 import googleLogin from './googleLogin.js';
 import CreateUser from './newUser.js';
 import LoginUser from './loginUser.js';
+import Link from 'next/link';
 
 export default function Login(props1) {
 
 function MyVerticallyCenteredModal(props) {
   const [loginError, setLoginError] = useState('');
+  const [resetPassMsg, setResetPassMsg] = useState('');
   const handleLoginClick = async (loginFunction) => {
     loginFunction(
       document.getElementById('email').value,
@@ -59,8 +61,11 @@ function MyVerticallyCenteredModal(props) {
             {loginError !== '' &&
               <p className='error-message'>{loginError}</p>
             }
+            {resetPassMsg !== '' &&
+              <p style={{color:'green'}}>{resetPassMsg}</p>
+            }
               <div className="col">
-                <a href="#!" style={{color:'green'}}>Forgot password?</a>
+                <Link href="/resetPasswordPage" style={{color:'green'}} onClick={() => {setModalShow(false)}}>Forgot password?</Link>
               </div>
             </div>
 
@@ -99,7 +104,7 @@ function MyVerticallyCenteredModal(props) {
           Login!
         </Button>
 
-  <MyVerticallyCenteredModal
+        <MyVerticallyCenteredModal
           show={modalShow}
           onHide={() => setModalShow(false)}
         />
