@@ -3,8 +3,6 @@ sgMail.setApiKey(process.env.NEXT_PUBLIC_EMAIL_KEY);
 
 export default function sendEmail(req, res) {
 
-  console.log(process.env.NEXT_PUBLIC_EMAIL_KEY);
-
   const msg = {
     to: `${req.body.email}`,
     from: 'chargeandtarry@gmail.com', // Use the email address or domain you verified above
