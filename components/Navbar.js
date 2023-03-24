@@ -43,7 +43,7 @@ const Navbar = (props) => {
                 {cookie !== undefined &&
                   <>
                     <li className='nav-item active'>
-                      <Logout updateCookie={updateCookie} clasName='nav-link'/>
+                      <Logout updateCookie={updateCookie} className='nav-link navbar-link-underline'/>
                     </li>
                   </>
                 }

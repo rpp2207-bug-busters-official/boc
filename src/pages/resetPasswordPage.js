@@ -29,7 +29,7 @@ export default function ResetPasswordPage() {
       {displayCard &&
       <>
         <div className='d-flex justify-content-center' style={{"marginTop":'1%'}}>
-          <div className="card text-center" style={{"width": "25%"}}>
+          <div className="card text-center" style={{"width": "75%", "minWidth":"350px", "maxWidth":'600px'}}>
               <div className="card-header h5 text-white bg-success">Password Reset</div>
               <div className="card-body px-5">
                   <p className="card-text py-2">

@@ -10,7 +10,7 @@ export default function logOut(props) {
   }
   return (
     <>
-      <Link  onClick={logOut} style={{"margin-left":"10px"}} href='/' className='nav-link'>Logout</Link>
+      <Link  onClick={logOut} style={{"margin-left":"10px"}} href='/' className={props.className}>Logout</Link>
     </>
   )
 }
