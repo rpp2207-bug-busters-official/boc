@@ -6,6 +6,12 @@ export default function Filters2({filters, setFilters, onCloseClick}) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+
+  function passState(array1, array2,func){
+    // console.log("array1 in passState",array1)
+    setFilters({filters:{array1,array2}}, func);
+  }
+
   var handleSubmit=(e)=>{
       e.preventDefault();
       var arrayO = [];
@@ -18,13 +24,15 @@ export default function Filters2({filters, setFilters, onCloseClick}) {
       for (var i = 0; i < checkboxesC.length; i++) {
         arrayC.push(checkboxesC[i].value);
       }
-
+    //  alert(arrayC);
       setFilters({
         operators:arrayO,
         connections:arrayC
       });
       onCloseClick();
-      console.log(filters);
+
+    //  console.log(arrayO);
+    //   passState(arrayO, arrayC,onCloseClick());
 
   };
 
@@ -78,14 +86,14 @@ return (
     </Form.Group>
 
 {/* <button type="submit" className="btn btn-success" >Save</button> */}
-<Button className="btn btn-success" variant="primary" onClick={(e)=>{handleSubmit(e);handleClose;}}>
+<Button className="btn btn-success" variant="primary" onClick={(e)=>{handleSubmit(e);}}>
             Save Changes
           </Button>
 </Form>
 
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="secondary" onClick={(e)=>{handleSubmit(e);handleClose();}}>
             Apply
           </Button>
 
