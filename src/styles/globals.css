@@ -222,3 +222,18 @@ a {
 .review.button:hover {
   color:rgba(255, 255, 255, 1);
 }
+
+/* Star Rating */
+.on {
+  color: #000;
+}
+.off {
+  color: #ccc;
+}
+
+#rating-star {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
