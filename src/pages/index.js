@@ -14,7 +14,8 @@ import ActivityForm from './ActivityForm/ActivityForm.js';
 import Login from './Login/Login.js';
 import Register from './Login/register.js';
 import Script from 'next/script';
-
+import Reviews from './Reviews/Reviews.js'
+import Timer from '../../components/timer.js';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -28,10 +29,11 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <ChargerMap/>
-        <ActivityList/>
+        {/* <ActivityList/> */}
         <ActivityForm/>
         <Register/>
         <Login/>
+        <Timer />
       </main>
     </>
   )
