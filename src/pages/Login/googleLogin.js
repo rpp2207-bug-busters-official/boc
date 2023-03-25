@@ -13,7 +13,7 @@ export default function googleLogin(updateCookie) {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
         const user = result.user;
-        Cookies.setCookie(user.uid);
+        Cookies.setCookie(user.uid, user.displayName);
         updateCookie();
       })
       .catch((err) => {
