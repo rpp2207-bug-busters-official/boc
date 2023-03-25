@@ -1,7 +1,8 @@
 import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
 import React from 'react';
+import Cookies from './setCookie.js';
 
-export default function googleLogin() {
+export default function googleLogin(updateCookie) {
   const provider = new GoogleAuthProvider();
   const auth = getAuth();
   auth.languageCode = 'it';
@@ -12,6 +13,8 @@ export default function googleLogin() {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
         const user = result.user;
+        Cookies.setCookie(user.uid, user.displayName);
+        updateCookie();
       })
       .catch((err) => {
         const errorCode = err.code;

@@ -112,6 +112,10 @@ a {
 /* chargermap */
 .map-container {
   height: 400px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
 }
 
 .sidebar {
@@ -119,10 +123,8 @@ a {
   color: #fff;
   padding: 6px 12px;
   font-family: monospace;
-  z-index: 1;
+  z-index: 11;
   position: absolute;
-  top: 0;
-  left: 0;
   margin: 12px;
   border-radius: 4px;
 }
@@ -145,6 +147,8 @@ a {
 
   #quake-info {
     position: absolute;
+    top: 25%;
+    left: 10%;
     font-family: sans-serif;
     margin-top: 115px;
     margin-right: 800px;
@@ -181,6 +185,15 @@ a {
 .mapboxgl-ctrl-geocoder {
   min-width: 100%;
   }
+
+  mapboxgl-popup {
+    max-width: 400px;
+    font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    }
+
+
+
+  /*Activity List*/
 
 #addActivity {
   background-color: green;
@@ -219,6 +232,11 @@ a {
 .activity-body {
   margin: auto;
 }
+
+.error-message {
+  color: rgb(224, 64, 64);
+  font-size: small;
+}
 .review.button:hover {
   color:rgba(255, 255, 255, 1);
 }
@@ -236,4 +254,14 @@ a {
   border: none;
   outline: none;
   cursor: pointer;
+}
+.navbar {
+  /* margin: 10px; */
+  /* background-color: rgb(255, 203, 107) */
+  background-image: linear-gradient(to bottom right, #FFCB6B, #FFCB9F)
+}
+
+
+.navbar-link-underline:hover {
+  border-bottom: 1px solid gray;
 }
