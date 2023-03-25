@@ -1,11 +1,12 @@
-import Script from 'next/script'
-import {Helmet} from 'react-helmet'
-
+import Script from 'next/script';
+import {Helmet} from 'react-helmet';
+// import Filters from './filters.js';
+import Filters2 from './filters2.js';
 // import activity list
 import ActivityList from 'src/pages/ActivityList/ActivityList.js';
 
-import React, { useRef, useEffect, useState } from 'react'
-import 'mapbox-gl/dist/mapbox-gl.css'
+import React, { useRef, useEffect, useState } from 'react';
+import 'mapbox-gl/dist/mapbox-gl.css';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 import * as MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 
@@ -21,6 +22,43 @@ export default function ChargerMap(props) {
   const [lat, setLat] = useState(48.74894534343292);
   const [zoom, setZoom] = useState(1);
   const [activitiesOpened, setActivitiesOpened] = useState(false);
+  const [filters, setFilters] = useState({
+    operators:[],
+    connections:[]
+  });
+
+ function getOperatorsFilters (filterArray) {
+   let ofilters = [];
+   if(filterArray.operators.length!==0) {
+    ofilters=filters.operators.map((operator)=>{
+      return ['in', operator, ['string', ['get', 'poi']]];
+     });
+   }
+   return ofilters;
+ }
+
+ function getConnectionsFilters (filterArray) {
+  let cfilters = [];
+  if(filterArray.connections.length!==0) {
+    cfilters = filters.connections.map((connection)=>{
+      return ['in', connection, ['string', ['get', 'connectionType']]];
+  });
+
+  };
+
+  return cfilters;
+}
+
+function handleClick(){
+  console.log('clicked');
+  let combinedFilters = getOperatorsFilters(filters).concat(getConnectionsFilters(filters));
+  if (combinedFilters.length!== 0) {
+    let filter = ['any',].concat(combinedFilters);
+    map.current.setFilter(layer,filter);
+        // alert(JSON.stringify(filter));
+  }
+
+};
 
   useEffect(() => {
     if (map.current) return; // initialize map only once
@@ -50,145 +88,50 @@ export default function ChargerMap(props) {
       }
 
       function showPopup(e) {
-        // Updates the cursor to a hand (interactivity)
+
         map.current.getCanvas().style.cursor = 'pointer';
-
-    let sname = e.features[0].properties.name;
-    let provider = "Other";
-    if(e.features[0].properties.poi){
-      let poi = e.features[0].properties.poi;
-      let start="operatorInfo";
-      if (poi.includes("operatorInfo")){
-        let cleanup = '{"' + poi.substring(poi.indexOf(start));
-        provider = JSON.parse(cleanup).operatorInfo.title;
+        let sname = e.features[0].properties.name;
+        let provider = "Other";
+        if(e.features[0].properties.poi){
+        let poi = e.features[0].properties.poi;
+        let start="operatorInfo";
+        if (poi.includes("operatorInfo")){
+          let cleanup = '{"' + poi.substring(poi.indexOf(start));
+          provider = JSON.parse(cleanup).operatorInfo.title;
+        }
       }
-    }
-    let connection = e.features[0].properties.connectionType;
-    let coordinates = e.features[0].geometry.coordinates.slice();
-    let description = e.features[0].properties.description;
-    let level = e.features[0].properties.level;
-    let avail = "Available";
-    if (level !== 2) {
-      avail = "Occupied";
-    }
+      let connection = e.features[0].properties.connectionType;
+      let coordinates = e.features[0].geometry.coordinates.slice();
+      let description = e.features[0].properties.description;
+      let level = e.features[0].properties.level;
+      let avail = "Available";
+      if (level !== 2) {
+        avail = "Occupied";
+      }
 
-    let combined = avail + '<br />' + provider + '<br />' + sname +'<br />' + connection + '<br />' + description  +'<br />';
+      let combined = avail + '<br />' + provider + '<br />' + sname +'<br />' + connection + '<br />' + description  +'<br />';
 
         // Ensure that if the map is zoomed out such that multiple
         // copies of the feature are visible, the popup appears
         // over the copy being pointed to.
-        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-          coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-        }
-        // Show the popup at the coordinates with some data
-        popup.setLngLat(coordinates)
-          .setHTML(checkEmpty(combined))
-          .addTo(map.current);
+      while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+        coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+      }
+
+      popup.setLngLat(coordinates)
+        .setHTML(checkEmpty(combined))
+        .addTo(map.current);
       }
 
       function hidePopup() {
         map.current.getCanvas().style.cursor = '';
+
         popup.remove();
       }
 
       map.current.on('mouseenter', layer, showPopup);
       map.current.on('mouseleave', layer, hidePopup);
-
-
-      // let filter = ['==', 'severity', 3];
-      let filter = ['match', ['get', 'level'], ['1','3'], true, false];
-      // let filter = ["all",['in', 'Shell', ['string', ['get', 'poi']]]];
-        // ["in", "level", '1','2','3'],
-
-
-      map.current.setFilter(layer,filter);
-
-      // map.current.setFilter(layer, ['==','level', '2']);
-      // map.current.setFilter(layer, ['==','level', '1']);
-      // map.current.setFilter(layer, ['==','level', '3']);
-      // map.current.setFilter(layer, ['in', '2', ['string', ['get', 'level']]]);
-      // map.current.setFilter('us2-5avts3', ['==',['get','connectionType'], 'CHAdeMO']);
-      // map.current.setFilter('us2-5avts3', ['in', 'Type 1', ['string', ['get', 'connectionType']]]);
-      // map.current.setFilter(layer, ['in', 'Shell', ['string', ['get', 'poi']]]);
-
     });
-
-    //  map.current.on('load', () => {
-    //   map.current.loadImage(
-    //     '/images/station-green.png',
-    //     (error, image) => {
-    //     if (error) throw error;
-    //     map.current.addImage('station', image);
-    //     map.current.addSource('usstations', {
-    //       // type: 'geojson',
-    //       type:'vector',
-    //       // data: 'https://raw.githubusercontent.com/rlhutong/data/master/tx.geojson'
-    //       url:'mapbox://rlhutong.br24srho'
-    //     });
-
-    //     map.current.addLayer({
-    //       'id': 'usstations-layer',
-    //       // 'type': 'circle',
-    //       'type':'symbol',
-    //       'source': 'usstations',
-    //       'source-layer':'us2-5avts3',
-    //       // 'paint': {
-    //       // 'circle-radius': 4,
-    //       // 'circle-stroke-width': 2,
-    //       // 'circle-color': 'red',
-    //       // 'circle-stroke-color': 'white'
-    //       // }
-    //         'layout': {
-    //           'icon-image': 'station', // reference the image
-    //           'icon-size': 0.1
-    //           }
-    //     });
-
-
-
-    //     const popup = new mapboxgl.Popup({
-    //       closeButton: false,
-    //       closeOnClick: false
-    //       });
-
-
-
-    //     map.current.on('mouseenter', 'usstations-layer', (e) => {
-    //       // Change the cursor style as a UI indicator.
-    //       map.current.getCanvas().style.cursor = 'pointer';
-
-    //       let sname = e.features[0].properties.name;
-    //       let provider = "Other";
-    //       if(e.features[0].properties.poi){
-    //         let poi = e.features[0].properties.poi;
-    //         let start="operatorInfo";
-    //         if (poi.includes("operatorInfo")){
-    //           let cleanup = '{"' + poi.substring(poi.indexOf(start));
-    //           provider = JSON.parse(cleanup).operatorInfo.title;
-    //         }
-    //       }
-    //       let connection = e.features[0].properties.connectionType;
-    //       let coordinates = e.features[0].geometry.coordinates.slice();
-    //       let description = e.features[0].properties.description;
-    //       let combined = provider + '<br />' + sname +'<br />' + connection + '<br />' + description  +'<br />';
-
-    //       // Ensure that if the map is zoomed out such that multiple
-    //       // copies of the feature are visible, the popup appears
-    //       // over the copy being pointed to.
-    //       while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-    //       coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-    //       }
-
-
-    //       popup.setLngLat(coordinates).setHTML(combined).addTo(map.current);
-    //       });
-
-    //       map.current.on('mouseleave', 'usstations-layer', () => {
-    //         map.current.getCanvas().style.cursor = '';
-    //         popup.remove();
-    //       });
-    //   });
-    // });
 
 
     map.current.addControl(
@@ -212,7 +155,13 @@ export default function ChargerMap(props) {
     setLat(e.lngLat.lat);
     setLng(e.lngLat.lng);
     setZoom(map.current.getZoom());
+
+    // document.getElementById('quake-info').innerHTML =
+    //   lat + '<div><strong>Name:</strong>Station A<div><br />'
+    //   + '<div><strong>Related Activities:</strong><div><br />'
+    //   + '<div>Related Activitie 1:<div><br />';
     });
+
 
 
   });
@@ -226,7 +175,11 @@ export default function ChargerMap(props) {
     <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css"></link>
 
     <h1>Charge and Tarry</h1>
-    <p>Search box  |  Filter</p>
+
+    <p><Filters2 filters={filters} setFilters={setFilters} onCloseClick={handleClick}/></p>
+
+
+
   </div>
 
 <div className="container">
@@ -243,16 +196,10 @@ Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
     <pre id="quake-info">
       <ActivityList longitude={lng} latitude={lat}/>
     </pre>
-    {/* <div class='quake-info'>
-  <div><strong>Name:</strong> <span id='name'></span></div>
-  <div><strong>Related Activities:</strong></div>
-  </div> */}
+
+
     {/* <pre id="features"></pre> */}
-
-  {/* <div><strong>Location:</strong> <span id=''></span></div>
-  <div><strong>Date:</strong> <span id='date'></span></div> */}
-
-    <pre id="info"></pre>
+    {/* <pre id="info"></pre> */}
 
   {/* </div> */}
 {/* </div> */}
