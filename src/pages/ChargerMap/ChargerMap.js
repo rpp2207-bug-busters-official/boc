@@ -49,16 +49,30 @@ export default function ChargerMap(props) {
   return cfilters;
 }
 
-function handleClick(){
-  console.log('clicked');
-  let combinedFilters = getOperatorsFilters(filters).concat(getConnectionsFilters(filters));
-  if (combinedFilters.length!== 0) {
-    let filter = ['any',].concat(combinedFilters);
-    map.current.setFilter(layer,filter);
-        // alert(JSON.stringify(filter));
+async function handleClick(){
+
+    try {
+      const updatedO = await getOperatorsFilters(filters);
+      const updatedC = await getConnectionsFilters(filters);
+      let combinedFilters = getOperatorsFilters(filters).concat(getConnectionsFilters(filters));
+      if (combinedFilters.length!== 0) {
+        let filter = ['any',].concat(combinedFilters);
+        map.current.setFilter(layer,filter);
+            // alert(JSON.stringify(filter));
+      }
+    } catch (err) {
+      console.error(err);
+    }
   }
 
-};
+  // let combinedFilters = getOperatorsFilters(filters).concat(getConnectionsFilters(filters));
+  // if (combinedFilters.length!== 0) {
+  //   let filter = ['any',].concat(combinedFilters);
+  //   map.current.setFilter(layer,filter);
+  //       // alert(JSON.stringify(filter));
+  // }
+
+
 
   useEffect(() => {
     if (map.current) return; // initialize map only once

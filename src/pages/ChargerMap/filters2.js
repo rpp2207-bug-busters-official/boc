@@ -86,7 +86,7 @@ return (
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Close
+            Apply
           </Button>
 
         </Modal.Footer>
