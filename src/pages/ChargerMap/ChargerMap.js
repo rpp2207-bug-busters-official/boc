@@ -76,7 +76,9 @@ function handleClick() {
   }
 }
 
-
+function jsonEscape(str)  {
+  return str.replace(/\n/g, "\\\\n").replace(/\r/g, "\\\\r").replace(/\t/g, "\\\\t");
+}
 
 
   useEffect(() => {
@@ -116,7 +118,7 @@ function handleClick() {
         let start="operatorInfo";
         if (poi.includes("operatorInfo")){
           let cleanup = '{"' + poi.substring(poi.indexOf(start));
-          provider = JSON.parse(cleanup).operatorInfo.title;
+          provider = JSON.parse(jsonEscape(cleanup)).operatorInfo.title;
         }
       }
       let connection = e.features[0].properties.connectionType;
@@ -124,7 +126,6 @@ function handleClick() {
       let description = e.features[0].properties.description;
       let level = e.features[0].properties.level;
       let avail = "Available";
-      console.log(level);
       if (level !== '2') {
         avail = "Occupied";
       }
