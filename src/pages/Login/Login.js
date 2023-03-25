@@ -6,15 +6,18 @@ import facebookLogin from './facebookLogin.js';
 import googleLogin from './googleLogin.js';
 import CreateUser from './newUser.js';
 import LoginUser from './loginUser.js';
+import Link from 'next/link';
 
 export default function Login(props1) {
 
 function MyVerticallyCenteredModal(props) {
   const [loginError, setLoginError] = useState('');
+  const [resetPassMsg, setResetPassMsg] = useState('');
   const handleLoginClick = async (loginFunction) => {
     loginFunction(
       document.getElementById('email').value,
-      document.getElementById('password').value
+      document.getElementById('password').value,
+      document.getElementById('rememberMe').checked
     )
       .then(result => {
         setLoginError('');
@@ -50,24 +53,26 @@ function MyVerticallyCenteredModal(props) {
               <label className="form-label" htmlFor="form2Example2">Password</label>
             </div>
             <div className="row mb-4">
-              {/* <div className="col d-flex justify-content-center">
+              <div className="col d-flex justify-content-center">
                 <div className="form-check">
-                  <input className="form-check-input" type="checkbox" value="" id="form2Example31" checked />
+                  <input className="form-check-input" type="checkbox" value="" id="rememberMe" />
                   <label className="form-check-label" for="form2Example31"> Remember me </label>
                 </div>
-              </div> */}
-            {loginError !== '' &&
-              <p className='error-message'>{loginError}</p>
-            }
+              </div>
               <div className="col">
-                <a href="#!" style={{color:'green'}}>Forgot password?</a>
+                <Link href="/resetPasswordPage" style={{color:'green'}} onClick={() => {setModalShow(false)}}>Forgot password?</Link>
               </div>
             </div>
 
+            {loginError !== '' &&
+              <p className='error-message'>{loginError}</p>
+            }
+            {resetPassMsg !== '' &&
+              <p style={{color:'green'}}>{resetPassMsg}</p>
+            }
             <button type="button" className="btn btn-success" onClick={() => {handleLoginClick(LoginUser)}}>Sign in</button>
 
             <div className="text-center">
-              <p>Not a member? <a href="#!" style={{color:'green'}}>Register</a></p>
               <p>or sign up with:</p>
               <Button onClick={() => {googleLogin(props1.updateCookie)}} variant='success'>
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-google" viewBox="0 0 16 16">
@@ -99,7 +104,7 @@ function MyVerticallyCenteredModal(props) {
           Login!
         </Button>
 
-  <MyVerticallyCenteredModal
+        <MyVerticallyCenteredModal
           show={modalShow}
           onHide={() => setModalShow(false)}
         />

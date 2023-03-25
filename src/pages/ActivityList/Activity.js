@@ -2,10 +2,32 @@ import {AiFillStar} from 'react-icons/ai';
 import {useState} from 'react';
 import Reviews from '../Reviews/Reviews.js';
 import { Button, Modal} from 'react-bootstrap';
+import StarRating from './StarRating.js';
 
 export default function Activity(props) {
   const [isFavorite, setIsFavorite] = useState(false);
   const [isReviewOpen, setIsReviewOpen] = useState(false);
+
+  var activityObj = props.action;
+
+  function StarRating (props) {
+
+    return (
+      <div className="star-rating">
+        {[...Array(5)].map((star, index) => {
+          index += 1;
+          return (
+              <AiFillStar
+              color={index <= props.rating ? "gold" : "grey"}
+              size="36"
+              id="rating-star"
+              type="button"
+              key={index}/>
+          );
+        })}
+      </div>
+    );
+  }
 
   let formatPhoneNumber = (str) => {
     //Filter only numbers from the input
@@ -39,7 +61,7 @@ export default function Activity(props) {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            Show Reviews
+            Reviews for {activityObj.name}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -54,7 +76,6 @@ export default function Activity(props) {
 
   const [modalShow, setModalShow] = useState(false);
 
-  var activityObj = props.action;
   return (
     <div className="activity-widget">
       {isFavorite ? <AiFillStar color="gold" size="36" onClick={() => setIsFavorite(!isFavorite)}/> : <AiFillStar color="white" size="36" onClick={() => setIsFavorite(!isFavorite)}/>}
@@ -66,7 +87,7 @@ export default function Activity(props) {
       </div>
 
       <div>
-        <p>Rating: {activityObj.rating}</p>
+        <p>Rating: <StarRating rating={activityObj.rating}/></p>
       </div>
 
       <>
