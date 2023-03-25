@@ -20,9 +20,7 @@ export default function Filters2({filters, setFilters, onCloseClick}) {
       }
 
       setFilters({
-        // operators:['Tesla'],
         operators:arrayO,
-        // connections:['CHAdeMO']
         connections:arrayC
       });
       onCloseClick();
@@ -34,7 +32,7 @@ export default function Filters2({filters, setFilters, onCloseClick}) {
 
 return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button variant="primary" className="btn btn-success" onClick={handleShow}>
         Set Filters
       </Button>
       <Modal show={show} onHide={handleClose}>
