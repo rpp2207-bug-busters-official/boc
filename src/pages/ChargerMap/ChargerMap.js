@@ -124,7 +124,8 @@ function handleClick() {
       let description = e.features[0].properties.description;
       let level = e.features[0].properties.level;
       let avail = "Available";
-      if (level !== 2) {
+      console.log(level);
+      if (level !== '2') {
         avail = "Occupied";
       }
 
