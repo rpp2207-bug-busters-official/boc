@@ -241,6 +241,20 @@ a {
   color:rgba(255, 255, 255, 1);
 }
 
+/* Star Rating */
+.on {
+  color: #000;
+}
+.off {
+  color: #ccc;
+}
+
+#rating-star {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
 .navbar {
   /* margin: 10px; */
   /* background-color: rgb(255, 203, 107) */
