@@ -18,9 +18,9 @@ export default function ChargerMap(props) {
   const layer = 'us2-5avts3';
   const mapContainer = useRef(null);
   const map = useRef(null);
-  const [lng, setLng] = useState(-122.4755859375);
-  const [lat, setLat] = useState(48.74894534343292);
-  const [zoom, setZoom] = useState(1);
+  const [lng, setLng] = useState(-100.000000);
+  const [lat, setLat] = useState(41.500000);
+  const [zoom, setZoom] = useState(2);
   const [activitiesOpened, setActivitiesOpened] = useState(false);
   const [filters, setFilters] = useState({
     operators:[],
@@ -48,22 +48,6 @@ export default function ChargerMap(props) {
 
   return cfilters;
 }
-
-// async function handleClick(){
-
-//     try {
-//       const updatedO = await getOperatorsFilters(filters);
-//       const updatedC = await getConnectionsFilters(filters);
-//       let combinedFilters = getOperatorsFilters(filters).concat(getConnectionsFilters(filters));
-//       if (combinedFilters.length!== 0) {
-//         let filter = ['any',].concat(combinedFilters);
-//         map.current.setFilter(layer,filter);
-//             // alert(JSON.stringify(filter));
-//       }
-//     } catch (err) {
-//       console.error(err);
-//     }
-// }
 
 function handleClick() {
   console.log("in handle click");
@@ -164,6 +148,8 @@ function jsonEscape(str)  {
       showUserHeading: true
       })
     );
+
+
     map.current.addControl(new mapboxgl.NavigationControl());
 
     map.current.on('click', (e) => {
@@ -190,38 +176,30 @@ function jsonEscape(str)  {
   return (
     <>
 
-  <div className="jumbotron text-center">
+  {/* <div className="jumbotron text-center"> */}
     <Script src="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js"></Script>
     <Script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></Script>
     <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css"></link>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
     <h1>Charge and Tarry</h1>
+  {/* </div> */}
 
-    <p><Filters2 filters={filters} setFilters={setFilters} onCloseClick={handleClick}/></p>
+   <span className="container">
 
+ {/* <div className="row"> */}
 
-
-  </div>
-
-<div className="container">
-
-{/* <div className="row"> */}
-
-{/* <div className="sidebar">
-Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
-</div> */}
+ {/* <div className="sidebar">
+ Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
+ </div> */}
   {/* <div> */}
-
-    <div ref={mapContainer} className="map-container" />
-    </div>
-    <pre id="quake-info">
-      <ActivityList longitude={lng} latitude={lat}/>
-    </pre>
-
-
+     <Filters2 filters={filters} setFilters={setFilters} onCloseClick={handleClick} />
+     <div ref={mapContainer} className="map-container" />
+  </span>
+  <pre id="quake-info">
+    <ActivityList longitude={lng} latitude={lat}/>
+  </pre>
     {/* <pre id="features"></pre> */}
     {/* <pre id="info"></pre> */}
-
   {/* </div> */}
 {/* </div> */}
 </>

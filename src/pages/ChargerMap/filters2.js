@@ -40,9 +40,12 @@ export default function Filters2({filters, setFilters, onCloseClick}) {
 
 return (
     <>
-      <Button variant="primary" className="btn btn-success" onClick={handleShow}>
+      {/* <Button variant="primary" className="btn btn-success" onClick={handleShow}>
         Set Filters
-      </Button>
+      </Button> */}
+      <div id="buttonBox">
+      <button className="button"  onClick={handleShow}><i className="fa fa-filter" style={{color:"black"}}></i></button>
+    </div>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Filters</Modal.Title>
