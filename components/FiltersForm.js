@@ -1,7 +1,7 @@
 import {Modal, Button, Form} from 'react-bootstrap';
 import React, {useState} from "react";
 
-export default function Filters2({filters, setFilters, onCloseClick}) {
+export default function FiltersForm({filters, setFilters, onCloseClick}) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -40,12 +40,10 @@ export default function Filters2({filters, setFilters, onCloseClick}) {
 
 return (
     <>
-      {/* <Button variant="primary" className="btn btn-success" onClick={handleShow}>
-        Set Filters
-      </Button> */}
-      <div id="buttonBox">
-      <button className="button"  onClick={handleShow}><i className="fa fa-filter" style={{color:"black"}}></i></button>
-    </div>
+    <div id="buttonBox">
+      <button variant="primary" id="button" className ="button fa fa-filter" style ={{color: "black"}} onClick={handleShow} />
+
+      </div>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Filters</Modal.Title>
