@@ -55,6 +55,17 @@ const HigherOrderList = (props) => {
         setRendered(data);
     }
   }
+
+  // this function will take in the userName so it can use that to make a query
+
+  const getMyActivites = () => {
+    fetch('/api/prof_my_activities')
+        .then(data => data.json())
+        .then((res) => {
+            console.log(res);
+        })
+  }
+
   useEffect(() => {
     if (props.title === 'Favorite Activites') {
         setallAct(fav);
