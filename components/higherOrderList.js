@@ -1,5 +1,4 @@
 import activities from '../sample-data/sample-activities.js';
-import MyActivityReview from './MyActivityReview.js';
 import { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
@@ -59,14 +58,25 @@ const HigherOrderList = (props) => {
 
 //  might make sense to make all the db queries when the user is first logged in with promise.all
 
-  // this function will take in the userName so it can use that to make a query
+//  this function will take in the userName so it can use that to make a query
 
-  const getMyActivites = () => {
-    fetch('/api/prof_my_activities')
-        .then(data => data.json())
-        .then((res) => {
-            console.log(res);
-        })
+  const getMyActivites = (user_id) => {
+
+    fetch('/api/prof_my_activities', {
+        method: "GET",
+        body: user_id
+    })
+    .then(data => data.json())
+    .then((res) => {
+
+        // TODO: set the data for the user
+
+        console.log(res);
+    })
+    .catch((err) => {
+        console.log(err);
+    })
+
   }
 
   useEffect(() => {
@@ -80,6 +90,7 @@ const HigherOrderList = (props) => {
         setallAct(activities);
         renderData(activities);
     }
+    // might need to fix this for the build to work
   }, [])
 
   return (

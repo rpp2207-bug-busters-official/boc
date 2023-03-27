@@ -14,6 +14,7 @@ const Authenticated  = () => {
     if (currCookie === undefined) {
       router.push('/')
     }
+    // might need to fix this for build to work
   }, []);
 
 
