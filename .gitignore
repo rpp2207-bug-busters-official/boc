@@ -33,8 +33,9 @@ yarn-error.log*
 
 #chargermap doc files
 /src/pages/ChargeMap/test.js
-filters.js
+filters*.js
 testForm.js
 mapboxfilter.js
+charge3.js
 
 
