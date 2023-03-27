@@ -41,7 +41,7 @@ export default function FiltersForm({filters, setFilters, onCloseClick}) {
 return (
     <>
     <div id="buttonBox">
-      <button variant="primary" id="button" className ="button fa fa-filter" style ={{color: "black"}} onClick={handleShow} />
+      <button name="set filters" variant="primary" id="button" role="heading" aria-level="1" className ="button fa fa-filter" style ={{color: "black"}} onClick={handleShow} />
 
       </div>
       <Modal show={show} onHide={handleClose}>
