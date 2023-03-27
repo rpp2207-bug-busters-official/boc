@@ -1,7 +1,7 @@
 import {Modal, Button, Form} from 'react-bootstrap';
 import React, {useState} from "react";
 
-export default function FiltersForm({filters, setFilters, onCloseClick}) {
+export default function Filters2({filters, setFilters, onCloseClick}) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -24,12 +24,11 @@ export default function FiltersForm({filters, setFilters, onCloseClick}) {
       for (var i = 0; i < checkboxesC.length; i++) {
         arrayC.push(checkboxesC[i].value);
       }
-      // console.log("work now");
+    //  alert(arrayC);
       setFilters({
         operators:arrayO,
         connections:arrayC
       });
-
       onCloseClick();
 
     //  console.log(arrayO);

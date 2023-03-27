@@ -1,10 +1,7 @@
 import Script from 'next/script';
 import {Helmet} from 'react-helmet';
-// import helper functions and form component
-import FiltersForm from '../../../components/filtersForm.js';
-import getOperatorsFilters from '../../../helper_functions/getOperatorsFilters.js'
-import getConnectionsFilters from '../../../helper_functions/getConnectionsFilters.js'
-import jsonEscape from '../../../helper_functions/jsonEscape.js'
+// import Filters from './filters.js';
+import Filters2 from './filters2.js';
 // import activity list
 import ActivityList from 'src/pages/ActivityList/ActivityList.js';
 
@@ -30,8 +27,30 @@ export default function ChargerMap(props) {
     connections:[]
   });
 
+ function getOperatorsFilters (filterArray) {
+   let ofilters = [];
+   if(filterArray.operators.length!==0) {
+    ofilters=filters.operators.map((operator)=>{
+      return ['in', operator, ['string', ['get', 'poi']]];
+     });
+   }
+   return ofilters;
+ }
+
+ function getConnectionsFilters (filterArray) {
+  let cfilters = [];
+  if(filterArray.connections.length!==0) {
+    cfilters = filters.connections.map((connection)=>{
+      return ['in', connection, ['string', ['get', 'connectionType']]];
+  });
+
+  };
+
+  return cfilters;
+}
+
 function handleClick() {
-  // console.log("in handle click");
+  console.log("in handle click");
   let combinedFilters = getOperatorsFilters(filters).concat(getConnectionsFilters(filters));
   if (combinedFilters.length!== 0) {
     let filter = ['any',].concat(combinedFilters);
@@ -40,6 +59,11 @@ function handleClick() {
         // alert(JSON.stringify(filter));
   }
 }
+
+function jsonEscape(str)  {
+  return str.replace(/\n/g, "\\\\n").replace(/\r/g, "\\\\r").replace(/\t/g, "\\\\t");
+}
+
 
   useEffect(() => {
     if (map.current) return; // initialize map only once
@@ -168,7 +192,7 @@ function handleClick() {
  Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
  </div> */}
   {/* <div> */}
-     <FiltersForm filters={filters} setFilters={setFilters} onCloseClick={handleClick} />
+     <Filters2 filters={filters} setFilters={setFilters} onCloseClick={handleClick} />
      <div ref={mapContainer} className="map-container" />
   </span>
   <pre id="quake-info">
