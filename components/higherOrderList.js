@@ -56,6 +56,9 @@ const HigherOrderList = (props) => {
     }
   }
 
+
+//  might make sense to make all the db queries when the user is first logged in with promise.all
+
   // this function will take in the userName so it can use that to make a query
 
   const getMyActivites = () => {
