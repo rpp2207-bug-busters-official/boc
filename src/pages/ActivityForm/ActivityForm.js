@@ -1,10 +1,111 @@
 import React, {useState} from 'react';
-import { Button, Modal} from 'react-bootstrap';
+import { Button, Modal, closeButton} from 'react-bootstrap';
+import Alert from 'react-bootstrap/Alert';
+import cookie from '../../pages/Login/setCookie.js';
+//import db from "../../../src/db/pool.js";
+//const { Pool } = require('pg');
+//const {db} = require('../../../src/db/pool.js');
+//import db from "../../../src/db/pool.js";
 
+/////console.log(db, "dbbbbb")
 export default  function ActivityForm(props) {
-
   const [modalShow, setModalShow] = React.useState(false);
+  const [alertShow, setAlertShow] = React.useState(false);
+  const [userId, setUserId] = React.useState(false)
 
+  function checkSignedIn(props) {
+    var status = cookie.getCookie()
+    if(!status) {
+      setAlertShow(true)
+    }
+    else {
+      setUserId(status)
+      setModalShow(true)
+    }
+  }
+
+
+
+  return (
+      <>
+        <Button variant="primary"  className="btn btn-success" onClick={checkSignedIn}>
+          Add Activity Here!
+        </Button>
+        <NotLoggedInModal
+          show={alertShow}
+          onHide={() => setAlertShow(false)}
+        />
+
+
+  <MyVerticallyCenteredModal
+          show={modalShow}
+          onHide={() => setModalShow(false)}
+          user= {userId}
+        />
+
+      </>
+    )
+}
+function CreatedModal (props) {
+  return (
+    <Modal
+     show={props.show}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header>
+        <Modal.Title id="contained-modal-title-vcenter">
+          Activity Successfully Created!
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+      Congratulations, your new activity has been added!
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant="secondary" onClick={props.onHide}>Close</Button>
+      </Modal.Footer>
+    </Modal>
+  );
+
+}
+function WrongAddress (props) {
+  return (
+    <div>
+    <Alert   show={props.show} key='danger' variant='danger'>
+          Incorrect address, Please enter a valid address!
+        </Alert>
+        </div>
+
+  );
+
+}
+
+function NotLoggedInModal(props) {
+  return (
+    <Modal
+     show={props.show}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header>
+        <Modal.Title id="contained-modal-title-vcenter">
+          Unable To Add New Activity
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+      You are not signed in. Please sign in or register to proceed!
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant="secondary" onClick={props.onHide}>Close</Button>
+      </Modal.Footer>
+    </Modal>
+  );
+
+}
+
+function MyVerticallyCenteredModal(props) {
   const nameRef = React.useRef('');
   const addressRef = React.useRef(null);
   const phoneRef = React.useRef(null);
@@ -14,127 +115,119 @@ export default  function ActivityForm(props) {
   const countryRef = React.useRef(null);
   const longitudeRef = React.useRef(null);
   const latitudeRef = React.useRef(null);
+  const userId = props.user;
+  const [createdAlertShow, setCreatedAlertShow] = React.useState(false);
+  const [WrongAddressShow, setWrongAddressShow] = React.useState(false);
 
-
-
-
-
-  const creatNewActivity = async () => {
-    console.log(nameRef.current.value, "hshshs" )
-
-    var newEntry = {
-      longitude: null,
-      latitude: null,
-      ActivityName: nameRef.current.value,
-      address: addressRef.current.value,
-      City: cityRef.current.value,
-      ZipCode: zipCodeRef.current.value,
-      State: stateRef.current.value,
-      Country: countryRef.current.value,
-      Phone: phoneRef.current.value,
+  const creatNewActivity = async (e) => {
+    e.preventDefault();
+    var newEntry = {}
+    var prequery = addressRef.current.value + ', ' + cityRef.current.value + ' '+ stateRef.current.value
+    console.log(prequery, "prequeryyyy")
+    var query = prequery.replaceAll(' ', '%20')
+    console.log(query, "queryyyy")
+    await fetch(`http://api.positionstack.com/v1/forward?access_key=${process.env.NEXT_PUBLIC_OPTIONSTACK_KEY}&query=${query}&country=US&limit=1`)
+    .then(response =>{return response.json()})
+    .then(response => {console.log(response.data, "hiii")
+    if(response.data.length === 0 ) {
+      setWrongAddressShow(true)
     }
+    if(response.data.length > 0 ) {
+      setWrongAddressShow(false)
+      newEntry['longitude'] = response.data[0].longitude;
+      newEntry['latitude'] = response.data[0].latitude;
+    }
+  })
+  .then(response => {
+      newEntry.ActivityName = nameRef.current.value,
+      newEntry.address = addressRef.current.value,
+      newEntry.City = cityRef.current.value,
+      newEntry.ZipCode = zipCodeRef.current.value,
+      newEntry.State = stateRef.current.value,
+      newEntry.Country = countryRef.current.value,
+      newEntry.Phone = phoneRef.current.value,
+      newEntry.userId = userId,
 
-    console.log(process.env.NEXT_PUBLIC_OPTIONSTACK_KEY, "keyyyy")
-    fetch(`http://api.positionstack.com/v1/forward?access_key=${process.env.NEXT_PUBLIC_OPTIONSTACK_KEY}&query=96MaderaCtDanville,CA`)
-    .then(response => response.json())
-    .then(response => {console.log(response.data[0].longitude, response.data[0].latitude, "hiii")
-
-          // newEntry.longitude = response.data[0].longitude
-          // newEntry.latitude = response.data[0].latitude ;
-          // console.log(newEntry, "innnnn")
+    console.log(newEntry, "newentryyyy")
+  })
+  .then(response => {
 
   })
-      .catch(err => console.error(err))
-      console.log(newEntry, "newentryyyy")
+
+  // .then(response => {
+  //   props.onHide()
+  //   setCreatedAlertShow(true)
+  // })
+  .catch(err => console.error(err));
       //insertOne new entry
-      return (
-        <Modal
-        size="lg"
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-      >
-        <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">
-            New Activity Created!
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={props.onHide}>Close</Button>
-        </Modal.Footer>
-      </Modal>
-      )
     };
 
-  function MyVerticallyCenteredModal(props) {
-    return (
-      <Modal
-        {...props}
-        size="lg"
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-      >
-        <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">
-            New Activity Form
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
+  return (<div>
+    <CreatedModal
+        show={createdAlertShow}
+        onHide={() => setCreatedAlertShow(false)}
+      />
+    <Modal
+     //{...props}
+     show={props.show}
+
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header>
+        <Modal.Title id="contained-modal-title-vcenter">
+          New Activity Form
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
 <form>
-  <div className="row mb-4">
-    <div className="col">
-      <div className="form-outline">
-        <input  ref={nameRef} type="text" id="form6Example1" className="form-control" />
-        <label className="form-label" htmlFor="form6Example1">Activity Name</label>
-      </div>
+<div className="row mb-4">
+  <div className="col">
+    <div className="form-outline">
+      <input  ref={nameRef} type="text" id="form6Example1" className="form-control" />
+      <label className="form-label" htmlFor="form6Example1">Activity Name</label>
     </div>
   </div>
-  <div className="form-outline mb-4">
-    <input ref={addressRef} type="text" id="form6Example2" className="form-control"/>
-    <label className="form-label" htmlFor="form6Example3">Address</label>
-  </div>
-  <div className="form-outline mb-4">
-    <input ref={cityRef} type="text" id="form6Example3" className="form-control"/>
-    <label className="form-label" htmlFor="form6Example4">City</label>
-  </div>
-  <div className="form-outline mb-4">
-    <input ref={zipCodeRef} type="text" id="form6Example4" className="form-control"/>
-    <label className="form-label" htmlFor="form6Example4">Zip Code</label>
-  </div>
-  <div className="form-outline mb-4">
-    <input ref={stateRef} type="text" id="form6Example5" className="form-control"/>
-    <label className="form-label" htmlFor="form6Example4">State</label>
-  </div>
-  <div className="form-outline mb-4">
-    <input ref={countryRef} type="text" id="form6Example6" className="form-control"/>
-    <label className="form-label" htmlFor="form6Example4" >Country</label>
-  </div>
+</div>
+<div className="form-outline mb-4">
+  <input ref={addressRef} type="text" id="form6Example2" className="form-control"/>
+  <label className="form-label" htmlFor="form6Example3">Address</label>
+</div>
+<div className="form-outline mb-4">
+  <input ref={cityRef} type="text" id="form6Example3" className="form-control"/>
+  <label className="form-label" htmlFor="form6Example4">City</label>
+</div>
+<div className="form-outline mb-4">
+  <input ref={zipCodeRef} type="text" id="form6Example4" className="form-control"/>
+  <label className="form-label" htmlFor="form6Example4">Zip Code</label>
+</div>
+<div className="form-outline mb-4">
+  <input ref={stateRef} type="text" id="form6Example5" className="form-control"/>
+  <label className="form-label" htmlFor="form6Example4">State</label>
+</div>
+<div className="form-outline mb-4">
+  <input ref={countryRef} type="text" id="form6Example6" className="form-control"/>
+  <label className="form-label" htmlFor="form6Example4" >Country</label>
+</div>
 
-  <div className="form-outline mb-4">
-    <input ref={phoneRef} type="number" id="form6Example7" className="form-control"/>
-    <label className="form-label" htmlFor="form6Example6" >Phone Number</label>
-  </div>
+<div className="form-outline mb-4">
+  <input ref={phoneRef} type="number" id="form6Example7" className="form-control"/>
+  <label className="form-label" htmlFor="form6Example6" >Phone Number</label>
+</div>
 
 
-
-  <button className="btn btn-success" onClick={creatNewActivity}>Create!</button>
+<WrongAddress
+        show={WrongAddressShow}
+        onHide={() => setWrongAddressShow(false)}
+      />
+<button type='submit' className="btn btn-success" onClick={creatNewActivity}>Create!</button>
 </form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={props.onHide}>Close</Button>
-        </Modal.Footer>
-      </Modal>
-    );
-  }
-  return (
-      <>
-        <Button variant="primary"  className="btn btn-success" onClick={() => setModalShow(true)}>
-          Add Activity Here!
-        </Button>
-
-  <MyVerticallyCenteredModal
-          show={modalShow}
-          onHide={() => setModalShow(false)}
-        />
-      </>
-    )
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant="secondary" onClick={props.onHide}>Close</Button>
+      </Modal.Footer>
+    </Modal>
+    </div>
+  );
 }
