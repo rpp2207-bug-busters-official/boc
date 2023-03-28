@@ -116,12 +116,12 @@ const Timer = () => {
 
   return (
     <div>
-      <div style={{paddingBottom: "1rem"}}>Select charge type: </div>
+      <div style={{paddingBottom: "1rem"}} data-testid="select-charge-type">Select charge type: </div>
 
     {
       running ?
 
-      <div>
+      <div data-testid="timer-running">
         <br></br>
         <span>Timer: {clock}</span>
         <br></br>
@@ -142,7 +142,7 @@ const Timer = () => {
       </Alert>
       :
 
-      <Form.Select onChange={selectOption} aria-label="Default select example" value={chargeType}>
+      <Form.Select data-testid="charge-type-select" onChange={selectOption} aria-label="Default select example" value={chargeType}>
         <option value="default">30 min charge</option>
         <option value="custom">Custom Charge</option>
       </Form.Select>
@@ -153,7 +153,7 @@ const Timer = () => {
     {
       chargeType === "custom" ?
 
-      <Form onChange={updateChargeData}>
+      <Form onChange={updateChargeData} data-testid="charging-form">
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
           <Form.Label>Battery Capacity:</Form.Label>
           <Form.Control type="capacity" placeholder="3.7 kWh" name="battery_cap"/>
@@ -176,11 +176,11 @@ const Timer = () => {
     }
 
 
-      <Form.Check label={"notify me when done charging"} onClick={() => inputEmail(!email)}/>
+      <Form.Check data-testid="input-email-form" label={"notify me when done charging"} onClick={() => inputEmail(!email)}/>
 
       {email ?
 
-        <Form>
+        <Form data-testid="add-email-for-notify">
           <Form.Group className="mb-3" controlId="formBasicEmail" onChange={getEmail}>
             <Form.Label>Email address</Form.Label>
             <Form.Control type="email" placeholder="Enter email" />
@@ -193,7 +193,7 @@ const Timer = () => {
         null
       }
 
-      <button onClick={startCharge}>Start Charge</button>
+      <button data-testid="start-charge" onClick={startCharge}>Start Charge</button>
     </div>
   )
 }
