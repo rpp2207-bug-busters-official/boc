@@ -7,10 +7,10 @@ export default function FiltersForm({filters, setFilters, onCloseClick}) {
   const handleShow = () => setShow(true);
 
 
-  function passState(array1, array2,func){
-    // console.log("array1 in passState",array1)
-    setFilters({filters:{array1,array2}}, func);
-  }
+  // function passState(array1, array2,func){
+  //   // console.log("array1 in passState",array1)
+  //   setFilters({filters:{array1,array2}}, func);
+  // }
 
   var handleSubmit=(e)=>{
       e.preventDefault();
@@ -54,47 +54,47 @@ return (
           handleSubmit(e);
 
         }}> */}
-           <Form>
+        <Form role='form'>
 
-        <Form.Group className="form-outline mb-4" controlId="operators">
-       <Form.Label>Operators</Form.Label>
-<br />
-<input type="checkbox" name="operator" value="Tesla" />
-<label>Tesla</label><br />
-<input type="checkbox" name="operator" value="ChargePoint" />
-<label>ChargePoint</label><br />
-<input type="checkbox" name="operator" value="Blink" />
-<label>Blink</label><br />
-<input type="checkbox" name="operator" value="Electrify America" />
-<label>Electrify America</label><br />
+          <Form.Group className="form-outline mb-4" controlId="operators">
+            <Form.Label>Operators</Form.Label>
+            <br />
+            <input type="checkbox" name="operator" value="Tesla" data-testid="tcheckbox" />
+            <label>Tesla</label><br />
+            <input type="checkbox" name="operator" value="ChargePoint" data-testid="ccheckbox" />
+            <label>ChargePoint</label><br />
+            <input type="checkbox" name="operator" value="Blink" data-testid="bcheckbox" />
+            <label>Blink</label><br />
+            <input type="checkbox" name="operator" value="Electrify America" data-testid="echeckbox" />
+            <label>Electrify America</label><br />
 
-    </Form.Group>
+          </Form.Group>
 
-    <Form.Group className="form-outline mb-4" controlId="connectors">
-       <Form.Label>Connectors</Form.Label>
-<br />
-<input type="checkbox" name="connector" value="CCS" />
-<label>CCS</label><br />
-<input type="checkbox" name="connector" value="CHAdeMO" />
-<label>CHAdeMO</label><br />
-<input type="checkbox" name="connector" value="Tesla" />
-<label>Tesla</label><br />
-<input type="checkbox" name="connector" value="Type 1" />
-<label>Type 1</label><br />
-<input type="checkbox" name="connector" value="Type 2" />
-<label>Type 2</label><br />
+          <Form.Group className="form-outline mb-4" controlId="connectors">
+            <Form.Label>Connectors</Form.Label>
+            <br />
+            <input type="checkbox" name="connector" value="CCS" />
+            <label>CCS</label><br />
+            <input type="checkbox" name="connector" value="CHAdeMO" />
+            <label>CHAdeMO</label><br />
+            <input type="checkbox" name="connector" value="Tesla" />
+            <label>Tesla</label><br />
+            <input type="checkbox" name="connector" value="Type 1" />
+            <label>Type 1</label><br />
+            <input type="checkbox" name="connector" value="Type 2" />
+            <label>Type 2</label><br />
 
-    </Form.Group>
+          </Form.Group>
 
 {/* <button type="submit" className="btn btn-success" >Save</button> */}
-<Button className="btn btn-success" variant="primary" onClick={(e)=>{handleSubmit(e);}}>
+          <Button className="btn btn-success" variant="primary" onClick={(e)=>{handleSubmit(e);}}>
             Save Changes
           </Button>
-</Form>
+        </Form>
 
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={(e)=>{handleSubmit(e);handleClose();}}>
+          <Button variant="secondary" role="switch" onClick={(e)=>{handleSubmit(e);handleClose();}}>
             Apply
           </Button>
 

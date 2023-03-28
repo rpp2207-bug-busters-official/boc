@@ -5,14 +5,14 @@ import FiltersForm from '../../../components/FiltersForm.js';
 import getConnectionsFilters from '../../../helper_functions/getConnectionsFilters.js';
 import getOperatorsFilters from '../../../helper_functions/getOperatorsFilters.js';
 // import activity list
-import ActivityList from 'src/pages/ActivityList/ActivityList.js';
+import ActivityList from '../ActivityList/ActivityList.js';
 
 import React, { useRef, useEffect, useState } from 'react';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 import * as MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 
-import mapboxgl from '!mapbox-gl' // eslint-disable-line import/no-webpack-loader-syntax
+import mapboxgl from 'mapbox-gl' // eslint-disable-line import/no-webpack-loader-syntax
 
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_KEY;
 export default function ChargerMap(props) {
