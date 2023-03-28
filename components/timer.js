@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import Alert from 'react-bootstrap/Alert';
 import Form from 'react-bootstrap/Form';
 import chargeTime from '../helper_functions/chargeTime.js';
+import Cookies from '../src/pages/Login/setCookie.js';
 
 const Timer = () => {
 
@@ -22,7 +23,7 @@ const Timer = () => {
 
 
   const startCharge = () => {
-
+    console.log('Get userinfo: ', Cookies.getUserInfo())
     let time = 1800;
 
     if (batteryCapacity && currentCharge && chargePower) {

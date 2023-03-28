@@ -16,7 +16,7 @@ const Navbar = (props) => {
   }, [cookie]);
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light" style={{padding:'10px', 'background-image':'#FFCB6B'}}>
+    <nav className="navbar navbar-expand-lg navbar-light bg-light" style={{padding:'10px', 'backgroundImage':'#FFCB6B'}}>
           <Link style={{color:'white'}} href="/" className='navbar-brand'>C&T</Link>
           <ul className='navbar-nav'>
 
