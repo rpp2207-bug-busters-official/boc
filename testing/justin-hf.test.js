@@ -53,4 +53,4 @@ describe('Testing Cookie functions', () => {
     });
     expect(Cookies.getUsername()).toStrictEqual('justin8912');
   });
-})
+});
