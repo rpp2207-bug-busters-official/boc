@@ -31,7 +31,7 @@ describe('Timer', () => {
 
   });
 
-  it('starts the charger', () => {
+  it('starts the charger timer', () => {
     render(<Timer />);
 
     const startCharge = screen.getByTestId("start-charge");
@@ -41,14 +41,6 @@ describe('Timer', () => {
     expect(screen.getByTestId("timer-running")).toBeInTheDocument();
 
   });
-
-
-  // it('renders the charging form', () => {
-  //   render(<Timer />);
-
-  //   expect(screen.getByTestId("charging-form")).toBeInTheDocument();
-
-  // });
 
 })
 
