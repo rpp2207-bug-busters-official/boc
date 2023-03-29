@@ -14,7 +14,7 @@ const Authenticated  = () => {
     if (currCookie === undefined) {
       router.push('/')
     }
-  }, []);
+  }, [router]);
 
 
   return (
