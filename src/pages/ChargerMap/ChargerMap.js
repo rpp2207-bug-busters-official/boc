@@ -4,6 +4,7 @@ import {Helmet} from 'react-helmet';
 import FiltersForm from '../../../components/FiltersForm.js';
 import getConnectionsFilters from '../../../helper_functions/getConnectionsFilters.js';
 import getOperatorsFilters from '../../../helper_functions/getOperatorsFilters.js';
+import JsonEscape from '../../../helper_functions/jsonEscape.js';
 // import activity list
 import ActivityList from '../ActivityList/ActivityList.js';
 import localFont from 'next/font/local';
@@ -35,21 +36,16 @@ export default function ChargerMap(props) {
 
 
 
-function handleClick() {
-  // console.log("in handle click");
-  let combinedFilters = getOperatorsFilters(filters).concat(getConnectionsFilters(filters));
-  if (combinedFilters.length!== 0) {
-    let filter = ['any',].concat(combinedFilters);
-    map.current.setFilter(layer,filter);
-    // console.log("log in handleclick",JSON.stringify(filter) );
+  function handleClick() {
+    // console.log("in handle click");
+    let combinedFilters = getOperatorsFilters(filters).concat(getConnectionsFilters(filters));
+    if (combinedFilters.length!== 0) {
+      let filter = ['any',].concat(combinedFilters);
+      map.current.setFilter(layer,filter);
+      // console.log("log in handleclick",JSON.stringify(filter) );
         // alert(JSON.stringify(filter));
   }
 }
-
-function jsonEscape(str)  {
-  return str.replace(/\n/g, "\\\\n").replace(/\r/g, "\\\\r").replace(/\t/g, "\\\\t");
-}
-
 
   useEffect(() => {
     if (map.current) return; // initialize map only once
@@ -88,7 +84,7 @@ function jsonEscape(str)  {
         let start="operatorInfo";
         if (poi.includes("operatorInfo")){
           let cleanup = '{"' + poi.substring(poi.indexOf(start));
-          provider = JSON.parse(jsonEscape(cleanup)).operatorInfo.title;
+          provider = JSON.parse(JsonEscape(cleanup)).operatorInfo.title;
         }
       }
       let connection = e.features[0].properties.connectionType;
