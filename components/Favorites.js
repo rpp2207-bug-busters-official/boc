@@ -10,7 +10,7 @@ const Favorites = () => {
                 className="list-group-item list-group-item-action active"
                 aria-current="true"
                 key={props.setKey}
-                style={{backgroundColor: "#F5BB00", color: "black", borderColor: "#BD9002"}}
+                style={{backgroundColor: "#E9E9E9", color: "black", borderColor: "#009CD1", borderWidth: "0.12rem 0"}}
             >
                 <div>
                     <h5
@@ -30,20 +30,20 @@ const Favorites = () => {
             Card={FavoriteCard}
             title='Favorites'
             mainStyles={{
-                backgroundColor: '#BD9002',
+                backgroundColor: '#009CD1',
                 width: "100%",
                 borderRadius: "0",
                 margin: "0 0 1.5vw 0"
             }}
             showStyles={{
-                backgroundColor: "#BD9002",
+                backgroundColor: "#009CD1",
                 border: "none",
                 float: "left",
                 marginLeft: "1rem",
                 padding: "0.5rem 0"
             }}
             colStyles={{
-                backgroundColor: "#BD9002",
+                backgroundColor: "#009CD1",
                 border: "none",
                 float: "right",
                 marginRight: "1rem",
