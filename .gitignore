@@ -36,5 +36,6 @@ yarn-error.log*
 filters.js
 testForm.js
 mapboxfilter.js
+.babel.config.js
 
 
