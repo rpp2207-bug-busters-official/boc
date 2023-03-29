@@ -15,13 +15,12 @@ const Favorites = () => {
                 <div>
                     <h5
                         className="mb-1"
-                        style={{display: "inline", fontSize: "1.5rem"}}
+                        style={{fontSize: "1.3rem"}}
                     >{props.act.name}</h5>
                     <h6
-                        style={{display: "inline", float: "right", fontWeight: "bold"}}
-                    >{props.act.rating}</h6>
+                        style={{fontSize: "1.1rem"}}
+                    >{props.act.address} {props.act.city}</h6>
                 </div>
-                <p className="mb-1">{props.act.description}</p>
             </div>
         );
     }
@@ -29,14 +28,12 @@ const Favorites = () => {
     return (
         <HigherOrderList
             Card={FavoriteCard}
-            title='Favorite Activities'
-            colorA='#BD9002'
-            colorB='#F5BB00'
+            title='Favorites'
             mainStyles={{
                 backgroundColor: '#BD9002',
                 width: "100%",
-                maxWidth: "90vw",
-                margin: "0.5rem 0"
+                borderRadius: "0",
+                margin: "0 0 1.5vw 0"
             }}
             showStyles={{
                 backgroundColor: "#BD9002",

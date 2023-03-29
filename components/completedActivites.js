@@ -14,11 +14,14 @@ export default function completedActivites (props) {
         <div>
             <h5
                 className="mb-1"
-                style={{display: "inline"}}
+                style={{fontSize: "1.3rem", display: "inline", margin: "auto", position: "relative", top: "50%"}}
             >{props.act.place}</h5>
             <h6
-                style={{display: "inline", float: "right", fontWeight: "bold"}}
+                style={{display: "inline", float: "right", fontWeight: "bold", marginLeft: "20%"}}
             >{props.act.rating}</h6>
+            <div style={{display: "inline", float: "right"}}>
+              <h6 style={{margin: "0.1rem"}}>ADDRESS CITY</h6>
+            </div>
         </div>
         <p className="mb-1">{props.act.review}</p>
       </div>
@@ -32,8 +35,8 @@ export default function completedActivites (props) {
       mainStyles={{
         backgroundColor: '#467850',
         width: "100%",
-        maxWidth: "90vw",
-        margin: "0.5rem 0"
+        borderRadius: "0",
+        margin: "0 0 1.5vw 0"
       }}
       showStyles={{
         backgroundColor: "#467850",
