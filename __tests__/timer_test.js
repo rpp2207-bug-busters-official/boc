@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react'
-import Timer from '../components/Timer.js';
+// import Timer from '../components/Timer.js';
 import chargeTime from '../helper_functions/chargeTime.js';
 import '@testing-library/jest-dom'
 
