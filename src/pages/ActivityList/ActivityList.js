@@ -19,7 +19,7 @@ export default function ActivityList(props) {
       }
     };
 
-     fetch(`${queryURL}https://api.yelp.com/v3/businesses/search?latitude=${latitude}&longitude=${longitude}&radius=400&categories=&locale=en_US&open_now=true&sort_by=distance&device_platform=mobile-generic&limit=5`, options)
+     fetch(`${queryURL}https://api.yelp.com/v3/businesses/search?latitude=${latitude}&longitude=${longitude}&radius=1000&categories=&locale=en_US&open_now=true&sort_by=distance&device_platform=mobile-generic&limit=5`, options)
        .then(response => response.json())
        .then(response => {setActivities(response.businesses)})
        .catch(err => console.error(err));
@@ -28,8 +28,6 @@ export default function ActivityList(props) {
   useEffect(() => {
     setLatitude(props.latitude);
     setLongitude(props.longitude);
-    console.log('Current Activities:', activities)
-    console.log(props.latitude)
     getNearbyActivities()
       .then(() => {
         console.log('Current Activities', activities)
