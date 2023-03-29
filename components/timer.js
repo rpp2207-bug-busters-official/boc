@@ -1,15 +1,16 @@
 import { useState, useEffect, useRef } from 'react';
 import Alert from 'react-bootstrap/Alert';
 import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 import chargeTime from '../helper_functions/chargeTime.js';
 import Cookies from '../src/pages/Login/setCookie.js';
 
 const Timer = () => {
 
-  const [ minutes, setMinutes ]  = useState(0);
   const [ time, setTime ] = useState(0);
-  const [ hours, setHours ] = useState(0);
   const [ clock, setClock ] = useState("");
+
   const [ show, setShow ] = useState(false);
   const [ email, inputEmail ] = useState(false);
   const [ chargeType, setChargeType ] = useState("default");
@@ -21,9 +22,20 @@ const Timer = () => {
   const [ desiredCharge, setDesiredCharge ] = useState(0);
   const [ chargePower, setPower ] = useState(0);
 
+  const [ select, selected ] = useState(false);
+  const [ button, hideButton ] = useState(false);
+  const [ stop, setStop ] = useState(false);
+
 
   const startCharge = () => {
-    console.log('Get userinfo: ', Cookies.getUserInfo())
+
+    selected(!select);
+
+    if (email) {
+      inputEmail(!email);
+    }
+
+
     let time = 1800;
 
     if (batteryCapacity && currentCharge && chargePower) {
@@ -37,8 +49,8 @@ const Timer = () => {
     }
 
     setRunning(!running);
-
     timer(time);
+    hideButton(!button);
 
   }
 
@@ -56,15 +68,15 @@ const Timer = () => {
 
   }
 
-
   const timer = (seconds) => {
 
     if (seconds >= 0) {
 
-      setTimeout(() => {
+     setTimeout(() => {
 
         setClock(fancyTimeFormat(seconds));
         seconds = seconds - 1;
+        setTime(seconds);
         timer(seconds);
 
       }, 1000)
@@ -116,85 +128,100 @@ const Timer = () => {
   }
 
   return (
-    <div>
-      <div style={{paddingBottom: "1rem"}} data-testid="select-charge-type">Select charge type: </div>
+    <div
+      style={{position: "absolute", top: "6rem", right: "3rem"}}
+    >
 
-    {
-      running ?
+      {
+        select ?
+          <Modal show={select} >
+          <Modal.Header closeButton onClick={() => { selected(!select); email ? inputEmail(!email) : null}}>
+            <Modal.Title>Select Charging Type:</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Form.Select data-testid="charge-type-select" onChange={selectOption} aria-label="Default select example" value={chargeType}>
+              <option value="default">30 min charge</option>
+              <option value="custom">Custom Charge</option>
+            </Form.Select>
+              {
+                chargeType === "custom" ?
 
-      <div data-testid="timer-running">
-        <br></br>
-        <span>Timer: {clock}</span>
-        <br></br>
-      </div>
-      :
-      null
+                <Form onChange={updateChargeData} data-testid="charging-form">
+                  <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                    <Form.Label>Battery Capacity:</Form.Label>
+                    <Form.Control type="capacity" placeholder="3.7 kWh" name="battery_cap"/>
+                  </Form.Group>
+                  <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                    <Form.Label>Charge Power: </Form.Label>
+                    <Form.Control type="capacity" placeholder="4 kw" name="charge_pow"/>
+                  </Form.Group>
+                  <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                    <Form.Label>Current Charge %: </Form.Label>
+                    <Form.Control type="capacity" placeholder="50%" name="current_charge"/>
+                  </Form.Group>
+                  <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                    <Form.Label>Desired Charge %: </Form.Label>
+                    <Form.Control type="capacity" placeholder="75%" name="desired_charge"/>
+                  </Form.Group>
+                </Form>
+                :
+                null
+              }
 
-    }
+              <Form.Check data-testid="input-email-form" label={"notify me when done charging"} onClick={() => inputEmail(!email)}/>
 
-    {
-      show ?
+              {email ?
 
-      <Alert variant="primary" onClose={() => setShow(false)} dismissible>
-        <Alert.Heading>Your charge is done</Alert.Heading>
-        <p>
-          Your charge time has been reached.
-        </p>
-      </Alert>
-      :
-
-      <Form.Select data-testid="charge-type-select" onChange={selectOption} aria-label="Default select example" value={chargeType}>
-        <option value="default">30 min charge</option>
-        <option value="custom">Custom Charge</option>
-      </Form.Select>
-
-
-      }
-
-    {
-      chargeType === "custom" ?
-
-      <Form onChange={updateChargeData} data-testid="charging-form">
-        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-          <Form.Label>Battery Capacity:</Form.Label>
-          <Form.Control type="capacity" placeholder="3.7 kWh" name="battery_cap"/>
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-          <Form.Label>Charge Power: </Form.Label>
-          <Form.Control type="capacity" placeholder="4 kw" name="charge_pow"/>
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-          <Form.Label>Current Charge %: </Form.Label>
-          <Form.Control type="capacity" placeholder="50%" name="current_charge"/>
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-          <Form.Label>Desired Charge %: </Form.Label>
-          <Form.Control type="capacity" placeholder="75%" name="desired_charge"/>
-        </Form.Group>
-      </Form>
-      :
-      null
-    }
-
-
-      <Form.Check data-testid="input-email-form" label={"notify me when done charging"} onClick={() => inputEmail(!email)}/>
-
-      {email ?
-
-        <Form data-testid="add-email-for-notify">
-          <Form.Group className="mb-3" controlId="formBasicEmail" onChange={getEmail}>
-            <Form.Label>Email address</Form.Label>
-            <Form.Control type="email" placeholder="Enter email" />
-            <Form.Text className="text-muted">
-              We &#39; ll never share your email with anyone else.
-            </Form.Text>
-          </Form.Group>
-        </Form>
+                <Form data-testid="add-email-for-notify">
+                  <Form.Group className="mb-3" controlId="formBasicEmail" onChange={getEmail}>
+                    <Form.Label>Email address</Form.Label>
+                    <Form.Control type="email" placeholder="Enter email" />
+                    <Form.Text className="text-muted">
+                      We&#39;ll never share your email with anyone else.
+                    </Form.Text>
+                  </Form.Group>
+                </Form>
+                :
+                null
+              }
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={() => { selected(!select); email ? inputEmail(!email) : null}}>
+              Close
+            </Button>
+            <Button variant="primary" onClick={startCharge} >
+              Start Charge
+            </Button>
+          </Modal.Footer>
+          </Modal>
         :
-        null
+        running ?
+
+        <div data-testid="timer-running">
+          <span>Timer: {clock}</span>
+          <br></br>
+          <Button onClick={() => {setStop(!stop); setRunning(!running); setTime(0); setClock("");}}>End Charge</Button>
+        </div>
+        :
+        <Button onClick={() => selected(!select)}>Start A Charge</Button>
       }
 
-      <button data-testid="start-charge" onClick={startCharge}>Start Charge</button>
+      {
+        show ?
+
+        <Alert variant="primary" onClose={() => setShow(false)} dismissible>
+          <Alert.Heading>Your charge is done</Alert.Heading>
+          <p>
+            Your charge time has been reached.
+          </p>
+        </Alert>
+
+        :
+
+        null
+
+      }
+
     </div>
   )
 }
