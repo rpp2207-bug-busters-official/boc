@@ -26,6 +26,7 @@ const getNearbyActivities = async () => {
   };
   return (
     <div className="activity-list">
+      Activity List
       <button onClick={getNearbyActivities}>Make API Call</button>
       {activities.map((activity) => {
         return (

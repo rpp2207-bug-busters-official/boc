@@ -166,6 +166,7 @@ async function handleClick(){
       zoom: 16
     });
 
+
     setLat(e.lngLat.lat);
     setLng(e.lngLat.lng);
     setZoom(map.current.getZoom());
@@ -208,7 +209,7 @@ Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
     <div ref={mapContainer} className="map-container" />
     </div>
     <pre id="quake-info">
-      <ActivityList longitude={lng} latitude={lat}/>
+      <ActivityList longitude={lng} latitude={lat} />
     </pre>
 
 

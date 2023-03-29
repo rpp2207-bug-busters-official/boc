@@ -1,11 +1,22 @@
 import Review from './Review.js';
 import { Button, Modal} from 'react-bootstrap';
-import {useState} from 'react';
-import StarRating from '../ActivityList/StarRating.js'
+import {useState, useEffect} from 'react';
+import StarRating from '../ActivityList/StarRating.js';
+import Cookies from '../Login/setCookie.js';
 
 
 
 export default function Reviews (props) {
+
+  let [cookie, setCookie] = useState(undefined);
+
+  const updateCookie = () => {
+    setCookie(Cookies.getCookie());
+  }
+  useEffect(() => {
+    updateCookie();
+  }, [cookie]);
+
   const reviews = [
     {
       'username': 'Mango',
@@ -63,8 +74,7 @@ export default function Reviews (props) {
         <Modal.Body>
 <form>
   <div className="form-outline mb-4">
-    <input type="text" id="form2Example0" className="form-control" />
-    <label className="form-label" htmlFor="form2Example0">Username</label>
+    <h4>{Cookies.getUsername()}</h4><br></br>
   </div>
 
   <div className="form-outline mb-4">
@@ -96,7 +106,7 @@ export default function Reviews (props) {
           <Review data={action} key='mei'/>
         )
       })}
-
+{ cookie !== undefined &&
 <>
         <Button className="btn btn-success" onClick={() => setModalShow(true)}>
           Add Your Review
@@ -107,6 +117,7 @@ export default function Reviews (props) {
           onHide={() => setModalShow(false)}
         />
       </>
+}
     </div>
   );
 }
