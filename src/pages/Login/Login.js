@@ -56,7 +56,7 @@ function MyVerticallyCenteredModal(props) {
               <div className="col d-flex justify-content-center">
                 <div className="form-check">
                   <input className="form-check-input" type="checkbox" value="" id="rememberMe" />
-                  <label className="form-check-label" for="form2Example31"> Remember me </label>
+                  <label className="form-check-label" htmlFor="form2Example31"> Remember me </label>
                 </div>
               </div>
               <div className="col">
