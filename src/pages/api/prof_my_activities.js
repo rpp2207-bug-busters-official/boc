@@ -2,20 +2,23 @@ const pool = require('../../db/pool.js');
 
 const getMyActivities = (req, res) => {
 
-//  QUERY:
-// SELECT * FROM activities INNER JOIN reviews on activities.user_id = reviews.user_id WHERE activities.user_id = ${req.user_id}
 
+let test = "SELECT * FROM activities FULL JOIN reviews ON activities.user_id = reviews.user_id WHERE activities.user_id = '" + 'jaCqoxgk26bc6VvrnHsBr8L2dAr1' + "';"
 
-// user_id: jaCqoxgk26bc6VvrnHsBr8L2dAr1
+// WORKING:
+
+    // "SELECT * FROM activities WHERE user_id = '" + 'jaCqoxgk26bc6VvrnHsBr8L2dAr1' + "';"
+
+    // "SELECT * FROM activities FULL JOIN reviews ON activities.user_id = reviews.user_id WHERE activities.user_id = '" + 'jaCqoxgk26bc6VvrnHsBr8L2dAr1' + "';"
 
 
   return new Promise((resolve, reject) => {
-    pool.query('SELECT * FROM activities INNER JOIN reviews on activities.user_id = reviews.user_id', (err, res) => {
+    pool.query(test, (err, res) => {
       if (err) {
         console.log(err);
         reject(err);
       } else {
-        console.log(res);
+        console.log(res.rows);
       }
       resolve(res);
     })
@@ -23,5 +26,7 @@ const getMyActivities = (req, res) => {
 
 }
 
-export default getMyActivities;
+getMyActivities();
+
+// export default getMyActivities;
 
