@@ -49,28 +49,33 @@ export default function ChargerMap(props) {
   return cfilters;
 }
 
-async function handleClick(){
+// async function handleClick(){
 
-    try {
-      const updatedO = await getOperatorsFilters(filters);
-      const updatedC = await getConnectionsFilters(filters);
-      let combinedFilters = getOperatorsFilters(filters).concat(getConnectionsFilters(filters));
-      if (combinedFilters.length!== 0) {
-        let filter = ['any',].concat(combinedFilters);
-        map.current.setFilter(layer,filter);
-            // alert(JSON.stringify(filter));
-      }
-    } catch (err) {
-      console.error(err);
-    }
+//     try {
+//       const updatedO = await getOperatorsFilters(filters);
+//       const updatedC = await getConnectionsFilters(filters);
+//       let combinedFilters = getOperatorsFilters(filters).concat(getConnectionsFilters(filters));
+//       if (combinedFilters.length!== 0) {
+//         let filter = ['any',].concat(combinedFilters);
+//         map.current.setFilter(layer,filter);
+//             // alert(JSON.stringify(filter));
+//       }
+//     } catch (err) {
+//       console.error(err);
+//     }
+// }
+
+function handleClick() {
+  console.log("in handle click");
+  let combinedFilters = getOperatorsFilters(filters).concat(getConnectionsFilters(filters));
+  if (combinedFilters.length!== 0) {
+    let filter = ['any',].concat(combinedFilters);
+    map.current.setFilter(layer,filter);
+    // console.log("log in handleclick",JSON.stringify(filter) );
+        // alert(JSON.stringify(filter));
   }
+}
 
-  // let combinedFilters = getOperatorsFilters(filters).concat(getConnectionsFilters(filters));
-  // if (combinedFilters.length!== 0) {
-  //   let filter = ['any',].concat(combinedFilters);
-  //   map.current.setFilter(layer,filter);
-  //       // alert(JSON.stringify(filter));
-  // }
 
 
 
@@ -119,7 +124,8 @@ async function handleClick(){
       let description = e.features[0].properties.description;
       let level = e.features[0].properties.level;
       let avail = "Available";
-      if (level !== 2) {
+      console.log(level);
+      if (level !== '2') {
         avail = "Occupied";
       }
 
