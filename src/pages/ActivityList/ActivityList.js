@@ -37,7 +37,11 @@ export default function ActivityList(props) {
 
   return (
     <div className="activity-list">
+<<<<<<< HEAD
       Activity List
+=======
+      <button onClick={getNearbyActivities}>Make API Call</button>
+>>>>>>> main
       {activities.map((activity) => {
         return (
           <Activity action={activity} key={activity.id}/>

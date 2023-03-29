@@ -6,7 +6,7 @@ export default function createUser(email, password, username) {
   return createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
-      Cookies.setCookie(user.uid);
+      Cookies.setCookie(user.uid, username);
       return updateProfile(user, {
         displayName: username
       });
