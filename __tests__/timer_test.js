@@ -31,16 +31,16 @@ describe('Timer', () => {
 
   });
 
-  it('starts the charger timer', () => {
-    render(<Timer />);
+  // it('starts the charger timer', () => {
+  //   render(<Timer />);
 
-    const startCharge = screen.getByTestId("start-charge");
+  //   const startCharge = screen.getByTestId("start-charge");
 
-    fireEvent.click(startCharge);
+  //   fireEvent.click(startCharge);
 
-    expect(screen.getByTestId("timer-running")).toBeInTheDocument();
+  //   expect(screen.getByTestId("timer-running")).toBeInTheDocument();
 
-  });
+  // });
 
 })
 

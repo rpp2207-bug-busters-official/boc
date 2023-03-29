@@ -6,7 +6,6 @@ import Layout from '../../components/Layout.js';
 import react, {useState, useEffect} from 'react';
 import Cookies from './Login/setCookie.js';
 
-
 export default function App({ Component, pageProps }) {
   return (
     <>
@@ -14,7 +13,7 @@ export default function App({ Component, pageProps }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-      <Layout>
+      <Layout >
         <Component {...pageProps}/>
       </Layout>
 

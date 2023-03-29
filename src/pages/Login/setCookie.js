@@ -1,7 +1,7 @@
 import Cookies from 'js-cookie';
+import { getAuth } from 'firebase/auth';
 
 function setCookie(userId, userName, rememberMe) {
-  console.log('This is a cookie thing', rememberMe);
   if (rememberMe) {
     Cookies.set('userId', userId, {expires: 30});
   } else {
@@ -32,10 +32,11 @@ function getCookie() {
 function getUsername() {
   return Cookies.get('username');
 }
+
 let obj = {
   setCookie:setCookie,
   logOut:logOut,
   getCookie: getCookie,
-  getUsername: getUsername
+  getUsername: getUsername,
 }
 export default obj;

@@ -90,8 +90,7 @@ const HigherOrderList = (props) => {
         setallAct(activities);
         renderData(activities);
     }
-    // might need to fix this for the build to work
-  }, [])
+  }, [allAct])
 
   return (
       <div className="list-group" style={{backgroundColor: "#467850", width: "25rem"}}>
