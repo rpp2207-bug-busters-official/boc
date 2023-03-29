@@ -23,7 +23,6 @@ const Timer = () => {
 
 
   const startCharge = () => {
-    console.log('Get userinfo: ', Cookies.getUserInfo())
     let time = 1800;
 
     if (batteryCapacity && currentCharge && chargePower) {
