@@ -30,10 +30,7 @@ export default function Home() {
       <main className={styles.main}>
         <ChargerMap/>
         {/* <ActivityList/> */}
-<<<<<<< HEAD
         {/* <Reviews/> */}
-=======
->>>>>>> main
         <ActivityForm/>
         <Register/>
         <Login/>
