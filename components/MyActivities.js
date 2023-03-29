@@ -12,7 +12,7 @@ const MyActivities = () => {
           className="list-group-item list-group-item-action active"
           aria-current="true"
           key={props.setKey}
-          style={{backgroundColor: "#E9E9E9", color: "black", borderColor: "#008AB8", borderWidth: "0.12rem 0"}}
+          style={{backgroundColor: "#E9E9E9", color: "black", borderColor: "#BF0101", borderWidth: "0.12rem 0"}}
       >
           <div>
               <h5
@@ -23,7 +23,7 @@ const MyActivities = () => {
                 <h6
                   style={{fontWeight: "bold", display: "inline"}}
                 >{props.act.rating}</h6>
-                <Button variant="primary" style={{backgroundColor: "#00536E", borderColor: "#00536E", display: "inline", float: "right", marginLeft: "0.5rem"}} onClick={() => props.handleShow(props.act.review, props.act.place)}>
+                <Button variant="primary" style={{backgroundColor: "#BF0101", borderColor: "#BF0101", display: "inline", float: "right", marginLeft: "0.5rem"}} onClick={() => props.handleShow(props.act.review, props.act.place)}>
                   See Reviews
                 </Button>
               </div>
@@ -42,20 +42,20 @@ const MyActivities = () => {
       Card={CardComponent}
       title={'Your Activities'}
       mainStyles={{
-        backgroundColor: '#008AB8',
+        backgroundColor: '#BF0101',
         width: "100%",
         borderRadius: "0",
         margin: "0 0 1.5vw 0"
       }}
       showStyles={{
-        backgroundColor: "#008AB8",
+        backgroundColor: "#BF0101",
         border: "none",
         float: "left",
         marginLeft: "1rem",
         padding: "0.5rem 0"
       }}
       colStyles={{
-        backgroundColor: "#008AB8",
+        backgroundColor: "#BF0101",
         border: "none",
         float: "right",
         marginRight: "1rem",

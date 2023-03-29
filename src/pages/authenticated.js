@@ -45,7 +45,7 @@ const Authenticated  = () => {
                 <div style={{backgroundColor: "#E9E9E9", paddingTop: "1rem", marginBottom: "1.5vw", width: "100%"}}>
                   <div className='wrapper' style={{position: "relative", float: "center", width: "5.7rem", minWidth: "5.7rem", margin: "auto"}}>
                     <img
-                      src="/cntBlue.png"
+                      src="/CNTLogo.png"
                       alt="Charge and Tarry Logo"
                       style={{width: "100%", minWidth: "4rem"}}
                     />
