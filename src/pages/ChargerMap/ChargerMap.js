@@ -1,16 +1,18 @@
 import Script from 'next/script';
 import {Helmet} from 'react-helmet';
 // import Filters from './filters.js';
-import Filters2 from './filters2.js';
+import FiltersForm from '../../../components/FiltersForm.js';
+import getConnectionsFilters from '../../../helper_functions/getConnectionsFilters.js';
+import getOperatorsFilters from '../../../helper_functions/getOperatorsFilters.js';
 // import activity list
-import ActivityList from 'src/pages/ActivityList/ActivityList.js';
+import ActivityList from '../ActivityList/ActivityList.js';
 
 import React, { useRef, useEffect, useState } from 'react';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 import * as MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 
-import mapboxgl from '!mapbox-gl' // eslint-disable-line import/no-webpack-loader-syntax
+import mapboxgl from 'mapbox-gl' // eslint-disable-line import/no-webpack-loader-syntax
 
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_KEY;
 export default function ChargerMap(props) {
@@ -18,55 +20,21 @@ export default function ChargerMap(props) {
   const layer = 'us2-5avts3';
   const mapContainer = useRef(null);
   const map = useRef(null);
-  const [lng, setLng] = useState(-122.4755859375);
-  const [lat, setLat] = useState(48.74894534343292);
-  const [zoom, setZoom] = useState(1);
+  const [lng, setLng] = useState(-100.000000);
+  const [lat, setLat] = useState(41.500000);
+  const [zoom, setZoom] = useState(2);
   const [activitiesOpened, setActivitiesOpened] = useState(false);
   const [filters, setFilters] = useState({
     operators:[],
     connections:[]
   });
 
- function getOperatorsFilters (filterArray) {
-   let ofilters = [];
-   if(filterArray.operators.length!==0) {
-    ofilters=filters.operators.map((operator)=>{
-      return ['in', operator, ['string', ['get', 'poi']]];
-     });
-   }
-   return ofilters;
- }
 
- function getConnectionsFilters (filterArray) {
-  let cfilters = [];
-  if(filterArray.connections.length!==0) {
-    cfilters = filters.connections.map((connection)=>{
-      return ['in', connection, ['string', ['get', 'connectionType']]];
-  });
 
-  };
 
-  return cfilters;
-}
-
-// async function handleClick(){
-
-//     try {
-//       const updatedO = await getOperatorsFilters(filters);
-//       const updatedC = await getConnectionsFilters(filters);
-//       let combinedFilters = getOperatorsFilters(filters).concat(getConnectionsFilters(filters));
-//       if (combinedFilters.length!== 0) {
-//         let filter = ['any',].concat(combinedFilters);
-//         map.current.setFilter(layer,filter);
-//             // alert(JSON.stringify(filter));
-//       }
-//     } catch (err) {
-//       console.error(err);
-//     }
-// }
 
 function handleClick() {
-  console.log("in handle click");
+  // console.log("in handle click");
   let combinedFilters = getOperatorsFilters(filters).concat(getConnectionsFilters(filters));
   if (combinedFilters.length!== 0) {
     let filter = ['any',].concat(combinedFilters);
@@ -76,7 +44,9 @@ function handleClick() {
   }
 }
 
-
+function jsonEscape(str)  {
+  return str.replace(/\n/g, "\\\\n").replace(/\r/g, "\\\\r").replace(/\t/g, "\\\\t");
+}
 
 
   useEffect(() => {
@@ -116,7 +86,7 @@ function handleClick() {
         let start="operatorInfo";
         if (poi.includes("operatorInfo")){
           let cleanup = '{"' + poi.substring(poi.indexOf(start));
-          provider = JSON.parse(cleanup).operatorInfo.title;
+          provider = JSON.parse(jsonEscape(cleanup)).operatorInfo.title;
         }
       }
       let connection = e.features[0].properties.connectionType;
@@ -124,7 +94,7 @@ function handleClick() {
       let description = e.features[0].properties.description;
       let level = e.features[0].properties.level;
       let avail = "Available";
-      if (level !== 2) {
+      if (level !== '2') {
         avail = "Occupied";
       }
 
@@ -162,6 +132,8 @@ function handleClick() {
       showUserHeading: true
       })
     );
+
+
     map.current.addControl(new mapboxgl.NavigationControl());
 
     map.current.on('click', (e) => {
@@ -188,38 +160,30 @@ function handleClick() {
   return (
     <>
 
-  <div className="jumbotron text-center">
+  {/* <div className="jumbotron text-center"> */}
     <Script src="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js"></Script>
     <Script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></Script>
     <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css"></link>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
     <h1>Charge and Tarry</h1>
+  {/* </div> */}
 
-    <p><Filters2 filters={filters} setFilters={setFilters} onCloseClick={handleClick}/></p>
+   <span className="container">
 
+ {/* <div className="row"> */}
 
-
-  </div>
-
-<div className="container">
-
-{/* <div className="row"> */}
-
-{/* <div className="sidebar">
-Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
-</div> */}
+ {/* <div className="sidebar">
+ Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
+ </div> */}
   {/* <div> */}
-
-    <div ref={mapContainer} className="map-container" />
-    </div>
-    <pre id="quake-info">
-      <ActivityList longitude={lng} latitude={lat}/>
-    </pre>
-
-
+     <FiltersForm filters={filters} setFilters={setFilters} onCloseClick={handleClick} />
+     <div ref={mapContainer} className="map-container" />
+  </span>
+  <pre id="quake-info">
+    <ActivityList longitude={lng} latitude={lat}/>
+  </pre>
     {/* <pre id="features"></pre> */}
     {/* <pre id="info"></pre> */}
-
   {/* </div> */}
 {/* </div> */}
 </>
