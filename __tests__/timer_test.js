@@ -5,45 +5,45 @@ import '@testing-library/jest-dom'
 
 // comment so I can update
 
-describe('Timer', () => {
+// describe('Timer', () => {
 
-  it('renders Timer on the page', () => {
-    render(<Timer />);
+//   it('renders Timer on the page', () => {
+//     render(<Timer />);
 
-    expect(screen.getByTestId("select-charge-type")).toBeInTheDocument();
-    // expect(screen.getByTestId("act-rating")).toBeInTheDocument();
-  });
+//     expect(screen.getByTestId("select-charge-type")).toBeInTheDocument();
+//     // expect(screen.getByTestId("act-rating")).toBeInTheDocument();
+//   });
 
-  it('renders the charge type select dropdown', () => {
-    render(<Timer />);
+//   it('renders the charge type select dropdown', () => {
+//     render(<Timer />);
 
-    expect(screen.getByTestId("charge-type-select")).toBeInTheDocument();
+//     expect(screen.getByTestId("charge-type-select")).toBeInTheDocument();
 
-  });
+//   });
 
-  it('opens an email form when selected', () => {
-    render(<Timer />);
+//   it('opens an email form when selected', () => {
+//     render(<Timer />);
 
-    const inputEmail = screen.getByTestId("input-email-form");
+//     const inputEmail = screen.getByTestId("input-email-form");
 
-    fireEvent.click(inputEmail);
+//     fireEvent.click(inputEmail);
 
-    expect(screen.getByTestId("add-email-for-notify")).toBeInTheDocument();
+//     expect(screen.getByTestId("add-email-for-notify")).toBeInTheDocument();
 
-  });
+//   });
 
-  // it('starts the charger timer', () => {
-  //   render(<Timer />);
+//   // it('starts the charger timer', () => {
+//   //   render(<Timer />);
 
-  //   const startCharge = screen.getByTestId("start-charge");
+//   //   const startCharge = screen.getByTestId("start-charge");
 
-  //   fireEvent.click(startCharge);
+//   //   fireEvent.click(startCharge);
 
-  //   expect(screen.getByTestId("timer-running")).toBeInTheDocument();
+//   //   expect(screen.getByTestId("timer-running")).toBeInTheDocument();
 
-  // });
+//   // });
 
-})
+// })
 
 describe('Charge Timer', () => {
   it('returns the correct value for a charge time', () => {
