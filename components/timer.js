@@ -196,12 +196,16 @@ const Timer = () => {
           </Modal>
         :
         running ?
+        <div style={{width: "15rem"}}>
 
-        <div data-testid="timer-running">
-          <span>Timer: {clock}</span>
-          <br></br>
-          <Button onClick={() => {setStop(!stop); setRunning(!running); setTime(0); setClock("");}}>End Charge</Button>
+          <div data-testid="timer-running">
+            <h4>Charge Time: {clock}</h4>
+            <Button style={{position: "relative", left: "5rem"}}onClick={() => {setStop(!stop); setRunning(!running); setTime(0); setClock("");}}>End Charge</Button>
+          </div>
+
+
         </div>
+
         :
         <Button onClick={() => selected(!select)}>Start A Charge</Button>
       }
