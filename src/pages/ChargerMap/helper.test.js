@@ -6,6 +6,7 @@ import '@testing-library/jest-dom';
 import {Modal, Button, Form} from 'react-bootstrap';
 import GetConnectionsFilters from '../../../helper_functions/getConnectionsFilters.js';
 import GetOperatorsFilters from '../../../helper_functions/getOperatorsFilters.js';
+import JsonEscape from '../../../helper_functions/jsonEscape.js';
 
 afterEach(() => {
   cleanup();
@@ -29,6 +30,16 @@ describe('get filters for operators', () => {
     let operatorFilters = GetOperatorsFilters(testData);
     let result=[['in', 'Tesla', ['string', ['get', 'poi']]],['in', 'ChargePoint', ['string', ['get', 'poi']]]];
     expect(operatorFilters).toEqual(result);
+
+  });
+ });
+
+ describe('escape special characters', () => {
+  it('convert into filters', () => {
+    let testData= 'test \n test2 \r test3 \t';
+    let escaped = JsonEscape(testData);
+    let result='test \\\\n test2 \\\\r test3 \\\\t';
+    expect(escaped).toEqual(result);
 
   });
  });

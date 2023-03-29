@@ -80,44 +80,43 @@ export default function ChargerMap(props) {
         let sname = e.features[0].properties.name;
         let provider = "Other";
         if(e.features[0].properties.poi){
-        let poi = e.features[0].properties.poi;
-        let start="operatorInfo";
-        if (poi.includes("operatorInfo")){
+          let poi = e.features[0].properties.poi;
+          let start="operatorInfo";
+          if (poi.includes("operatorInfo")){
           let cleanup = '{"' + poi.substring(poi.indexOf(start));
           provider = JSON.parse(JsonEscape(cleanup)).operatorInfo.title;
+          }
         }
-      }
-      let connection = e.features[0].properties.connectionType;
-      let coordinates = e.features[0].geometry.coordinates.slice();
-      let description = e.features[0].properties.description;
-      let level = e.features[0].properties.level;
-      let avail = "Available";
-      if (level !== '2') {
-        avail = "Occupied";
-      }
+        let connection = e.features[0].properties.connectionType;
+        let coordinates = e.features[0].geometry.coordinates.slice();
+        let description = e.features[0].properties.description;
+        let level = e.features[0].properties.level;
+        let avail = "Available";
+        if (level !== '2') {
+          avail = "Occupied";
+        }
 
-      let combined = avail + '<br />' + provider + '<br />' + sname +'<br />' + connection + '<br />' + description  +'<br />';
+        let combined = avail + '<br />' + provider + '<br />' + sname +'<br />' + connection + '<br />' + description  +'<br />';
 
         // Ensure that if the map is zoomed out such that multiple
         // copies of the feature are visible, the popup appears
         // over the copy being pointed to.
-      while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-        coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-      }
+        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+          coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+        }
 
-      popup.setLngLat(coordinates)
-        .setHTML(checkEmpty(combined))
-        .addTo(map.current);
-      }
+        popup.setLngLat(coordinates)
+          .setHTML(checkEmpty(combined))
+          .addTo(map.current);
+        }
 
-      function hidePopup() {
-        map.current.getCanvas().style.cursor = '';
+        function hidePopup() {
+          map.current.getCanvas().style.cursor = '';
+          popup.remove();
+        }
 
-        popup.remove();
-      }
-
-      map.current.on('mouseenter', layer, showPopup);
-      map.current.on('mouseleave', layer, hidePopup);
+        map.current.on('mouseenter', layer, showPopup);
+        map.current.on('mouseleave', layer, hidePopup);
     });
 
 
