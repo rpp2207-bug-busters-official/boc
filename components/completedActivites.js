@@ -29,6 +29,26 @@ export default function completedActivites (props) {
     <HigherOrderList
       Card = {CompletedCard}
       title = 'Completed Activities'
+      mainStyles={{
+        backgroundColor: '#467850',
+        width: "100%",
+        maxWidth: "90vw",
+        margin: "0.5rem 0"
+      }}
+      showStyles={{
+        backgroundColor: "#467850",
+        border: "none",
+        float: "left",
+        marginLeft: "1rem",
+        padding: "0.5rem 0"
+      }}
+      colStyles={{
+        backgroundColor: "#467850",
+        border: "none",
+        float: "right",
+        marginRight: "1rem",
+        padding: "0.5rem 0"
+      }}
     />
   )
 }

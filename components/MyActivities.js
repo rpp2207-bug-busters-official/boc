@@ -12,7 +12,7 @@ const MyActivities = () => {
           className="list-group-item list-group-item-action active"
           aria-current="true"
           key={props.setKey}
-          style={{backgroundColor: "#69B578", color: "black", borderColor: "#467850"}}
+          style={{backgroundColor: "#E86C4A", color: "black", borderColor: "#BF4B2C"}}
       >
           <div>
               <h5
@@ -24,15 +24,38 @@ const MyActivities = () => {
                   style={{display: "inline", float: "right", fontWeight: "bold"}}
               >{props.act.rating}</h6>
           </div>
-          <Button variant="primary" style={{backgroundColor: "green"}} onClick={() => props.handleShow(props.act.review, props.act.place)}>
-            See Review
+          <Button variant="primary" style={{backgroundColor: "#BF4B2C", borderColor: "#BF4B2C"}} onClick={() => props.handleShow(props.act.review, props.act.place)}>
+            See Reviews
           </Button>
       </div>
     )
   }
 
   return (
-    <HigherOrderList Card={CardComponent} title={'My Activities'}/>
+    <HigherOrderList
+      Card={CardComponent}
+      title={'My Activities'}
+      mainStyles={{
+        backgroundColor: '#BF4B2C',
+        width: "100%",
+        maxWidth: "90vw",
+        margin: "0.5rem 0"
+      }}
+      showStyles={{
+        backgroundColor: "#BF4B2C",
+        border: "none",
+        float: "left",
+        marginLeft: "1rem",
+        padding: "0.5rem 0"
+      }}
+      colStyles={{
+        backgroundColor: "#BF4B2C",
+        border: "none",
+        float: "right",
+        marginRight: "1rem",
+        padding: "0.5rem 0"
+      }}
+    />
   )
 }
 export default MyActivities;
