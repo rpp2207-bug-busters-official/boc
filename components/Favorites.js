@@ -7,10 +7,10 @@ const Favorites = () => {
     const FavoriteCard = (props) => {
         return (
             <div
-                className="list-group-item list-group-item-action active"
+                className="list-group-item list-group-item-action active card-component-coloring"
                 aria-current="true"
                 key={props.setKey}
-                style={{backgroundColor: "#FAF7F7", color: "black", borderColor: "#DC706C", borderWidth: "0.12rem 0"}}
+                style={{backgroundColor: "#FAF7F7", color: "black", borderColor: "#706B71", borderWidth: "0.12rem 0"}}
             >
                 <div>
                     <h5
