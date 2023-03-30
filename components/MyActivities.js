@@ -13,7 +13,7 @@ const MyActivities = () => {
           className="list-group-item list-group-item-action active"
           aria-current="true"
           key={props.setKey}
-          style={{backgroundColor: "#E9E9E9", color: "black", borderColor: "#BF0101", borderWidth: "0.12rem 0"}}
+          style={{backgroundColor: "#FAF7F7", color: "black", borderColor: "#DC706C", borderWidth: "0.12rem 0"}}
       >
           <div>
             <div>
@@ -33,7 +33,7 @@ const MyActivities = () => {
                   className={'star'}/></h6>
             </div>
               <div style={{display: "inline-block", float: "right", marginLeft: ""}}>
-                <Button variant="primary" style={{backgroundColor: "#BF0101", borderColor: "#BF0101", display: "inline", float: "right", marginLeft: "0.5rem"}} onClick={() => props.handleShow(props.act.review, props.act.place)}>
+                <Button variant="primary" style={{backgroundColor: "#3E363F", borderColor: "#3E363F", display: "inline", float: "right", marginLeft: "0.5rem"}} onClick={() => props.handleShow(props.act.review, props.act.place)}>
                   See Reviews
                 </Button>
               </div>
