@@ -19,14 +19,14 @@ const Authenticated  = () => {
       router.push('/')
     }
     // might need to fix this for build to work
-  }, []);
+  }, [router]);
 
 
   return (
     <>
       {cookie !== undefined &&
       <>
-        <div style={{padding: "2vh 0 0 0"}}>
+        <div style={{padding: "2vh 0 0 0"}} className={RegularFont.className}>
           <div className='row py-3' style={{margin: "0"}}>
 
 
