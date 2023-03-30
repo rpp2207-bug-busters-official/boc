@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import HigherOrderList from './higherOrderList.js';
+import ReactStars from 'react-stars'
+import React from 'react';
 
 const MyActivities = () => {
   const CardComponent = (props) => {
@@ -18,16 +20,22 @@ const MyActivities = () => {
                   className="mb-1"
                   style={{display: "inline", fontSize: "1.3rem"}}
               >{props.act.place}</h5>
-              <div style={{display: "inline-block", float: "right", marginLeft: "20%"}}>
                 <h6
-                  style={{fontWeight: "bold", display: "inline"}}
-                >{props.act.rating}</h6>
+                  style={{float: 'right'}}
+                ><ReactStars
+                  count = {5}
+                  value = {props.act.rating}
+                  size={18}
+                  edit={false}
+                  color={'blue'}
+                  className={'star'}/></h6>
+              <div style={{display: "inline-block", float: "right", marginLeft: "20%"}}>
                 <Button variant="primary" style={{backgroundColor: "#BF0101", borderColor: "#BF0101", display: "inline", float: "right", marginLeft: "0.5rem"}} onClick={() => props.handleShow(props.act.review, props.act.place)}>
                   See Reviews
                 </Button>
               </div>
-              <div style={{display: "inline", float: "right"}}>
-                <h6 style={{margin: "0.1rem"}}>ADDRESS CITY</h6>
+              <div style={{display: "inline", float:'right'}}>
+                <h6 style={{margin: "0.1rem"}} className={props.ExtraLight.className}>ADDRESS CITY</h6>
               </div>
           </div>
           <div>

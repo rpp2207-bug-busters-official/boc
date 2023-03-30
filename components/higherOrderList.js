@@ -3,6 +3,10 @@ import { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import fav from '../sample-data/sample-favorites.js';
+import localFont from 'next/font/local';
+
+const RegularFont = localFont({src:'../src/styles/Barlow_Condensed/BarlowCondensed-Regular.ttf'});
+const ExtraLightFont = localFont({src:'../src/styles/Barlow_Condensed/BarlowCondensed-ExtraLight.ttf'});
 
 const HigherOrderList = (props) => {
   const [show, setShow] = useState(false);
@@ -93,11 +97,11 @@ const HigherOrderList = (props) => {
   }, [allAct])
 
   return (
-      <div className="list-group" style={props.mainStyles}>
+      <div className={`list-group ${RegularFont.className}`} style={props.mainStyles}>
           <h3 style={{ color: "white", fontSize: "1.7rem", margin: ".6rem", borderBottom: "1rem"}}>{props.title}</h3>
           {rendered.map((act, key) => {
               return (
-                <props.Card key={key} act={act} handleShow={handleShow} setKey={key}/>
+                <props.Card key={key} act={act} handleShow={handleShow} setKey={key} ExtraLight={ExtraLightFont}/>
               );
           })}
 

@@ -1,6 +1,8 @@
 import activities from '../sample-data/sample-activities.js';
 import react, { useEffect, useState } from 'react';
 import HigherOrderList from './higherOrderList.js';
+import ReactStars from 'react-stars';
+import React from 'react';
 
 export default function completedActivites (props) {
   const CompletedCard = (props) => {
@@ -16,11 +18,17 @@ export default function completedActivites (props) {
                 className="mb-1"
                 style={{fontSize: "1.3rem", display: "inline", margin: "auto", position: "relative", top: "50%"}}
             >{props.act.place}</h5>
-            <h6
-                style={{display: "inline", float: "right", fontWeight: "bold", marginLeft: "20%"}}
-            >{props.act.rating}</h6>
             <div style={{display: "inline", float: "right"}}>
-              <h6 style={{margin: "0.1rem"}}>ADDRESS CITY</h6>
+              <h6 style={{margin: "0.1rem"}} className={props.ExtraLight.className}>ADDRESS CITY</h6>
+            <h6
+                  style={{float: 'right'}}
+                ><ReactStars
+                  count = {5}
+                  value = {props.act.rating}
+                  size={18}
+                  edit={false}
+                  color={'blue'}
+                  className={'star'}/></h6>
             </div>
         </div>
         <p className="mb-1">{props.act.review}</p>
