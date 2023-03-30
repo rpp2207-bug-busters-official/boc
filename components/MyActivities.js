@@ -16,12 +16,14 @@ const MyActivities = () => {
           style={{backgroundColor: "#E9E9E9", color: "black", borderColor: "#BF0101", borderWidth: "0.12rem 0"}}
       >
           <div>
+            <div>
+
               <h5
                   className="mb-1"
-                  style={{display: "inline", fontSize: "1.3rem"}}
+                  style={{display: "inline", fontSize: "1.3rem", float:'left'}}
               >{props.act.place}</h5>
                 <h6
-                  style={{float: 'right'}}
+                  style={{display:'inline', float:'left', paddingLeft:'10px'}}
                 ><ReactStars
                   count = {5}
                   value = {props.act.rating}
@@ -29,6 +31,7 @@ const MyActivities = () => {
                   edit={false}
                   color={'blue'}
                   className={'star'}/></h6>
+            </div>
               <div style={{display: "inline-block", float: "right", marginLeft: "20%"}}>
                 <Button variant="primary" style={{backgroundColor: "#BF0101", borderColor: "#BF0101", display: "inline", float: "right", marginLeft: "0.5rem"}} onClick={() => props.handleShow(props.act.review, props.act.place)}>
                   See Reviews
