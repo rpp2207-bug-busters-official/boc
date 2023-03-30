@@ -85,19 +85,22 @@ function WrongAddress (props) {
 
 const postActivities = async (newEntry) => {
 
-  await fetch('/api/addActivity', {
+  var status = await fetch('/api/addActivity', {
       method: "POST",
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(newEntry)})
+      body: JSON.stringify(newEntry)
+    })
   .then((res) => {
     //res.json();
-    console.log("hhhhhh", JSON.stringify(res), "hhhhhhh");
-    return JSON.stringify(res)
+    console.log("hhhhhh", res.status, "hhhhhhh");
+    return res.status
   })
   .catch((err) => {
       console.log(err, "rrrr");
       return err
   })
+
+  return status
 
 }
 
@@ -171,11 +174,10 @@ function MyVerticallyCenteredModal(props) {
     return postActivities(newEntry)
   })
 
-  .then(response => {
-    console.log("ssss", response, "sss")
-    if(response.status === 201){
+  .then((status) => {
+    console.log("ssss", status, "sss")
+    if(status === 201){
       props.onHide()
-
       setCreatedAlertShow(true)
     } else {
       props.onHide()
