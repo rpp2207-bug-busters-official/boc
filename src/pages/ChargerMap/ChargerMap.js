@@ -6,6 +6,7 @@ import getConnectionsFilters from '../../../helper_functions/getConnectionsFilte
 import getOperatorsFilters from '../../../helper_functions/getOperatorsFilters.js';
 // import activity list
 import ActivityList from '../ActivityList/ActivityList.js';
+import localFont from 'next/font/local';
 
 import React, { useRef, useEffect, useState } from 'react';
 import 'mapbox-gl/dist/mapbox-gl.css';
@@ -15,6 +16,7 @@ import * as MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import mapboxgl from 'mapbox-gl' // eslint-disable-line import/no-webpack-loader-syntax
 
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_KEY;
+const myFont = localFont({src:'../../styles/Anton/Anton-Regular.ttf'})
 export default function ChargerMap(props) {
 
   const layer = 'us2-5avts3';
@@ -165,7 +167,7 @@ function jsonEscape(str)  {
     <Script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></Script>
     <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css"></link>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
-    <h1>Charge and Tarry</h1>
+    <h1 className={myFont.className} style={{fontSize:'60px', marginBottom:'80px'}}>Charge and Tarry</h1>
   {/* </div> */}
 
    <span className="container">
