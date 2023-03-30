@@ -8,7 +8,7 @@ import GetConnectionsFilters from '../../../helper_functions/getConnectionsFilte
 import GetOperatorsFilters from '../../../helper_functions/getOperatorsFilters.js';
 import JsonEscape from '../../../helper_functions/jsonEscape.js';
 import ChargerMap from './ChargerMap.js';
-// import fetch from
+import fetch from "node-fetch";
 
 afterEach(() => {
   cleanup();
@@ -47,11 +47,11 @@ describe('get filters for operators', () => {
  });
 
 
-//  describe('charger map component', () => {
-//   it('component rendered', () => {
-//     let screen = render(<ChargerMap />);
-//     let title = screen.getByText('Charge and Tarry');
-//     expect(title).toBeInTheDocument();
+ describe('charger map component', () => {
+  it('component rendered', () => {
+    let screen = render(<ChargerMap />);
+    let title = screen.getByText('Charge and Tarry');
+    expect(title).toBeInTheDocument();
 
-//   });
-//  });
+  });
+ });
