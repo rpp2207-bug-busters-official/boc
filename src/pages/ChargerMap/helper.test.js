@@ -7,6 +7,8 @@ import {Modal, Button, Form} from 'react-bootstrap';
 import GetConnectionsFilters from '../../../helper_functions/getConnectionsFilters.js';
 import GetOperatorsFilters from '../../../helper_functions/getOperatorsFilters.js';
 import JsonEscape from '../../../helper_functions/jsonEscape.js';
+import ChargerMap from './ChargerMap.js';
+// import fetch from
 
 afterEach(() => {
   cleanup();
@@ -43,3 +45,13 @@ describe('get filters for operators', () => {
 
   });
  });
+
+
+//  describe('charger map component', () => {
+//   it('component rendered', () => {
+//     let screen = render(<ChargerMap />);
+//     let title = screen.getByText('Charge and Tarry');
+//     expect(title).toBeInTheDocument();
+
+//   });
+//  });
