@@ -16,10 +16,6 @@ export default function registrationValidation ({username, email, password})  {
       [
         ((b) => { return (b.includes('@') && b.includes('.')); }).bind(null),
         'The email entered is not valid.',
-      ],
-      [
-        ((b) => { return b.length <= 60; }).bind(null),
-        'The email must not exceed 60 characters.'
       ]
     ],
     password: [
@@ -28,7 +24,8 @@ export default function registrationValidation ({username, email, password})  {
         'Both passwords must match.'
       ],
       [
-        ((b) => { return b.password.length >= 6}).bind(null),
+        ((b) => {
+          return b.password.length >= 6}).bind(null),
         'Password must be at least 6 characters long.'
       ]
     ]
