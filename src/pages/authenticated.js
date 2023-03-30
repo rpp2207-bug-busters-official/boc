@@ -5,6 +5,9 @@ import Cookies from './Login/setCookie.js';
 import {useRouter} from 'next/router';
 import react, { useEffect, useState } from 'react';
 import Image from 'next/image';
+import localFont from 'next/font/local';
+
+const RegularFont = localFont({src:'../styles/Barlow_Condensed/BarlowCondensed-Regular.ttf'});
 
 const Authenticated  = () => {
   let router = useRouter();
@@ -26,7 +29,7 @@ const Authenticated  = () => {
         <div style={{padding: "2vh 0 0 0"}}>
           <div className='row py-3' style={{margin: "0"}}>
 
-            
+
 
             {/* <div className='row' style={{margin: "0"}}>
               <div className='col-sm'>
@@ -45,14 +48,16 @@ const Authenticated  = () => {
               <div className='col-' style={{padding: "0", margin: "0 1.5vw 0 1.5vw", width: "22vw", minWidth: "23rem"}}>
                 <div style={{backgroundColor: "#E9E9E9", paddingTop: "1rem", marginBottom: "1.5vw", width: "100%"}}>
                   <div className='wrapper' style={{position: "relative", float: "center", width: "5.7rem", minWidth: "5.7rem", margin: "auto"}}>
-                    <img
+                    <Image
                       src="/CNTLogo.png"
                       alt="Charge and Tarry Logo"
                       style={{width: "100%", minWidth: "4rem"}}
+                      width='100'
+                      height='180'
                     />
                   </div>
-                  <div style={{margin: "0 0 1rem 0"}}>
-                    <p 
+                  <div style={{margin: "0 0 1rem 0"}} className={`${RegularFont.className} text-capitalize`}>
+                    <p
                       className='lead text-center'
                       style={{
                         fontSize: "2.5rem",

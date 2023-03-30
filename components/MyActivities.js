@@ -32,12 +32,12 @@ const MyActivities = () => {
                   color={'blue'}
                   className={'star'}/></h6>
             </div>
-              <div style={{display: "inline-block", float: "right", marginLeft: "20%"}}>
+              <div style={{display: "inline-block", float: "right", marginLeft: ""}}>
                 <Button variant="primary" style={{backgroundColor: "#BF0101", borderColor: "#BF0101", display: "inline", float: "right", marginLeft: "0.5rem"}} onClick={() => props.handleShow(props.act.review, props.act.place)}>
                   See Reviews
                 </Button>
               </div>
-              <div style={{display: "inline", float:'right'}}>
+              <div style={{display: "inline", float:'right', paddingRight:'20%'}}>
                 <h6 style={{margin: "0.1rem"}} className={props.ExtraLight.className}>ADDRESS CITY</h6>
               </div>
           </div>
