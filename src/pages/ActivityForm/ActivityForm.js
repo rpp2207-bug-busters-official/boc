@@ -2,12 +2,8 @@ import React, {useState} from 'react';
 import { Button, Modal, closeButton} from 'react-bootstrap';
 import Alert from 'react-bootstrap/Alert';
 import cookie from '../../pages/Login/setCookie.js';
-//import db from "../../../src/db/pool.js";
-//const { Pool } = require('pg');
-//const {db} = require('../../../src/db/pool.js');
-//import db from "../../../src/db/pool.js";
 
-/////console.log(db, "dbbbbb")
+
 export default  function ActivityForm(props) {
   const [modalShow, setModalShow] = React.useState(false);
   const [alertShow, setAlertShow] = React.useState(false);
@@ -24,8 +20,6 @@ export default  function ActivityForm(props) {
     }
   }
 
-
-
   return (
       <>
         <Button variant="primary"  className="btn btn-success" onClick={checkSignedIn}>
@@ -39,13 +33,16 @@ export default  function ActivityForm(props) {
 
   <MyVerticallyCenteredModal
           show={modalShow}
-          onHide={() => setModalShow(false)}
+          onHide={() => {setModalShow(false)}}
           user= {userId}
         />
 
       </>
     )
 }
+
+
+
 function CreatedModal (props) {
   return (
     <Modal
@@ -69,6 +66,9 @@ function CreatedModal (props) {
   );
 
 }
+
+
+
 function WrongAddress (props) {
   return (
     <div>
@@ -78,6 +78,26 @@ function WrongAddress (props) {
         </div>
 
   );
+
+}
+
+
+
+const postActivities = async (newEntry) => {
+
+  await fetch('/api/addActivity', {
+      method: "POST",
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(newEntry)})
+  .then((res) => {
+    //res.json();
+    console.log("hhhhhh", JSON.stringify(res), "hhhhhhh");
+    return JSON.stringify(res)
+  })
+  .catch((err) => {
+      console.log(err, "rrrr");
+      return err
+  })
 
 }
 
@@ -112,7 +132,6 @@ function MyVerticallyCenteredModal(props) {
   const cityRef = React.useRef(null);
   const zipCodeRef = React.useRef(null);
   const stateRef = React.useRef(null);
-  const countryRef = React.useRef(null);
   const longitudeRef = React.useRef(null);
   const latitudeRef = React.useRef(null);
   const userId = props.user;
@@ -123,7 +142,6 @@ function MyVerticallyCenteredModal(props) {
     e.preventDefault();
     var newEntry = {}
     var prequery = addressRef.current.value + ', ' + cityRef.current.value + ' '+ stateRef.current.value
-    console.log(prequery, "prequeryyyy")
     var query = prequery.replaceAll(' ', '%20')
     console.log(query, "queryyyy")
     await fetch(`http://api.positionstack.com/v1/forward?access_key=${process.env.NEXT_PUBLIC_OPTIONSTACK_KEY}&query=${query}&country=US&limit=1`)
@@ -144,23 +162,33 @@ function MyVerticallyCenteredModal(props) {
       newEntry.City = cityRef.current.value,
       newEntry.ZipCode = zipCodeRef.current.value,
       newEntry.State = stateRef.current.value,
-      newEntry.Country = countryRef.current.value,
       newEntry.Phone = phoneRef.current.value,
-      newEntry.userId = userId,
-
-    console.log(newEntry, "newentryyyy")
+      newEntry.userId = userId;
+      console.log(newEntry, "entryyyy")
+      return newEntry
   })
+  .then(newEntry => {
+    return postActivities(newEntry)
+  })
+
   .then(response => {
+    console.log("ssss", response, "sss")
+    if(response.status === 201){
+      props.onHide()
 
+      setCreatedAlertShow(true)
+    } else {
+      props.onHide()
+
+    }
   })
-
-  // .then(response => {
-  //   props.onHide()
-  //   setCreatedAlertShow(true)
-  // })
   .catch(err => console.error(err));
-      //insertOne new entry
     };
+
+    const closing = () => {
+      props.onHide();
+      setWrongAddressShow(false);
+    }
 
   return (<div>
     <CreatedModal
@@ -207,11 +235,6 @@ function MyVerticallyCenteredModal(props) {
   <label className="form-label" htmlFor="form6Example4">State</label>
 </div>
 <div className="form-outline mb-4">
-  <input ref={countryRef} type="text" id="form6Example6" className="form-control"/>
-  <label className="form-label" htmlFor="form6Example4" >Country</label>
-</div>
-
-<div className="form-outline mb-4">
   <input ref={phoneRef} type="number" id="form6Example7" className="form-control"/>
   <label className="form-label" htmlFor="form6Example6" >Phone Number</label>
 </div>
@@ -225,7 +248,7 @@ function MyVerticallyCenteredModal(props) {
 </form>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={props.onHide}>Close</Button>
+        <Button variant="secondary" onClick={closing}>Close</Button>
       </Modal.Footer>
     </Modal>
     </div>
