@@ -91,8 +91,6 @@ const postActivities = async (newEntry) => {
       body: JSON.stringify(newEntry)
     })
   .then((res) => {
-    //res.json();
-    console.log("hhhhhh", res.status, "hhhhhhh");
     return res.status
   })
   .catch((err) => {
@@ -167,7 +165,7 @@ function MyVerticallyCenteredModal(props) {
       newEntry.State = stateRef.current.value,
       newEntry.Phone = phoneRef.current.value,
       newEntry.userId = userId;
-      console.log(newEntry, "entryyyy")
+
       return newEntry
   })
   .then(newEntry => {
@@ -175,7 +173,7 @@ function MyVerticallyCenteredModal(props) {
   })
 
   .then((status) => {
-    console.log("ssss", status, "sss")
+    
     if(status === 201){
       props.onHide()
       setCreatedAlertShow(true)
