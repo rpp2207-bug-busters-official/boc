@@ -77,20 +77,21 @@ export default function ChargerMap(props) {
       function showPopup(e) {
 
         map.current.getCanvas().style.cursor = 'pointer';
-        let sname = e.features[0].properties.name;
+        console.log(map.current.getCanvas().style.cursor);
+        let sname = e.features[0]?.properties?.name;
+        let connection = e.features[0]?.properties?.connectionType;
+        let coordinates = e.features[0]?.geometry?.coordinates?.slice();
+        let description = e.features[0]?.properties?.description;
+        let level = e.features[0]?.properties?.level;
         let provider = "Other";
-        if(e.features[0].properties.poi){
-          let poi = e.features[0].properties.poi;
-          let start="operatorInfo";
-          if (poi.includes("operatorInfo")){
-          let cleanup = '{"' + poi.substring(poi.indexOf(start));
-          provider = JSON.parse(JsonEscape(cleanup)).operatorInfo.title;
-          }
+
+        let poi = e.features[0]?.properties?.poi;
+        let start="operatorInfo";
+        if (poi?.includes(start)) {
+          let cleanup = '{"' + poi?.substring(poi?.indexOf(start));
+          provider = JSON.parse(JsonEscape(cleanup)).operatorInfo?.title;
         }
-        let connection = e.features[0].properties.connectionType;
-        let coordinates = e.features[0].geometry.coordinates.slice();
-        let description = e.features[0].properties.description;
-        let level = e.features[0].properties.level;
+
         let avail = "Available";
         if (level !== '2') {
           avail = "Occupied";
