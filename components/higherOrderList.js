@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import fav from '../sample-data/sample-favorites.js';
 import localFont from 'next/font/local';
+import Cookie from '../src/pages/Login/setCookie.js';
 
 const ExtraLightFont = localFont({src:'../src/styles/Barlow_Condensed/BarlowCondensed-ExtraLight.ttf'});
 
@@ -63,18 +64,20 @@ const HigherOrderList = (props) => {
 
 //  this function will take in the userName so it can use that to make a query
 
-  const getMyActivites = (user_id) => {
+  const getMyActivites = () => {
+
+    const user_id = Cookie.getCookie()
 
     fetch('/api/prof_my_activities', {
-        method: "GET",
+        method: "POST",
         body: user_id
     })
     .then(data => data.json())
     .then((res) => {
-
-        // TODO: set the data for the user
-
-        console.log(res);
+        setallAct(res);
+        renderData(res);
+        // console.log('res', res);
+        // console.log('allAct', allAct);
     })
     .catch((err) => {
         console.log(err);
@@ -87,13 +90,14 @@ const HigherOrderList = (props) => {
         setallAct(fav);
         renderData(fav);
     } else if (props.title === 'Your Activities') {
-        setallAct(activities);
-        renderData(activities);
+        getMyActivites();
+        // setallAct(activities);
+        // renderData(activities);
     } else if (props.title === 'Completed Activities') {
         setallAct(activities);
         renderData(activities);
     }
-  }, [allAct])
+  }, [])
 
   return (
       <div
