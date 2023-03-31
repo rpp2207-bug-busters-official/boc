@@ -3,6 +3,7 @@ import Alert from 'react-bootstrap/Alert';
 import Form from 'react-bootstrap/Form';
 import chargeTime from '../helper_functions/chargeTime.js';
 import Cookies from '../src/pages/Login/setCookie.js';
+import {Button} from 'react-bootstrap';
 
 const Timer = () => {
 
@@ -23,7 +24,6 @@ const Timer = () => {
 
 
   const startCharge = () => {
-    console.log('Get userinfo: ', Cookies.getUserInfo())
     let time = 1800;
 
     if (batteryCapacity && currentCharge && chargePower) {
@@ -186,15 +186,16 @@ const Timer = () => {
             <Form.Label>Email address</Form.Label>
             <Form.Control type="email" placeholder="Enter email" />
             <Form.Text className="text-muted">
-              We &#39; ll never share your email with anyone else.
+              We&#39;ll never share your email with anyone else.
             </Form.Text>
           </Form.Group>
         </Form>
         :
         null
       }
-
-      <button data-testid="start-charge" onClick={startCharge}>Start Charge</button>
+      <div className='text-center'>
+        <Button variant='success' data-testid="start-charge" onClick={startCharge}>Start Charge</Button>
+      </div>
     </div>
   )
 }
