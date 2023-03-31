@@ -190,36 +190,19 @@ const Timer = () => {
             <Button variant="secondary" onClick={() => { selected(!select); email ? inputEmail(!email) : null}}>
               Close
             </Button>
-<<<<<<< HEAD
-            <Button variant="primary"  className="btn btn-success"  onClick={startCharge} >
-=======
             <Button variant="primary" onClick={startCharge} >
->>>>>>> b70e3a3 (restyled charging timer)
               Start Charge
             </Button>
           </Modal.Footer>
           </Modal>
         :
         running ?
-<<<<<<< HEAD
-        <div style={{width: "15rem"}}>
-
-          <div data-testid="timer-running">
-            <h4>Charge Time: {clock}</h4>
-            <Button style={{position: "relative", left: "5rem"}}onClick={() => {setStop(!stop); setRunning(!running); setTime(0); setClock("");}}>End Charge</Button>
-          </div>
-
-
-        </div>
-
-=======
 
         <div data-testid="timer-running">
           <span>Timer: {clock}</span>
           <br></br>
           <Button onClick={() => {setStop(!stop); setRunning(!running); setTime(0); setClock("");}}>End Charge</Button>
         </div>
->>>>>>> b70e3a3 (restyled charging timer)
         :
         <Button onClick={() => selected(!select)}>Start A Charge</Button>
       }
