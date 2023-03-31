@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import fav from '../sample-data/sample-favorites.js';
+import Cookies from '../src/pages/Login/setCookie.js';
 
 const HigherOrderList = (props) => {
   const [show, setShow] = useState(false);
@@ -79,6 +80,22 @@ const HigherOrderList = (props) => {
 
   }
 
+  const getCompletedActivities = (userId) => {
+    fetch('/api/completedActivitesAPI.js', {
+        method:"GET",
+        credentials:userId
+    })
+        .then(data => {
+            return data.json();
+        })
+        .then(data => {
+            console.log(data);
+        })
+        .catch(err => {
+            console.log(err);
+        })
+  }
+
   useEffect(() => {
     if (props.title === 'Favorite Activites') {
         setallAct(fav);
@@ -89,6 +106,7 @@ const HigherOrderList = (props) => {
     } else if (props.title === 'Completed Activities') {
         setallAct(activities);
         renderData(activities);
+        getCompletedActivities(Cookies.getCookie())
     }
   }, [allAct])
 
