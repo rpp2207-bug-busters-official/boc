@@ -1,5 +1,4 @@
 import activities from '../sample-data/sample-activities.js';
-import MyActivityReview from './MyActivityReview.js';
 import { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
@@ -55,6 +54,31 @@ const HigherOrderList = (props) => {
         setRendered(data);
     }
   }
+
+
+//  might make sense to make all the db queries when the user is first logged in with promise.all
+
+//  this function will take in the userName so it can use that to make a query
+
+  const getMyActivites = (user_id) => {
+
+    fetch('/api/prof_my_activities', {
+        method: "GET",
+        body: user_id
+    })
+    .then(data => data.json())
+    .then((res) => {
+
+        // TODO: set the data for the user
+
+        console.log(res);
+    })
+    .catch((err) => {
+        console.log(err);
+    })
+
+  }
+
   useEffect(() => {
     if (props.title === 'Favorite Activites') {
         setallAct(fav);
@@ -66,11 +90,11 @@ const HigherOrderList = (props) => {
         setallAct(activities);
         renderData(activities);
     }
-  }, [])
+  }, [allAct])
 
   return (
       <div className="list-group" style={{backgroundColor: "#467850", width: "25rem"}}>
-          <h3 style={{textAlign: "center", color: "white"}}>{props.title}</h3>
+          <h3 style={{textAlign: "center", color: "white"}} data-testid="card-title">{props.title}</h3>
           {rendered.map((act, key) => {
               return (
                 <props.Card key={key} act={act} handleShow={handleShow} setKey={key}/>

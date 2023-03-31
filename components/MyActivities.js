@@ -1,5 +1,4 @@
 import activities from '../sample-data/sample-activities.js';
-import MyActivityReview from './MyActivityReview.js';
 import { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
