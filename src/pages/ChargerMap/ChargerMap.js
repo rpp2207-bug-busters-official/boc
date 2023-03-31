@@ -144,11 +144,6 @@ export default function ChargerMap(props) {
     setLat(e.lngLat.lat);
     setLng(e.lngLat.lng);
     setZoom(map.current.getZoom());
-
-    // document.getElementById('quake-info').innerHTML =
-    //   lat + '<div><strong>Name:</strong>Station A<div><br />'
-    //   + '<div><strong>Related Activities:</strong><div><br />'
-    //   + '<div>Related Activitie 1:<div><br />';
     });
 
 
