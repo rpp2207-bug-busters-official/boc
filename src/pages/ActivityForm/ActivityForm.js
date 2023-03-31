@@ -173,7 +173,7 @@ function MyVerticallyCenteredModal(props) {
   })
 
   .then((status) => {
-    
+
     if(status === 201){
       props.onHide()
       setCreatedAlertShow(true)
@@ -233,10 +233,6 @@ function MyVerticallyCenteredModal(props) {
 <div className="form-outline mb-4">
   <input ref={stateRef} type="text" id="form6Example5" className="form-control"/>
   <label className="form-label" htmlFor="form6Example4">State</label>
-</div>
-<div className="form-outline mb-4">
-  <input ref={phoneRef} type="number" id="form6Example7" className="form-control"/>
-  <label className="form-label" htmlFor="form6Example6" >Phone Number</label>
 </div>
 
 
