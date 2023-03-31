@@ -25,6 +25,20 @@ export default function ActivityList(props) {
        .catch(err => console.error(err));
   };
 
+  const getAddedNearbyActivities = (lat, lng) => {
+    fetch('/api/getNearbyActivities', {
+      method: "GET",
+    })
+      .then(data => data.json())
+      .then((res) => {
+        // Probably set the retrieved activities in a state
+        console.log('success', res);
+      })
+      .catch((err) => {
+        console.log('Failed to get user added nearby activities', err);
+      })
+  }
+
   useEffect(() => {
     setLatitude(props.latitude);
     setLongitude(props.longitude);
@@ -43,6 +57,7 @@ export default function ActivityList(props) {
           <Activity action={activity} key={activity.id}/>
         );
       })}
+      <button onClick={getAddedNearbyActivities()}>Get User Added</button>
     </div>
   )
 }
