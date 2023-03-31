@@ -5,6 +5,9 @@ import Register from '../src/pages/Login/register.js';
 import Logout from '../src/pages/Login/logOut.js';
 import react, {useEffect, useState} from 'react';
 
+import localFont from 'next/font/local';
+const myFont = localFont({src:'../src/styles/Playfair_Display/PlayfairDisplay-VariableFont_wght.ttf'})
+
 const Navbar = (props) => {
   let [cookie, setCookie] = useState(undefined);
 
@@ -16,16 +19,16 @@ const Navbar = (props) => {
   }, [cookie]);
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light" style={{padding:'10px', 'backgroundImage':'#FFCB6B'}}>
-          <Link style={{color:'white'}} href="/" className='navbar-brand'>C&T</Link>
-          <ul className='navbar-nav'>
+    <nav className='navbar navbar-expand-lg navbar-light bg-light' style={{padding:'10px', 'backgroundImage':'#FFCB6B'}}>
+          <Link style={{color:'white'}} href="/" className={`navbar-brand ${myFont.className}`}>C&T</Link>
+          <ul className='navbar-nav mr-auto'>
 
               {/* <li className='nav-item active'>
                 <Link className="nav-link" href="/">Find Locations</Link>
               </li> */}
                 {cookie !== undefined &&
                   <li className='nav-item active'>
-                    <Link className="nav-link" href="/authenticated">View Profile</Link>
+                    <Link className="nav-link" href="/authenticated" style={{float:'left'}}>View Profile</Link>
                   </li>
                 }
 

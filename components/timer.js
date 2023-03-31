@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import chargeTime from '../helper_functions/chargeTime.js';
 import Cookies from '../src/pages/Login/setCookie.js';
+// import {Button} from 'react-bootstrap';
 
 const Timer = () => {
 
