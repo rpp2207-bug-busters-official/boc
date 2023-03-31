@@ -21,14 +21,14 @@ const Navbar = (props) => {
   return (
     <nav className='navbar navbar-expand-lg navbar-light bg-light' style={{padding:'10px', 'backgroundImage':'#FFCB6B'}}>
           <Link style={{color:'white'}} href="/" className={`navbar-brand ${myFont.className}`}>C&T</Link>
-          <ul className='navbar-nav'>
+          <ul className='navbar-nav mr-auto'>
 
               {/* <li className='nav-item active'>
                 <Link className="nav-link" href="/">Find Locations</Link>
               </li> */}
                 {cookie !== undefined &&
                   <li className='nav-item active'>
-                    <Link className="nav-link" href="/authenticated">View Profile</Link>
+                    <Link className="nav-link" href="/authenticated" style={{float:'left'}}>View Profile</Link>
                   </li>
                 }
 
