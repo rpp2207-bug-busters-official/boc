@@ -81,9 +81,9 @@ const HigherOrderList = (props) => {
   }
 
   const getCompletedActivities = (userId) => {
-    fetch('/api/completedActivitesAPI.js', {
-        method:"GET",
-        credentials:userId
+    fetch('/api/completedActivitesAPI', {
+        method:"POST",
+        body:userId
     })
         .then(data => {
             return data.json();
