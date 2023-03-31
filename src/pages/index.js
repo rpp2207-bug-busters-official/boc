@@ -30,10 +30,16 @@ export default function Home() {
       </Head>
       <main className={`${styles.main} ${RegularFont.className}`}>
         <ChargerMap/>
-        <br/>
-        <ActivityForm/>
-        <br/>
-        <Timer />
+        <div className='container'>
+          <div className='row justify-content-md-center'>
+            <div className='col col-lg-2'>
+              <Timer />
+            </div>
+            <div className='col-md-auto my-auto text-center'>
+              <ActivityForm/>
+            </div>
+          </div>
+        </div>
       </main>
     </>
   )
