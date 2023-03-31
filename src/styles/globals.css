@@ -111,7 +111,7 @@ a {
 }
 /* chargermap */
 .map-container {
-  height: 400px;
+  height: 500px;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -180,16 +180,52 @@ a {
   left: 50%;
   margin-left: 25%;
   top: 100px;
-  }
+}
 
 .mapboxgl-ctrl-geocoder {
   min-width: 100%;
-  }
+}
 
-  mapboxgl-popup {
-    max-width: 400px;
-    font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
-    }
+mapboxgl-popup {
+  max-width: 400px;
+  font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+}
+
+.button {
+  /* background-color: #005c51; */
+  background-color: white;
+  border: none;
+  color: white;
+  padding-left: 9px;
+  padding-right: 9px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  text-align: center;
+  font-size: 16px;
+  margin: 4px 4px;
+  border-radius: 30%;
+
+}
+
+@media screen and (min-width: 640px){
+  #buttonBox {
+    /* height: 36px; */
+    padding: 6px;
+  }
+}
+
+
+#buttonBox {
+    position: absolute;
+    display: block;
+    margin: 0;
+    padding:6px;
+    font-family: 'DM Sans', sans-serif;
+    z-index: 11;
+    /* top: 270px;
+    right: 400px; */
+    border-radius: 3px;
+}
 
 
 
