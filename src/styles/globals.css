@@ -242,9 +242,6 @@ mapboxgl-popup {
   border-radius: auto;
   overflow-y: auto;
 }
-.star:hover{
-
-}
 
 .activity-widget {
   background-color: #1c8230b0;
