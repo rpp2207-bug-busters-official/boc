@@ -129,7 +129,6 @@ function NotLoggedInModal(props) {
 function MyVerticallyCenteredModal(props) {
   const nameRef = React.useRef('');
   const addressRef = React.useRef(null);
-  const phoneRef = React.useRef(null);
   const cityRef = React.useRef(null);
   const zipCodeRef = React.useRef(null);
   const stateRef = React.useRef(null);
@@ -163,7 +162,6 @@ function MyVerticallyCenteredModal(props) {
       newEntry.City = cityRef.current.value,
       newEntry.ZipCode = zipCodeRef.current.value,
       newEntry.State = stateRef.current.value,
-      newEntry.Phone = phoneRef.current.value,
       newEntry.userId = userId;
 
       return newEntry
