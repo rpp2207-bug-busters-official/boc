@@ -143,7 +143,7 @@ function jsonEscape(str)  {
       zoom: 16
     });
 
-
+    setActivitiesOpened(true);
     setLat(e.lngLat.lat);
     setLng(e.lngLat.lng);
     setZoom(map.current.getZoom());
@@ -181,7 +181,7 @@ function jsonEscape(str)  {
      <div ref={mapContainer} className="map-container" />
   </span>
   <pre id="quake-info">
-    <ActivityList longitude={lng} latitude={lat}/>
+    {activitiesOpened ? <ActivityList longitude={lng} latitude={lat}/> : null}
   </pre>
     {/* <pre id="features"></pre> */}
     {/* <pre id="info"></pre> */}

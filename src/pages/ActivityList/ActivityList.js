@@ -37,7 +37,6 @@ export default function ActivityList(props) {
 
   return (
     <div className="activity-list">
-      Activity List
       {activities.map((activity) => {
         return (
           <Activity action={activity} key={activity.id}/>
