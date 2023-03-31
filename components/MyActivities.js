@@ -8,7 +8,7 @@ import React from 'react';
 
 const MyActivities = () => {
   const CardComponent = (props) => {
-    console.log('my activites props', props)
+
     return (
       <div
           className="list-group-item list-group-item-action active"
@@ -36,7 +36,7 @@ const MyActivities = () => {
               <div style={{display: "inline-block", float: "right", marginLeft: ""}}>
                 <Button variant="primary" style={{backgroundColor: "#3E363F", borderColor: "#3E363F", display: "inline", float: "right", marginLeft: "0.5rem"}}
                 onClick={() => props.handleShow({title: props.act.title, comment: props.act.comment, date: props.act.date, helpfulness: props.act.helpfulness})}>
-                  See Reviews
+                  See Review
                 </Button>
               </div>
               <div style={{display: "inline", float:'right', paddingRight:'20%'}}>

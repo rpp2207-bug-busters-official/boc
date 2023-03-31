@@ -190,7 +190,7 @@ const Timer = () => {
             <Button variant="secondary" onClick={() => { selected(!select); email ? inputEmail(!email) : null}}>
               Close
             </Button>
-            <Button variant="primary" onClick={startCharge} >
+            <Button variant="primary"  className="btn btn-success"  onClick={startCharge} >
               Start Charge
             </Button>
           </Modal.Footer>

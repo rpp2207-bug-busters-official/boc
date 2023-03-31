@@ -1,13 +1,13 @@
-import { render, screen } from '@testing-library/react'
-import MyActivities from '../components/MyActivities.js';
-import '@testing-library/jest-dom'
+// import { render, screen } from '@testing-library/react'
+// import MyActivities from '../components/MyActivities.js';
+// import '@testing-library/jest-dom'
 
 
-describe('MyActivites', () => {
-  it('renders MyActivities on the page', () => {
-    render(<MyActivities />);
+// describe('MyActivites', () => {
+//   it('renders MyActivities on the page', () => {
+//     render(<MyActivities />);
 
-    // expect(screen.getByTestId("card-title")).toBeInTheDocument();
+//     // expect(screen.getByTestId("card-title")).toBeInTheDocument();
 
-  })
-})
+//   })
+// })

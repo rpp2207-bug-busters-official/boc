@@ -84,9 +84,6 @@ const HigherOrderList = (props) => {
     .then((res) => {
         setallAct(res.rows);
         renderData(res.rows);
-        // console.log('res from db', res.rows);
-        // console.log('allAct', allAct);
-        // return res;
     })
     .catch((err) => {
         console.log(err);
@@ -95,16 +92,12 @@ const HigherOrderList = (props) => {
   }
 
   useEffect(() => {
-    // let myAct = getMyActivites();
 
     if (props.title === 'Favorites') {
         setallAct(fav);
         renderData(fav);
     } else if (props.title === 'Your Activities') {
         getMyActivites();
-        // console.log('props activity', activities)
-        // setallAct(activities);
-        // renderData(activities);
     } else if (props.title === 'Completed Activities') {
         setallAct(activities);
         renderData(activities);
