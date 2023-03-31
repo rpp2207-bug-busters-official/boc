@@ -11,13 +11,21 @@ const ExtraLightFont = localFont({src:'../src/styles/Barlow_Condensed/BarlowCond
 const HigherOrderList = (props) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
-  const handleShow = (body, place) => {
+  const handleShow = (reviewData) => {
+
     setShow(true);
-    setReviewBody(body);
-    setReviewTitle(place);
+
+    // console.log('reviewData', reviewData);
+    setReview(reviewData);
+
+
+    // setReviewBody(body);
+    // setReviewTitle(place);
   }
   const [ reviewBody, setReviewBody ] = useState(null);
   const [ reviewTitle, setReviewTitle ] = useState(null);
+  const [ reviews, setReview ] = useState("");
+
   let [allAct, setallAct] = useState([]);
   let [rendered, setRendered] = useState([]);
 
@@ -74,10 +82,11 @@ const HigherOrderList = (props) => {
     })
     .then(data => data.json())
     .then((res) => {
-        setallAct(res);
-        renderData(res);
-        // console.log('res', res);
+        setallAct(res.rows);
+        renderData(res.rows);
+        // console.log('res from db', res.rows);
         // console.log('allAct', allAct);
+        // return res;
     })
     .catch((err) => {
         console.log(err);
@@ -86,11 +95,14 @@ const HigherOrderList = (props) => {
   }
 
   useEffect(() => {
+    // let myAct = getMyActivites();
+
     if (props.title === 'Favorites') {
         setallAct(fav);
         renderData(fav);
     } else if (props.title === 'Your Activities') {
         getMyActivites();
+        // console.log('props activity', activities)
         // setallAct(activities);
         // renderData(activities);
     } else if (props.title === 'Completed Activities') {
@@ -112,9 +124,13 @@ const HigherOrderList = (props) => {
 
         <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
-                <Modal.Title>{reviewTitle}</Modal.Title>
+                <Modal.Title>{reviews.title}</Modal.Title>
+                <span style={{position: "relative", left: "25%"}}>Date: {reviews.date}</span>
             </Modal.Header>
-        <Modal.Body>{reviewBody}</Modal.Body>
+        <Modal.Body>
+            <div>Review: {reviews.comment}</div>
+            <span style={{ position: "relative", left: "75%"}}>helpfulness: {reviews.helpfulness}</span>
+        </Modal.Body>
         <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
             Close

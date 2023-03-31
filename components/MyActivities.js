@@ -22,7 +22,7 @@ const MyActivities = () => {
               <h5
                   className="mb-1"
                   style={{display: "inline", fontSize: "1.3rem", float:'left'}}
-              >{props.act.place}</h5>
+              >{props.act.activity_name}</h5>
                 <h6
                   style={{display:'inline', float:'left', paddingLeft:'10px'}}
                 ><ReactStars
@@ -34,12 +34,13 @@ const MyActivities = () => {
                   className={'star'}/></h6>
             </div>
               <div style={{display: "inline-block", float: "right", marginLeft: ""}}>
-                <Button variant="primary" style={{backgroundColor: "#3E363F", borderColor: "#3E363F", display: "inline", float: "right", marginLeft: "0.5rem"}} onClick={() => props.handleShow(props.act.review, props.act.place)}>
+                <Button variant="primary" style={{backgroundColor: "#3E363F", borderColor: "#3E363F", display: "inline", float: "right", marginLeft: "0.5rem"}}
+                onClick={() => props.handleShow({title: props.act.title, comment: props.act.comment, date: props.act.date, helpfulness: props.act.helpfulness})}>
                   See Reviews
                 </Button>
               </div>
               <div style={{display: "inline", float:'right', paddingRight:'20%'}}>
-                <h6 style={{margin: "0.1rem"}} className={props.ExtraLight.className}>ADDRESS CITY</h6>
+                <h6 style={{margin: "0.1rem"}} className={props.ExtraLight.className}>{props.act.address}, {props.act.city}, {props.act.state}</h6>
               </div>
           </div>
           <div>
