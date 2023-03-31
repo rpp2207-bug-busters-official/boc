@@ -24,7 +24,7 @@ export default function ChargerMap(props) {
   const mapContainer = useRef(null);
   const map = useRef(null);
   const [lng, setLng] = useState(-100.000000);
-  const [lat, setLat] = useState(3838.5);
+  const [lat, setLat] = useState(38.5);
   const [zoom, setZoom] = useState(3);
   const [activitiesOpened, setActivitiesOpened] = useState(false);
   const [filters, setFilters] = useState({
