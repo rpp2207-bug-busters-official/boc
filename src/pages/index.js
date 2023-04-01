@@ -16,7 +16,7 @@ import Login from './Login/Login.js';
 import Register from './Login/register.js';
 import Script from 'next/script';
 import Reviews from './Reviews/Reviews.js'
-import Timer from '../../components/Timer.js';
+import Timer from '../../components/timer.js';
 
 const RegularFont = localFont({src:'../styles/Inter/Inter-VariableFont_slnt,wght.ttf'});
 
@@ -30,15 +30,8 @@ export default function Home() {
       </Head>
       <main className={`${styles.main} ${RegularFont.className}`}>
         <ChargerMap/>
-        <div className='container'>
-          {/* <div className='row justify-content-md-center'>
-            <div className='col col-lg-2'>
-              <Timer />
-            </div>
-            <div className='col-md-auto my-auto text-center'>
-              <ActivityForm/>
-            </div>
-          </div> */}
+        <div>
+          <Timer />
         </div>
       </main>
     </>

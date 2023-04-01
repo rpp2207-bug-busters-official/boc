@@ -11,7 +11,7 @@ export default function completedActivites (props) {
         className="list-group-item list-group-item-action active"
         aria-current="true"
         key={props.setKey}
-        style={{backgroundColor: "#FAF7F7", color: "black", borderColor: "#706B71", borderWidth: "0.12rem 0"}}
+        style={{backgroundColor: "#FF5533", color: "white", border: "1px solid black"}}
       >
         <div>
             <h5
@@ -41,13 +41,14 @@ export default function completedActivites (props) {
       Card = {CompletedCard}
       title = 'Completed Activities'
       mainStyles={{
-        backgroundColor: '#D6D6D6',
+        backgroundColor: 'white',
         width: "100%",
-        borderRadius: "0",
-        margin: "0 0 1.5vw 0"
+        borderRadius: "8px",
+        margin: "0 0 1.5vw 0",
+        border: "2px solid black"
       }}
       showStyles={{
-        backgroundColor: "#D6D6D6",
+        backgroundColor: "white",
         border: "none",
         float: "left",
         marginLeft: "1rem",
@@ -55,7 +56,7 @@ export default function completedActivites (props) {
         color: "black"
       }}
       colStyles={{
-        backgroundColor: "#D6D6D6",
+        backgroundColor: "white",
         border: "none",
         float: "right",
         marginRight: "1rem",

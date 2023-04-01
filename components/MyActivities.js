@@ -14,7 +14,7 @@ const MyActivities = () => {
           className="list-group-item list-group-item-action active"
           aria-current="true"
           key={props.setKey}
-          style={{backgroundColor: "#FAF7F7", color: "black", borderColor: "#706B71", borderWidth: "0.12rem 0"}}
+          style={{backgroundColor: "#FF5533", color: "white", border: "1px solid black"}}
       >
           <div>
             <div>
@@ -34,7 +34,7 @@ const MyActivities = () => {
                   className={'star'}/></h6>
             </div>
               <div style={{display: "inline-block", float: "right", marginLeft: ""}}>
-                <Button variant="primary" style={{backgroundColor: "#FF5533", borderColor: "#FF5533", display: "inline", float: "right", marginLeft: "0.5rem", color: "white", borderWidth: "medium"}}
+                <Button id="my-rev-btn" variant="primary" style={{backgroundColor: "#E02500", borderColor: "#E02500", display: "inline", float: "right", marginLeft: "0.5rem", color: "white", borderWidth: "medium"}}
                 onClick={() => props.handleShow({title: props.act.title, comment: props.act.comment, date: props.act.date, helpfulness: props.act.helpfulness})}>
                   See Review
                 </Button>
@@ -54,13 +54,14 @@ const MyActivities = () => {
       Card={CardComponent}
       title={'Your Activities'}
       mainStyles={{
-        backgroundColor: '#D6D6D6',
+        backgroundColor: 'white',
         width: "100%",
-        borderRadius: "0",
-        margin: "0 0 1.5vw 0"
+        borderRadius: "8px",
+        margin: "0 0 1.5vw 0",
+        border: "2px solid black"
       }}
       showStyles={{
-        backgroundColor: "#D6D6D6",
+        backgroundColor: "white",
         border: "none",
         float: "left",
         marginLeft: "1rem",
@@ -68,7 +69,7 @@ const MyActivities = () => {
         color: "black"
       }}
       colStyles={{
-        backgroundColor: "#D6D6D6",
+        backgroundColor: "white",
         border: "none",
         float: "right",
         marginRight: "1rem",

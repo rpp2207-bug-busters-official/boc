@@ -5,7 +5,10 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import chargeTime from '../helper_functions/chargeTime.js';
 import Cookies from '../src/pages/Login/setCookie.js';
+import localFont from 'next/font/local';
 // import {Button} from 'react-bootstrap';
+
+const myFont = localFont({src:'../src/styles/Inter/Inter-VariableFont_slnt,wght.ttf'})
 
 const Timer = () => {
 
@@ -130,7 +133,7 @@ const Timer = () => {
 
   return (
     <div
-      style={{position: "absolute", top: "6rem", right: "3rem"}}
+      // style={{position: "absolute", top: "6rem", right: "3rem"}}
     >
 
       {
@@ -190,7 +193,7 @@ const Timer = () => {
             <Button variant="secondary" onClick={() => { selected(!select); email ? inputEmail(!email) : null}}>
               Close
             </Button>
-            <Button variant="primary"  className="btn btn-success"  onClick={startCharge} >
+            <Button variant="primary" className="btn btn-success" onClick={startCharge} >
               Start Charge
             </Button>
           </Modal.Footer>
@@ -208,7 +211,7 @@ const Timer = () => {
         </div>
 
         :
-        <Button onClick={() => selected(!select)}>Start A Charge</Button>
+        <button id="timer-btn" className={`${myFont.className}`} onClick={() => selected(!select)}>Start A Charge</button>
       }
 
       {

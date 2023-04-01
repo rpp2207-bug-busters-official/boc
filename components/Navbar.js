@@ -21,7 +21,7 @@ const Navbar = (props) => {
   }, [cookie]);
 
   return (
-    <nav className='navbar navbar-expand-lg navbar-light bg-light' style={{padding:'10px', 'backgroundImage':'#FFCB6B', width: "100vw"}}>
+    <nav className='navbar navbar-expand-lg navbar-light bg-light' style={{padding:'10px', 'backgroundImage':'#FFCB6B', width: "100vw", height: "12vh"}}>
           <Link style={{color:'white'}} href="/" className={`navbar-brand ${myFont.className}`}>
             <Image
                 src="/cnt-logo.png"
