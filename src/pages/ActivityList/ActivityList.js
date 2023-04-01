@@ -1,14 +1,31 @@
-import Activity from '../../../components/Activity.js';
-import { useState, useEffect } from 'react';
 
+
+import Activity from '../../../components/Activity.js';
+import AddedActivity from './postedActivity.js';
+import { useState, useEffect } from 'react';
+import localFont from 'next/font/local';
+import ActivityForm from '../ActivityForm/ActivityForm.js';
+
+const myFont = localFont({src:'../../styles/Inter/Inter-VariableFont_slnt,wght.ttf'});
 
 export default function ActivityList(props) {
   const [activities, setActivities] = useState([]);
+  const [userActs, setUserActs] = useState([]);
   const [latitude, setLatitude] = useState(props.latitude);
   const [longitude, setLongitude] = useState(props.longitude);
+  const [isOpen, setOpen] = useState(false);
+  const [yelpOpen, setYelp] = useState(true);
 
   var queryURL = 'https://cors-anywhere.herokuapp.com/';
   const yelpAPI = process.env.NEXT_PUBLIC_YELP_KEY;
+
+  const openToClose = () => {
+    setOpen(!isOpen);
+  }
+
+  const dataSwap = () => {
+    setYelp(!yelpOpen);
+  }
 
   const getNearbyActivities = async () => {
     const options = {
@@ -25,24 +42,67 @@ export default function ActivityList(props) {
        .catch(err => console.error(err));
   };
 
+  const getAddedNearbyActivities = async () => {
+    fetch('/api/getNearbyActivities', {
+      method: "GET",
+    })
+      .then(data => data.json())
+      .then((res) => {
+        // Probably set the retrieved activities in a state
+        console.log('success', res);
+        setUserActs(res.rows);
+      })
+      .catch((err) => {
+        console.log('Failed to get user added nearby activities', err);
+      })
+  }
+
+  // const getUserCreated = async () => {
+  //   getAddedNearbyActivities()
+  //     .then((res) => {
+
+  //     })
+  // }
+
   useEffect(() => {
     setLatitude(props.latitude);
     setLongitude(props.longitude);
-    getNearbyActivities()
+    getAddedNearbyActivities(0, 0)
       .then(() => {
         console.log('Current Activities', activities)
       })
+      .catch(err => console.log('wut'));
   }, [props.latitude, props.longitude])
 
 
   return (
-    <div className="activity-list">
-      Activity List
-      {activities.map((activity) => {
-        return (
-          <Activity action={activity} key={activity.id}/>
-        );
-      })}
+    <div>
+      {isOpen ?
+        (
+          <div className="activity-list">
+            <div id="list-top">
+              <button id="close-acts-btn" onClick={openToClose}>Close</button>
+              <ActivityForm/>
+            </div>
+
+              {yelpOpen ?
+                <div id="list-header">
+                  <button id="yelp-open">Yelp</button>
+                  <button id="user-added-btn" onClick={dataSwap}>User Added</button>
+                </div>
+                :
+                <div id="list-header">
+                  <button id="yelp-btn" onClick={dataSwap}>Yelp</button>
+                  <button id="user-open">User Added</button>
+                </div>
+              }
+            {userActs.map((activity, index) => {
+              return (
+                <AddedActivity action={activity} key={index}/>
+              );
+            })}
+          </div>)
+      : <button id="view-acts-btn" className={`${myFont.className}`} onClick={openToClose}>View Activities</button>}
     </div>
   )
 }

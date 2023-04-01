@@ -14,7 +14,7 @@ const MyActivities = () => {
           className="list-group-item list-group-item-action active"
           aria-current="true"
           key={props.setKey}
-          style={{backgroundColor: "#FAF7F7", color: "black", borderColor: "#706B71", borderWidth: "0.12rem 0"}}
+          style={{backgroundColor: "white", color: "black", border: "1px solid #FF5533", borderLeft: "none", borderRight: "none"}}
       >
           <div>
             <div>
@@ -34,7 +34,7 @@ const MyActivities = () => {
                   className={'star'}/></h6>
             </div>
               <div style={{display: "inline-block", float: "right", marginLeft: ""}}>
-                <Button variant="primary" style={{backgroundColor: "#3E363F", borderColor: "#3E363F", display: "inline", float: "right", marginLeft: "0.5rem"}}
+                <Button id="my-rev-btn" variant="primary" style={{backgroundColor: "#E02500", borderColor: "#E02500", display: "inline", float: "right", marginLeft: "0.5rem", color: "white", borderWidth: "medium"}}
                 onClick={() => props.handleShow({title: props.act.title, comment: props.act.comment, date: props.act.date, helpfulness: props.act.helpfulness})}>
                   See Review
                 </Button>
@@ -54,24 +54,28 @@ const MyActivities = () => {
       Card={CardComponent}
       title={'Your Activities'}
       mainStyles={{
-        background: 'linear-gradient(0.25turn, #E23B4B, 10%, #E66B4B, #E23B4B)',
+        backgroundColor: 'white',
         width: "100%",
-        borderRadius: "1%",
-        margin: "0 0 1.5vw 0"
+        borderRadius: "8px",
+        margin: "0 0 1.5vw 0",
+        border: "3px solid #FF5533",
+        color: "black"
       }}
       showStyles={{
-        backgroundColor: "#E34B4B",
+        backgroundColor: "white",
         border: "none",
         float: "left",
         marginLeft: "1rem",
-        padding: "0.25rem 0"
+        padding: "0.5rem 0",
+        color: "black"
       }}
       colStyles={{
-        backgroundColor: "#E23B4B",
+        backgroundColor: "white",
         border: "none",
         float: "right",
         marginRight: "1rem",
-        padding: "0.5rem 0"
+        padding: "0.5rem 0",
+        color: "black"
       }}
     />
   )

@@ -3,18 +3,25 @@ import Link from 'next/link';
 import {BsFillEnvelopeAtFill, BsGlobeAmericas, BsTelephoneFill} from 'react-icons/bs';
 import Login from './Login/Login.js';
 import Register from './Login/register.js';
+import Image from 'next/image';
 
 export default function footer() {
   return (
     <>
-      <footer className="text-center text-lg-start" style={{'background':'linear-gradient(#FFBB6B, #b65e07)', color:'rgb(220, 220, 220)'}}>
+      <footer className="text-center text-lg-start" style={{'background':'#FF4C36', color:'white'}}>
 
         <section className="" style={{paddingTop:"20px"}}>
           <div className="container text-center text-md-start mt-5">
             <div className="row mt-3">
               <div className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
                 <h6 className="text-uppercase fw-bold mb-4">
-                  <i className="fas fa-gem me-3">Charge and Tarry</i>
+                  <Image
+                    src="/cnt-logo.png"
+                    alt="Charge and Tarry Logo"
+                    style={{minWidth: "4rem", minHeight:'3rem'}}
+                    width='50'
+                    height='40'
+                  />
                 </h6>
                 <p>
                   Our mission is to provide users with a sense of community by giving them the ability to share 30-minute

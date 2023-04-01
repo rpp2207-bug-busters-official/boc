@@ -10,7 +10,7 @@ export default function logOut(props) {
   }
   return (
     <>
-      <Link  onClick={logOut} style={{"marginLeft":"10px"}} href='/' className={props.className}>Logout</Link>
+      <Link id="b-btn-lnk" onClick={logOut} style={{"marginLeft":"10px", paddingBottom: "0px"}} href='/' className={props.className}>Logout</Link>
     </>
   )
 }

@@ -22,9 +22,9 @@ export default  function ActivityForm(props) {
 
   return (
       <>
-        <Button variant="primary"  className="btn btn-success" onClick={checkSignedIn}>
-          Add Activity Here!
-        </Button>
+        <button id="add-acts-btn" variant="primary"  className="btn btn-success" onClick={checkSignedIn}>
+          Add an Activity
+        </button>
         <NotLoggedInModal
           show={alertShow}
           onHide={() => setAlertShow(false)}

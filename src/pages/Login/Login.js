@@ -105,9 +105,9 @@ function MyVerticallyCenteredModal(props) {
         }
         {props1.footer === undefined &&
         <>
-          <Button className="btn btn-success" onClick={() => setModalShow(true)}>
+          <button id="b-btn-lnk" className="btn btn-success" onClick={() => setModalShow(true)}>
             Login!
-          </Button>
+          </button>
         </>
         }
 
