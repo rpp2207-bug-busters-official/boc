@@ -166,18 +166,19 @@ function jsonEscape(str)  {
   {/* <div className="jumbotron text-center"> */}
     <Script src="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js"></Script>
     <Script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></Script>
-    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css"></link>
+    <link rel="stylesheet" href="/map.css" type="text/css"></link>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
-    <h1 className={myFont.className} style={{fontSize:'100px', marginTop:'60px', color: 'black', fontWeight: 'bold'}}>Charge {''}
+    <h1 className={myFont.className} style={{fontSize:'10vh', margin:'3vh', color: 'black', fontWeight: 'bold'}}>Charge {''}
       <Image
           src="/and-symbol.png"
           alt="Charge and Tarry Logo"
           width='75'
           height='100'
+          style={{height: "10vh", width: "7.5vh"}}
       /> Tarry</h1>
   {/* </div> */}
 
-   <span className="container">
+   <span className="map-span-container">
 
  {/* <div className="row"> */}
 

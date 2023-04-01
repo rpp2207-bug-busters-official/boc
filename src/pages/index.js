@@ -31,14 +31,14 @@ export default function Home() {
       <main className={`${styles.main} ${RegularFont.className}`}>
         <ChargerMap/>
         <div className='container'>
-          <div className='row justify-content-md-center'>
+          {/* <div className='row justify-content-md-center'>
             <div className='col col-lg-2'>
               <Timer />
             </div>
             <div className='col-md-auto my-auto text-center'>
               <ActivityForm/>
             </div>
-          </div>
+          </div> */}
         </div>
       </main>
     </>

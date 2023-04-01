@@ -67,6 +67,22 @@ const HigherOrderList = (props) => {
     }
   }
 
+  const getFavorites = () => {
+    const userId = Cookie.getCookie();
+
+    fetch('/api/prof_favorites', {
+        method: 'POST',
+        body: userId
+    })
+    .then(data => data.json())
+    .then((res) => {
+        setallAct(res.rows);
+        renderData(res.rows);
+    })
+    .catch((err) => {
+        console.log(err);
+    });
+  };
 
 //  might make sense to make all the db queries when the user is first logged in with promise.all
 
@@ -94,8 +110,7 @@ const HigherOrderList = (props) => {
   useEffect(() => {
 
     if (props.title === 'Favorites') {
-        setallAct(fav);
-        renderData(fav);
+        getFavorites();
     } else if (props.title === 'Your Activities') {
         getMyActivites();
     } else if (props.title === 'Completed Activities') {

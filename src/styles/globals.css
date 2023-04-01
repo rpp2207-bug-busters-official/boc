@@ -100,6 +100,10 @@ a {
   text-decoration: none;
 }
 
+button:focus {
+  box-shadow: none;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
@@ -111,11 +115,16 @@ a {
 }
 /* chargermap */
 .map-container {
-  height: 500px;
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 100%;
+  width: 100vw;
+  height: 84vh;
+}
+
+.mapboxgl-canvas {
+  height: 100%;
+  width: 100vw;
 }
 
 .sidebar {
@@ -298,7 +307,44 @@ mapboxgl-popup {
   background-image: linear-gradient(to bottom right, #FF5533, #FF5533)
 }
 
-
-.navbar-link-underline:hover {
-  border-bottom: 1px solid gray;
+#a-btn-lnk {
+  border-color: white;
+  border-radius: 8px;
+  background-color: #FF5533;
+  border-style: solid;
+  border-width: medium;
+  color: white;
+  font-weight: bold;
 }
+
+#a-btn-lnk:hover {
+  background-color: white;
+  color: #FF5533;
+  transition: background-color 0.15s ease-out;
+}
+
+#b-btn-lnk {
+  color: white;
+  background-color: #FF5533;
+  border-radius: 0;
+  border-color: white;
+  border: none;
+  padding-bottom: 0px;
+  font-weight: bold;
+}
+
+#a-btn-lnk:focus {
+  box-shadow: none;
+}
+#b-btn-lnk:focus {
+  box-shadow: none;
+}
+
+#b-btn-lnk:hover {
+  border-bottom: 3px solid white;
+  transition: border-bottom 0.15s ease-out;
+}
+
+/* .navbar-link-underline:hover {
+  border-bottom: 1px solid white;
+} */

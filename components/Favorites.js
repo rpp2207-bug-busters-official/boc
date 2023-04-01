@@ -16,7 +16,7 @@ const Favorites = () => {
                     <h5
                         className="mb-1"
                         style={{fontSize: "1.3rem"}}
-                    >{props.act.name}</h5>
+                    >{props.act.activity_name}</h5>
                     <h6
                         style={{fontSize: "1.1rem"}}
                     >{props.act.address} {props.act.city}</h6>
