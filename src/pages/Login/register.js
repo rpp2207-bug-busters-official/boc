@@ -101,9 +101,14 @@ function MyVerticallyCenteredModal(props) {
   const [modalShow, setModalShow] = React.useState(false);
   return (
       <>
+      {props1.footer !== undefined &&
+        <a onClick={()=>{setModalShow(true)}}><u>{props1.footer}</u></a>
+      }
+      {props1.footer === undefined &&
         <Button className="btn btn-success" onClick={() => setModalShow(true)}>
           Register!
         </Button>
+      }
 
   <MyVerticallyCenteredModal
           show={modalShow}
