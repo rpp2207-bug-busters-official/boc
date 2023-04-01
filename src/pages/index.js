@@ -17,6 +17,7 @@ import Register from './Login/register.js';
 import Script from 'next/script';
 import Reviews from './Reviews/Reviews.js'
 import Timer from '../../components/timer.js';
+import Footer from './footer.js';
 
 const RegularFont = localFont({src:'../styles/Inter/Inter-VariableFont_slnt,wght.ttf'});
 
@@ -34,6 +35,7 @@ export default function Home() {
           <Timer />
         </div>
       </main>
+      <Footer/>
     </>
   )
 }
