@@ -98,6 +98,7 @@ const HigherOrderList = (props) => {
     })
     .then(data => data.json())
     .then((res) => {
+        console.log(res.rows);
         setallAct(res.rows);
         renderData(res.rows);
     })

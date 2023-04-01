@@ -32,12 +32,14 @@ const Navbar = (props) => {
             />
           </Link>
           <ul className='navbar-nav mr-auto' id="navbar-list">
-
+                  <li className='nav-item active' style={{marginRight: "10px"}}>
+                    <Link className="nav-link" href="/" id="a-btn-lnk">Home</Link>
+                  </li>
               {/* <li className='nav-item active'>
                 <Link className="nav-link" href="/">Find Locations</Link>
               </li> */}
                 {cookie !== undefined &&
-                  <li className='nav-item active' style={{float: "right"}}>
+                  <li className='nav-item active' style={{marginRight: "6px"}}>
                     <Link className="nav-link" href="/authenticated" id="a-btn-lnk">View Profile</Link>
                   </li>
                 }

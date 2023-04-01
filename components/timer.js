@@ -203,8 +203,8 @@ const Timer = () => {
         <div style={{width: "15rem"}}>
 
           <div data-testid="timer-running">
-            <h4>Charge Time: {clock}</h4>
-            <Button style={{position: "relative", left: "5rem"}}onClick={() => {setStop(!stop); setRunning(!running); setTime(0); setClock("");}}>End Charge</Button>
+            <button id="timer-btn" style={{position: "absolute"}}onClick={() => {setStop(!stop); setRunning(!running); setTime(0); setClock("");}}>End Charge</button>
+            <h4 style={{position: "absolute", top: '14vh', right: '2vw'}}>Time: {clock}</h4>
           </div>
 
 

@@ -79,21 +79,20 @@ export default function Activity(props) {
   return (
     <div className="activity-widget">
       {isFavorite ? <AiFillStar color="gold" size="36" onClick={() => setIsFavorite(!isFavorite)}/> : <AiFillStar color="white" size="36" onClick={() => setIsFavorite(!isFavorite)}/>}
+      <h2 id="list-item-name">{activityObj.name}</h2>
 
-      <div className="activity-body">
-        <p>{activityObj.name}</p>
-        <p>{activityObj.location.address1} {activityObj.location.city}, {activityObj.location.state} {activityObj.location.zip_code}</p>
-        <p>{formatPhoneNumber(activityObj.phone)}</p>
-      </div>
+    <div className="activity-body">
+      <h4 id="list-item-location">{activityObj.location.address} {activityObj.location.city}, {activityObj.location.state} {activityObj.location.zip}</h4>
+    </div>
 
-      <div>
-        <p>Rating: <StarRating rating={activityObj.rating}/></p>
-      </div>
+    <div id="list-stars-container">
+      <p id="list-item-stars"><StarRating rating={activityObj.rating}/></p>
+    </div>
 
       <>
-        <Button className="btn btn-success" onClick={() => setModalShow(true)}>
+        <button id="a-btn-lnk" className="btn btn-success" onClick={() => setModalShow(true)}>
           Show Reviews
-        </Button>
+        </button>
 
   <MyVerticallyCenteredModal
           show={modalShow}
