@@ -2,10 +2,10 @@ import React, {useState, useEffect} from 'react';
 import { Button, Modal} from 'react-bootstrap';
 import login from '../api/login.js';
 import firebase from '../../../firebase/clientApp.js';
-import facebookLogin from './facebookLogin.js';
-import googleLogin from './googleLogin.js';
-import CreateUser from './newUser.js';
-import LoginUser from './loginUser.js';
+import facebookLogin from '../../../helper_functions/facebookLogin.js';
+import googleLogin from '../../../helper_functions/googleLogin.js';
+import CreateUser from '../../../helper_functions/newUser.js';
+import LoginUser from '../../../helper_functions/loginUser.js';
 import Link from 'next/link';
 
 export default function Login(props1) {
@@ -56,7 +56,7 @@ function MyVerticallyCenteredModal(props) {
               <div className="col d-flex justify-content-center">
                 <div className="form-check">
                   <input className="form-check-input" type="checkbox" value="" id="rememberMe" />
-                  <label className="form-check-label" for="form2Example31"> Remember me </label>
+                  <label className="form-check-label" htmlFor="form2Example31"> Remember me </label>
                 </div>
               </div>
               <div className="col">
@@ -100,9 +100,16 @@ function MyVerticallyCenteredModal(props) {
   const [modalShow, setModalShow] = React.useState(false);
   return (
       <>
-        <button id="b-btn-lnk" className="btn btn-success" onClick={() => setModalShow(true)}>
-          Login
-        </button>
+        {props1.footer !== undefined &&
+          <a onClick={()=>{setModalShow(true)}}><u>{props1.footer}</u></a>
+        }
+        {props1.footer === undefined &&
+        <>
+          <Button className="btn btn-success" onClick={() => setModalShow(true)}>
+            Login!
+          </Button>
+        </>
+        }
 
         <MyVerticallyCenteredModal
           show={modalShow}

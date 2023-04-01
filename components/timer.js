@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import chargeTime from '../helper_functions/chargeTime.js';
-import Cookies from '../src/pages/Login/setCookie.js';
+import Cookies from '../helper_functions/setCookie.js';
 import localFont from 'next/font/local';
 // import {Button} from 'react-bootstrap';
 
@@ -200,16 +200,12 @@ const Timer = () => {
           </Modal>
         :
         running ?
-        <div style={{width: "15rem"}}>
 
-          <div data-testid="timer-running">
-            <h4>Charge Time: {clock}</h4>
-            <Button style={{position: "relative", left: "5rem"}}onClick={() => {setStop(!stop); setRunning(!running); setTime(0); setClock("");}}>End Charge</Button>
-          </div>
-
-
+        <div data-testid="timer-running">
+          <span>Timer: {clock}</span>
+          <br></br>
+          <Button onClick={() => {setStop(!stop); setRunning(!running); setTime(0); setClock("");}}>End Charge</Button>
         </div>
-
         :
         <button id="timer-btn" className={`${myFont.className}`} onClick={() => selected(!select)}>Start A Charge</button>
       }

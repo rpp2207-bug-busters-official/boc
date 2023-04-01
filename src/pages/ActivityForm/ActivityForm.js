@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { Button, Modal, closeButton} from 'react-bootstrap';
 import Alert from 'react-bootstrap/Alert';
-import cookie from '../../pages/Login/setCookie.js';
+import cookie from '../../../helper_functions/setCookie.js';
 
 
 export default  function ActivityForm(props) {

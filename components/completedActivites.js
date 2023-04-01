@@ -14,12 +14,16 @@ export default function completedActivites (props) {
         style={{backgroundColor: "white", color: "black", border: "1px solid #FF5533", borderLeft: "none", borderRight: "none"}}
       >
         <div>
+          <div style={{display:'inline'}}>
             <h5
                 className="mb-1"
                 style={{fontSize: "1.3rem", display: "inline", margin: "auto", position: "relative", top: "50%"}}
-            >{props.act.place}</h5>
+            >{props.act.name}</h5>
+            <p style={{display:'inline', paddingLeft:'5px', color:'gray', fontSize:'14px'}} className={props.ExtraLight.className}>{`${props.act.date}`}</p>
+
+          </div>
             <div style={{display: "inline", float: "right"}}>
-              <h6 style={{margin: "0.1rem"}} className={props.ExtraLight.className}>ADDRESS CITY</h6>
+              <h6 style={{margin: "0.1rem"}} className={`${props.ExtraLight.className} text-uppercase`}>{`${props.act.city}, ${props.act.state}`}</h6>
             <h6
                   style={{float: 'right'}}
                 ><ReactStars
@@ -31,7 +35,8 @@ export default function completedActivites (props) {
                   className={'star'}/></h6>
             </div>
         </div>
-        <p className="mb-1">{props.act.review}</p>
+        <p className="mb-1">{`${props.act.review} (${props.act.helpfulness})`}</p>
+
       </div>
     )
   }

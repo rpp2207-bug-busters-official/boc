@@ -1,11 +1,12 @@
 import MyActivities from '../../components/MyActivities.js';
 import CompletedActivites from '../../components/completedActivites.js';
 import Favorites from '../../components/Favorites.js';
-import Cookies from './Login/setCookie.js';
+import Cookies from '../../helper_functions/setCookie.js';
 import {useRouter} from 'next/router';
 import react, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import localFont from 'next/font/local';
+import Footer from './footer.js';
 
 const RegularFont = localFont({src:'../styles/Inter/Inter-VariableFont_slnt,wght.ttf'});
 
@@ -18,7 +19,6 @@ const Authenticated  = () => {
     if (currCookie === undefined) {
       router.push('/')
     }
-    // might need to fix this for build to work
   }, [router]);
 
 
@@ -80,6 +80,7 @@ const Authenticated  = () => {
         </div>
       </>
       }
+      <Footer/>
     </>
   );
 

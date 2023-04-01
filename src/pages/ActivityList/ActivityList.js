@@ -1,6 +1,6 @@
 
 
-import Activity from './Activity.js';
+import Activity from '../../../components/Activity.js';
 import AddedActivity from './postedActivity.js';
 import { useState, useEffect } from 'react';
 import localFont from 'next/font/local';
@@ -61,7 +61,7 @@ export default function ActivityList(props) {
   //   getAddedNearbyActivities()
   //     .then((res) => {
 
-  //     }) 
+  //     })
   // }
 
   useEffect(() => {
@@ -84,8 +84,8 @@ export default function ActivityList(props) {
               <button id="close-acts-btn" onClick={openToClose}>Close</button>
               <ActivityForm/>
             </div>
-            
-              {yelpOpen ? 
+
+              {yelpOpen ?
                 <div id="list-header">
                   <button id="yelp-open">Yelp</button>
                   <button id="user-added-btn" onClick={dataSwap}>User Added</button>
@@ -102,7 +102,7 @@ export default function ActivityList(props) {
               );
             })}
           </div>)
-      : <button id="view-acts-btn" className={`${myFont.className}`} onClick={openToClose}>View Activities</button>}  
+      : <button id="view-acts-btn" className={`${myFont.className}`} onClick={openToClose}>View Activities</button>}
     </div>
   )
 }

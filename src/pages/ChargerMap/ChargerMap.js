@@ -4,6 +4,7 @@ import {Helmet} from 'react-helmet';
 import FiltersForm from '../../../components/FiltersForm.js';
 import getConnectionsFilters from '../../../helper_functions/getConnectionsFilters.js';
 import getOperatorsFilters from '../../../helper_functions/getOperatorsFilters.js';
+import JsonEscape from '../../../helper_functions/jsonEscape.js';
 // import activity list
 import ActivityList from '../ActivityList/ActivityList.js';
 import localFont from 'next/font/local';
@@ -24,7 +25,7 @@ export default function ChargerMap(props) {
   const mapContainer = useRef(null);
   const map = useRef(null);
   const [lng, setLng] = useState(-100.000000);
-  const [lat, setLat] = useState(38.500000);
+  const [lat, setLat] = useState(38.5);
   const [zoom, setZoom] = useState(3);
   const [activitiesOpened, setActivitiesOpened] = useState(false);
   const [filters, setFilters] = useState({
@@ -36,21 +37,16 @@ export default function ChargerMap(props) {
 
 
 
-function handleClick() {
-  // console.log("in handle click");
-  let combinedFilters = getOperatorsFilters(filters).concat(getConnectionsFilters(filters));
-  if (combinedFilters.length!== 0) {
-    let filter = ['any',].concat(combinedFilters);
-    map.current.setFilter(layer,filter);
-    // console.log("log in handleclick",JSON.stringify(filter) );
+  function handleClick() {
+    // console.log("in handle click");
+    let combinedFilters = getOperatorsFilters(filters).concat(getConnectionsFilters(filters));
+    if (combinedFilters.length!== 0) {
+      let filter = ['any',].concat(combinedFilters);
+      map.current.setFilter(layer,filter);
+      // console.log("log in handleclick",JSON.stringify(filter) );
         // alert(JSON.stringify(filter));
   }
 }
-
-function jsonEscape(str)  {
-  return str.replace(/\n/g, "\\\\n").replace(/\r/g, "\\\\r").replace(/\t/g, "\\\\t");
-}
-
 
   useEffect(() => {
     if (map.current) return; // initialize map only once
@@ -82,47 +78,47 @@ function jsonEscape(str)  {
       function showPopup(e) {
 
         map.current.getCanvas().style.cursor = 'pointer';
-        let sname = e.features[0].properties.name;
+        console.log(map.current.getCanvas().style.cursor);
+        let sname = e.features[0]?.properties?.name;
+        let connection = e.features[0]?.properties?.connectionType;
+        let coordinates = e.features[0]?.geometry?.coordinates?.slice();
+        let description = e.features[0]?.properties?.description;
+        let level = e.features[0]?.properties?.level;
         let provider = "Other";
-        if(e.features[0].properties.poi){
-        let poi = e.features[0].properties.poi;
-        let start="operatorInfo";
-        if (poi.includes("operatorInfo")){
-          let cleanup = '{"' + poi.substring(poi.indexOf(start));
-          provider = JSON.parse(jsonEscape(cleanup)).operatorInfo.title;
-        }
-      }
-      let connection = e.features[0].properties.connectionType;
-      let coordinates = e.features[0].geometry.coordinates.slice();
-      let description = e.features[0].properties.description;
-      let level = e.features[0].properties.level;
-      let avail = "Available";
-      if (level !== '2') {
-        avail = "Occupied";
-      }
 
-      let combined = avail + '<br />' + provider + '<br />' + sname +'<br />' + connection + '<br />' + description  +'<br />';
+        let poi = e.features[0]?.properties?.poi;
+        let start="operatorInfo";
+        if (poi?.includes(start)) {
+          let cleanup = '{"' + poi?.substring(poi?.indexOf(start));
+          provider = JSON.parse(JsonEscape(cleanup)).operatorInfo?.title;
+        }
+
+        let avail = "Available";
+        if (level !== '2') {
+          avail = "Occupied";
+        }
+
+        let combined = avail + '<br />' + provider + '<br />' + sname +'<br />' + connection + '<br />' + description  +'<br />';
 
         // Ensure that if the map is zoomed out such that multiple
         // copies of the feature are visible, the popup appears
         // over the copy being pointed to.
-      while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-        coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-      }
+        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+          coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+        }
 
-      popup.setLngLat(coordinates)
-        .setHTML(checkEmpty(combined))
-        .addTo(map.current);
-      }
+        popup.setLngLat(coordinates)
+          .setHTML(checkEmpty(combined))
+          .addTo(map.current);
+        }
 
-      function hidePopup() {
-        map.current.getCanvas().style.cursor = '';
+        function hidePopup() {
+          map.current.getCanvas().style.cursor = '';
+          popup.remove();
+        }
 
-        popup.remove();
-      }
-
-      map.current.on('mouseenter', layer, showPopup);
-      map.current.on('mouseleave', layer, hidePopup);
+        map.current.on('mouseenter', layer, showPopup);
+        map.current.on('mouseleave', layer, hidePopup);
     });
 
 
@@ -149,11 +145,6 @@ function jsonEscape(str)  {
     setLat(e.lngLat.lat);
     setLng(e.lngLat.lng);
     setZoom(map.current.getZoom());
-
-    // document.getElementById('quake-info').innerHTML =
-    //   lat + '<div><strong>Name:</strong>Station A<div><br />'
-    //   + '<div><strong>Related Activities:</strong><div><br />'
-    //   + '<div>Related Activitie 1:<div><br />';
     });
 
 
@@ -162,8 +153,6 @@ function jsonEscape(str)  {
 
   return (
     <>
-
-  {/* <div className="jumbotron text-center"> */}
     <Script src="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js"></Script>
     <Script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></Script>
     <link rel="stylesheet" href="/map.css" type="text/css"></link>
@@ -189,13 +178,10 @@ function jsonEscape(str)  {
      <FiltersForm filters={filters} setFilters={setFilters} onCloseClick={handleClick} />
      <div ref={mapContainer} className="map-container" />
   </span>
-  <pre id="quake-info">
+  <pre id="quick-info">
     <ActivityList longitude={lng} latitude={lat}/>
   </pre>
-    {/* <pre id="features"></pre> */}
-    {/* <pre id="info"></pre> */}
-  {/* </div> */}
-{/* </div> */}
+
 </>
   )
 }
