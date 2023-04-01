@@ -7,7 +7,7 @@ import Register from './Login/register.js';
 export default function footer() {
   return (
     <>
-      <footer className="text-center text-lg-start" style={{'background':'linear-gradient(#FFBB6B, #b65e07)', color:'rgb(230, 230, 230)'}}>
+      <footer className="text-center text-lg-start" style={{'background':'linear-gradient(#FFBB6B, #b65e07)', color:'rgb(220, 220, 220)'}}>
 
         <section className="" style={{paddingTop:"20px"}}>
           <div className="container text-center text-md-start mt-5">
