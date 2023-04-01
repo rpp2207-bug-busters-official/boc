@@ -1,4 +1,4 @@
-import RegistrationValidation from '../src/pages/Login/registrationValidation.js';
+import RegistrationValidation from '../helper_functions/registrationValidation.js';
 import Cookies from '../helper_functions/setCookie.js';
 
 describe('Testing Registration Validating function', () => {
