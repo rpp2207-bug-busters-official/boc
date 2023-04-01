@@ -8,6 +8,7 @@ describe('MyActivites', () => {
     render(<MyActivities />);
 
     // expect(screen.getByTestId("card-title")).toBeInTheDocument();
+    console.log(screen)
 
   })
 })

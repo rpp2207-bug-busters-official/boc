@@ -145,7 +145,7 @@ const HigherOrderList = (props) => {
                       style={props.showStyles}
                       onClick={showMore}
                   >Show More</button>
-              : null}
+              : <span><p style={{display:'inline-block', height:'18px'}}></p></span>}
               {rendered.length > 4 ?
                   <button
                       style={props.colStyles}
