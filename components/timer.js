@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import chargeTime from '../helper_functions/chargeTime.js';
-import Cookies from '../src/pages/Login/setCookie.js';
+import Cookies from '../helper_functions/setCookie.js';
 // import {Button} from 'react-bootstrap';
 
 const Timer = () => {

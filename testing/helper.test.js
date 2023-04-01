@@ -4,10 +4,10 @@ import ReactDOM from 'react-dom';
 import React, {useState, useEffect} from 'react';
 import '@testing-library/jest-dom';
 import {Modal, Button, Form} from 'react-bootstrap';
-import GetConnectionsFilters from '../../../helper_functions/getConnectionsFilters.js';
-import GetOperatorsFilters from '../../../helper_functions/getOperatorsFilters.js';
-import JsonEscape from '../../../helper_functions/jsonEscape.js';
-import ChargerMap from './ChargerMap.js';
+import GetConnectionsFilters from '../helper_functions/getConnectionsFilters.js';
+import GetOperatorsFilters from '../helper_functions/getOperatorsFilters.js';
+import JsonEscape from '../helper_functions/jsonEscape.js';
+import ChargerMap from '../src/pages/ChargerMap/ChargerMap.js';
 // import fetch from 'node-fetch';
 // import mapboxgl from 'mapbox-gl' // eslint-disable-line import/no-webpack-loader-syntax
 import * as MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';

@@ -3,9 +3,8 @@ import { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import fav from '../sample-data/sample-favorites.js';
-import Cookies from '../src/pages/Login/setCookie.js';
 import localFont from 'next/font/local';
-import Cookie from '../src/pages/Login/setCookie.js';
+import Cookie from '../helper_functions/setCookie.js';
 
 const ExtraLightFont = localFont({src:'../src/styles/Barlow_Condensed/BarlowCondensed-ExtraLight.ttf'});
 
@@ -119,7 +118,7 @@ const HigherOrderList = (props) => {
     } else if (props.title === 'Completed Activities') {
         setallAct(activities);
         renderData(activities);
-        getCompletedActivities(Cookies.getCookie())
+        getCompletedActivities(Cookie.getCookie())
     }
   }, [])
 

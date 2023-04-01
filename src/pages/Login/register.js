@@ -2,10 +2,10 @@ import React, {useState} from 'react';
 import { Button, Modal} from 'react-bootstrap';
 import login from '../api/login.js';
 import firebase from '../../../firebase/clientApp.js';
-import facebookLogin from './facebookLogin.js';
-import googleLogin from './googleLogin.js';
-import CreateUser from './newUser.js';
-import validation from './registrationValidation.js';
+import facebookLogin from '../../../helper_functions/facebookLogin.js';
+import googleLogin from '../../../helper_functions/googleLogin.js';
+import CreateUser from '../../../helper_functions/newUser.js';
+import validation from '../../../helper_functions/registrationValidation.js';
 
 export default function Register(props1) {
   const [regErr, setRegError] = useState('');

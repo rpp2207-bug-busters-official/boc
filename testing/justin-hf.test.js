@@ -1,5 +1,5 @@
 import RegistrationValidation from '../src/pages/Login/registrationValidation.js';
-import Cookies from '../src/pages/Login/setCookie.js';
+import Cookies from '../helper_functions/setCookie.js';
 
 describe('Testing Registration Validating function', () => {
   test('Should give errors when no input is valid', () => {
