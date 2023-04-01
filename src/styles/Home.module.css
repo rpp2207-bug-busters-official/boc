@@ -7,6 +7,11 @@
   min-height: 100vh;
 }
 
+@font-face {
+  font-family: baseFont;
+  src: local('/Inter/Inter-VariableFont_slnt,wght.ttf')
+}
+
 .description {
   display: inherit;
   justify-content: inherit;
@@ -15,7 +20,8 @@
   max-width: var(--max-width);
   width: 100%;
   z-index: 2;
-  font-family: var(--font-mono);
+  /* font-family: var(--font-mono); */
+  font-family: baseFont;
 }
 
 .description a {

@@ -18,7 +18,7 @@ import Script from 'next/script';
 import Reviews from './Reviews/Reviews.js'
 import Timer from '../../components/Timer.js';
 
-const RegularFont = localFont({src:'../styles/Barlow_Condensed/BarlowCondensed-Regular.ttf'});
+const RegularFont = localFont({src:'../styles/Inter/Inter-VariableFont_slnt,wght.ttf'});
 
 export default function Home() {
   return (

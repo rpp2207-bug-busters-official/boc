@@ -108,7 +108,7 @@ const HigherOrderList = (props) => {
       <div
         className={`list-group`}
         style={props.mainStyles}>
-          <h3 style={{ color: "white", fontSize: "1.7rem", margin: ".6rem", borderBottom: "1rem"}}>{props.title}</h3>
+          <h3 style={{ color: "black", fontSize: "1.7rem", margin: ".6rem", borderBottom: "1rem"}}>{props.title}</h3>
           {rendered.map((act, key) => {
               return (
                 <props.Card key={key} act={act} handleShow={handleShow} setKey={key} ExtraLight={ExtraLightFont}/>

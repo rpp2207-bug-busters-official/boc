@@ -4,6 +4,7 @@ import Cookies from '../src/pages/Login/setCookie.js';
 import Register from '../src/pages/Login/register.js';
 import Logout from '../src/pages/Login/logOut.js';
 import react, {useEffect, useState} from 'react';
+import Image from 'next/image';
 
 import localFont from 'next/font/local';
 const myFont = localFont({src:'../src/styles/Playfair_Display/PlayfairDisplay-VariableFont_wght.ttf'})
@@ -19,8 +20,16 @@ const Navbar = (props) => {
   }, [cookie]);
 
   return (
-    <nav className='navbar navbar-expand-lg navbar-light bg-light' style={{padding:'10px', 'backgroundImage':'#FFCB6B'}}>
-          <Link style={{color:'white'}} href="/" className={`navbar-brand ${myFont.className}`}>C&T</Link>
+    <nav className='navbar navbar-expand-lg navbar-light bg-light' style={{padding:'3px', 'backgroundImage':'#FFCB6B'}}>
+          <Link style={{color:'white'}} href="/" className={`navbar-brand ${myFont.className}`}>
+            <Image
+                src="/cnt-logo.png"
+                alt="Charge and Tarry Logo"
+                style={{width: "100%", minWidth: "4rem"}}
+                width='1000'
+                height='100'
+            />
+          </Link>
           <ul className='navbar-nav mr-auto'>
 
               {/* <li className='nav-item active'>

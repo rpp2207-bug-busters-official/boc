@@ -294,7 +294,8 @@ mapboxgl-popup {
 .navbar {
   /* margin: 10px; */
   /* background-color: rgb(255, 203, 107) */
-  background-image: linear-gradient(to bottom right, #FFCB6B, #FFCB9F)
+  /* background-image: linear-gradient(to bottom right, #FFCB6B, #FFCB9F) */
+  background-image: linear-gradient(to bottom right, #FFB833, #FFB833)
 }
 
 

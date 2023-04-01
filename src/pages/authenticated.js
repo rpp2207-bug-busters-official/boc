@@ -7,7 +7,7 @@ import react, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import localFont from 'next/font/local';
 
-const RegularFont = localFont({src:'../styles/Barlow_Condensed/BarlowCondensed-Regular.ttf'});
+const RegularFont = localFont({src:'../styles/Inter/Inter-VariableFont_slnt,wght.ttf'});
 
 const Authenticated  = () => {
   let router = useRouter();

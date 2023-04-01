@@ -30,24 +30,26 @@ const Favorites = () => {
             Card={FavoriteCard}
             title='Favorites'
             mainStyles={{
-                backgroundColor: '#BF0101',
+                backgroundColor: '#D6D6D6',
                 width: "100%",
                 borderRadius: "0",
                 margin: "0 0 1.5vw 0"
             }}
             showStyles={{
-                backgroundColor: "#BF0101",
+                backgroundColor: "#D6D6D6",
                 border: "none",
                 float: "left",
                 marginLeft: "1rem",
-                padding: "0.5rem 0"
+                padding: "0.5rem 0",
+                color: "black"
             }}
             colStyles={{
-                backgroundColor: "#BF0101",
+                backgroundColor: "#D6D6D6",
                 border: "none",
                 float: "right",
                 marginRight: "1rem",
-                padding: "0.5rem 0"
+                padding: "0.5rem 0",
+                color: "black"
             }}
         />
     )
