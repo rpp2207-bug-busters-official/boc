@@ -175,6 +175,7 @@ function MyVerticallyCenteredModal(props) {
   .then((status) => {
 
     if(status === 201){
+      // add db query here
       props.onHide()
       setCreatedAlertShow(true)
     } else {
