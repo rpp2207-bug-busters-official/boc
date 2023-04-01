@@ -1,6 +1,6 @@
 const pool = require('../../db/pool.js');
 
-const getNearbyActivities = (req, res) => {
+const getNearbyActivities = async (req, res) => {
   // Query:
   const activitiesQuery = `SELECT activity_id, name, address
     FROM (
@@ -29,17 +29,13 @@ const getNearbyActivities = (req, res) => {
       ) AS d
       WHERE distance <= radius
       ORDER BY distance`;
-  return new Promise((res, rej) => {
-    pool.query(activitiesQuery, (err, res) => {
-      if (err) {
-        console.log('Failed to get nearby activities', err);
-      }
-      else {
-        console.log('retrieving data');
-      }
-    })
-  })
-  res.end(res);
+
+      await pool.query(activitiesQuery, (error, results) => {
+        if (error) {
+          console.log('Query Failed:'. error);
+        }
+        return res.status(200).send(results);
+      })
 }
 
 export default getNearbyActivities;
