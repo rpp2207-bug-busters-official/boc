@@ -17,6 +17,7 @@ import Register from './Login/register.js';
 import Script from 'next/script';
 import Reviews from './Reviews/Reviews.js'
 import Timer from '../../components/Timer.js';
+import Footer from './footer.js';
 
 const RegularFont = localFont({src:'../styles/Barlow_Condensed/BarlowCondensed-Regular.ttf'});
 
@@ -41,6 +42,7 @@ export default function Home() {
           </div>
         </div>
       </main>
+      <Footer/>
     </>
   )
 }

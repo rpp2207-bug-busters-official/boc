@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import fav from '../sample-data/sample-favorites.js';
 import localFont from 'next/font/local';
-import Cookie from '../src/pages/Login/setCookie.js';
+import Cookie from '../helper_functions/setCookie.js';
 
 const ExtraLightFont = localFont({src:'../src/styles/Barlow_Condensed/BarlowCondensed-ExtraLight.ttf'});
 
@@ -91,6 +91,23 @@ const HigherOrderList = (props) => {
 
   }
 
+  const getCompletedActivities = (userId) => {
+    fetch('/api/completedActivitesAPI', {
+        method:"POST",
+        body:userId
+    })
+        .then(data => {
+            return data.json();
+        })
+        .then(data => {
+            setallAct(data);
+            renderData(data);
+        })
+        .catch(err => {
+            console.log(err);
+        })
+  }
+
   useEffect(() => {
 
     if (props.title === 'Favorites') {
@@ -101,6 +118,7 @@ const HigherOrderList = (props) => {
     } else if (props.title === 'Completed Activities') {
         setallAct(activities);
         renderData(activities);
+        getCompletedActivities(Cookie.getCookie())
     }
   }, [])
 
@@ -138,7 +156,7 @@ const HigherOrderList = (props) => {
                       style={props.showStyles}
                       onClick={showMore}
                   >Show More</button>
-              : null}
+              : <span><p style={{display:'inline-block', height:'18px'}}></p></span>}
               {rendered.length > 4 ?
                   <button
                       style={props.colStyles}

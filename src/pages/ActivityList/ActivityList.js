@@ -1,4 +1,4 @@
-import Activity from './Activity.js';
+import Activity from '../../../components/Activity.js';
 import { useState, useEffect } from 'react';
 
 
