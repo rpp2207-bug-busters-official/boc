@@ -29,6 +29,22 @@ export default function Activity(props) {
     );
   }
 
+  var handleReviewForm = (obj) => {
+    console.log('Submitted object', obj)
+    fetch('/api/reviewsToDatabase',
+    {method: "POST",
+    headers: {'Content-Type': 'application/json'},
+    body: obj
+  })
+  .then(res => {
+    return res;
+  })
+  .catch(err => {
+    console.log(err);
+    return err;
+  })
+  }
+
   let formatPhoneNumber = (str) => {
     //Filter only numbers from the input
     let cleaned = ('' + str).replace(/\D/g, '');
@@ -65,7 +81,7 @@ export default function Activity(props) {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Reviews/>
+          <Reviews handleFormSubmit={handleReviewForm}/>
         </Modal.Body>
         <Modal.Footer>
           <Button  variant="secondary" onClick={props.onHide}>Close</Button>

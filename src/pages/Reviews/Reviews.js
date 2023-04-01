@@ -35,19 +35,8 @@ export default function Reviews (props) {
       rating: rating,
       title: titleRef
     }
-
-    fetch('/api/reviewsToDatabase',
-    {method: "POST",
-    headers: {'Content-Type': 'application/json'},
-    body: stringify(formObj)
-  })
-  .then(res => {
-    return res.status;
-  })
-  .catch(err => {
-    console.log(err);
-    return err;
-  })
+    event.preventDefault();
+    props.handleFormSubmit(formObj);
   }
 
   const reviews = [
@@ -61,36 +50,61 @@ export default function Reviews (props) {
       'title': 'Nasty inside but good food'
     },
     {
-      'username': 'Mango',
-      'comment': 'Place smells weird, but the food was amazing',
-      'helpfulness': 235,
+      'username': 'someguy',
+      'comment': 'It was cool',
+      'helpfulness': 0,
       'reported': false,
       'date': '2022-08-23T16:50:22-07:00',
-      'rating': 2,
-      'title': 'Nasty inside but good food'
+      'rating': 5,
+      'title': 'Cool'
     },
     {
-      'username': 'Mango',
-      'comment': 'Place smells weird, but the food was amazing',
-      'helpfulness': 235,
+      'username': 'blahblah',
+      'comment': 'This sucked',
+      'helpfulness': 0,
       'reported': false,
       'date': '2022-08-23T16:50:22-07:00',
-      'rating': 2,
-      'title': 'Nasty inside but good food'
+      'rating': 1,
+      'title': 'You Suck'
     },
     {
-      'username': 'Mango',
-      'comment': 'Place smells weird, but the food was amazing',
-      'helpfulness': 235,
+      'username': 'otherguy',
+      'comment': 'Lots of food',
+      'helpfulness': 0,
       'reported': false,
       'date': '2022-08-23T16:50:22-07:00',
-      'rating': 2,
-      'title': 'Nasty inside but good food'
+      'rating': 0,
+      'title': 'Good food'
     }
   ]
 
+  function CreatedModal (props) {
+    return (
+      <Modal
+       show={props.show}
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header>
+          <Modal.Title id="contained-modal-title-vcenter">
+            Activity Successfully Created!
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+        Congratulations, your new activity has been added!
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={props.onHide}>Close</Button>
+        </Modal.Footer>
+      </Modal>
+    );
+
+  }
+
   function MyVerticallyCenteredModal(props) {
     const [modalShow, setModalShow] = useState(false);
+    const [createdAlertShow, setCreatedAlertShow] = useState(false);
 
     return (
       <Modal
@@ -156,16 +170,6 @@ export default function Reviews (props) {
         />
       </>
 }
-<>
-        <Button className="btn btn-success" onClick={() => setModalShow(true)}>
-          Add Your Review
-        </Button>
-
-  <MyVerticallyCenteredModal
-          show={modalShow}
-          onHide={() => setModalShow(false)}
-        />
-      </>
     </div>
   );
 }
