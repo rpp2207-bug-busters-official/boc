@@ -20,14 +20,14 @@ const Navbar = (props) => {
   }, [cookie]);
 
   return (
-    <nav className='navbar navbar-expand-lg navbar-light bg-light' style={{padding:'3px', 'backgroundImage':'#FFCB6B'}}>
+    <nav className='navbar navbar-expand-lg navbar-light bg-light' style={{padding:'3px', 'backgroundImage':'#FFCB6B', width: "100vw"}}>
           <Link style={{color:'white'}} href="/" className={`navbar-brand ${myFont.className}`}>
             <Image
                 src="/cnt-logo.png"
                 alt="Charge and Tarry Logo"
                 style={{width: "100%", minWidth: "4rem"}}
                 width='1000'
-                height='100'
+                height='60'
             />
           </Link>
           <ul className='navbar-nav mr-auto'>
@@ -54,7 +54,7 @@ const Navbar = (props) => {
                 }
                 {cookie !== undefined &&
                   <>
-                    <li className='nav-item active'>
+                    <li className='nav-item active' style={{float: "right"}}>
                       <Logout updateCookie={updateCookie} className='nav-link navbar-link-underline'/>
                     </li>
                   </>

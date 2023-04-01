@@ -34,7 +34,7 @@ const MyActivities = () => {
                   className={'star'}/></h6>
             </div>
               <div style={{display: "inline-block", float: "right", marginLeft: ""}}>
-                <Button variant="primary" style={{backgroundColor: "#3E363F", borderColor: "#3E363F", display: "inline", float: "right", marginLeft: "0.5rem"}}
+                <Button variant="primary" style={{backgroundColor: "#FAF7F7", borderColor: "red", display: "inline", float: "right", marginLeft: "0.5rem", color: "red", borderWidth: "medium"}}
                 onClick={() => props.handleShow({title: props.act.title, comment: props.act.comment, date: props.act.date, helpfulness: props.act.helpfulness})}>
                   See Review
                 </Button>
