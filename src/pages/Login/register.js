@@ -105,9 +105,9 @@ function MyVerticallyCenteredModal(props) {
         <a onClick={()=>{setModalShow(true)}}><u>{props1.footer}</u></a>
       }
       {props1.footer === undefined &&
-        <Button className="btn btn-success" onClick={() => setModalShow(true)}>
+        <button id="a-btn-lnk" className="btn btn-success" onClick={() => setModalShow(true)}>
           Register!
-        </Button>
+        </button>
       }
 
   <MyVerticallyCenteredModal
