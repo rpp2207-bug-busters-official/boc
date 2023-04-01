@@ -200,11 +200,12 @@ const Timer = () => {
           </Modal>
         :
         running ?
+        <div style={{width: "15rem"}}>
 
-        <div data-testid="timer-running">
-          <span>Timer: {clock}</span>
-          <br></br>
-          <Button onClick={() => {setStop(!stop); setRunning(!running); setTime(0); setClock("");}}>End Charge</Button>
+          <div data-testid="timer-running">
+            <button id="timer-btn" style={{position: "absolute"}}onClick={() => {setStop(!stop); setRunning(!running); setTime(0); setClock("");}}>End Charge</button>
+            <h4 style={{position: "absolute", top: '14vh', right: '2vw'}}>Time: {clock}</h4>
+          </div>
         </div>
         :
         <button id="timer-btn" className={`${myFont.className}`} onClick={() => selected(!select)}>Start A Charge</button>

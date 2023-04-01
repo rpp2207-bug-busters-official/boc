@@ -32,11 +32,11 @@ export default function ActivityList(props) {
       method: 'GET',
       headers: {
         accept: 'application/json',
-        Authorization: `Bearer ${yelpAPI}`
+        Authorization: `Bearer ` + yelpAPI
       }
     };
-
-     fetch(`${queryURL}https://api.yelp.com/v3/businesses/search?latitude=${latitude}&longitude=${longitude}&radius=1000&categories=&locale=en_US&open_now=true&sort_by=distance&device_platform=mobile-generic&limit=5`, options)
+      console.log(props.latitude + ' ' + props.longitude);
+     fetch(`${queryURL}https://api.yelp.com/v3/businesses/search?latitude=${props.latitude}&longitude=${props.longitude}&radius=1000&categories=&locale=en_US&open_now=true&sort_by=distance&device_platform=mobile-generic&limit=5`, options)
        .then(response => response.json())
        .then(response => {setActivities(response.businesses)})
        .catch(err => console.error(err));
@@ -70,6 +70,10 @@ export default function ActivityList(props) {
     getAddedNearbyActivities(0, 0)
       .then(() => {
         console.log('Current Activities', activities)
+        getNearbyActivities();
+      })
+      .then((res) => {
+        console.log(res);
       })
       .catch(err => console.log('wut'));
   }, [props.latitude, props.longitude])
@@ -86,21 +90,34 @@ export default function ActivityList(props) {
             </div>
 
               {yelpOpen ?
-                <div id="list-header">
-                  <button id="yelp-open">Yelp</button>
-                  <button id="user-added-btn" onClick={dataSwap}>User Added</button>
+                <div>
+                  <div id="list-header">
+                    <button id="yelp-open">Yelp</button>
+                    <button id="user-added-btn" onClick={dataSwap}>User Added</button>
+                  </div>
+                  <div>
+                    {activities.map((activity, index) => {
+                      return (
+                        <Activity action={activity} key={index}/>
+                        );
+                      })}
+                  </div>
                 </div>
                 :
-                <div id="list-header">
-                  <button id="yelp-btn" onClick={dataSwap}>Yelp</button>
-                  <button id="user-open">User Added</button>
+                <div>
+                  <div id="list-header">
+                    <button id="yelp-btn" onClick={dataSwap}>Yelp</button>
+                    <button id="user-open">User Added</button>
+                  </div>
+                  <div>
+                    {userActs.map((activity, index) => {
+                      return (
+                        <AddedActivity action={activity} key={index}/>
+                        );
+                      })}
+                  </div>
                 </div>
               }
-            {userActs.map((activity, index) => {
-              return (
-                <AddedActivity action={activity} key={index}/>
-              );
-            })}
           </div>)
       : <button id="view-acts-btn" className={`${myFont.className}`} onClick={openToClose}>View Activities</button>}
     </div>
