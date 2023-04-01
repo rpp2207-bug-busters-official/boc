@@ -93,6 +93,8 @@ const HigherOrderList = (props) => {
         })
         .then(data => {
             console.log(data);
+            setallAct(data);
+            renderData(data);
         })
         .catch(err => {
             console.log(err);
@@ -111,7 +113,7 @@ const HigherOrderList = (props) => {
         renderData(activities);
         getCompletedActivities(Cookies.getCookie())
     }
-  }, [allAct])
+  }, [])
 
   return (
       <div
