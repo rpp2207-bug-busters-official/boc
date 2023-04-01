@@ -258,11 +258,11 @@ mapboxgl-popup {
     margin-top: 11vh;
   }
 }
-@media screen and (max-width: 390px) {
+/* @media screen and (max-width: 390px) {
   #view-acts-btn {
     margin-top: 14vh;
   }
-}
+} */
 
 #view-acts-btn:hover {
   background-color: #FF5533;
@@ -474,11 +474,11 @@ mapboxgl-popup {
     margin-top: 11vh;
   }
 }
-@media screen and (max-width: 390px) {
+/* @media screen and (max-width: 390px) {
   #timer-btn {
-    margin-top: 14vh;
+    margin-top: 11vh;
   }
-}
+} */
 
 #timer-btn:hover {
   color: white;

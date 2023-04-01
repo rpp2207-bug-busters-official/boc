@@ -14,7 +14,7 @@ const MyActivities = () => {
           className="list-group-item list-group-item-action active"
           aria-current="true"
           key={props.setKey}
-          style={{backgroundColor: "#FF5533", color: "white", border: "1px solid black"}}
+          style={{backgroundColor: "white", color: "black", border: "1px solid #FF5533", borderLeft: "none", borderRight: "none"}}
       >
           <div>
             <div>
@@ -58,7 +58,8 @@ const MyActivities = () => {
         width: "100%",
         borderRadius: "8px",
         margin: "0 0 1.5vw 0",
-        border: "2px solid black"
+        border: "3px solid #FF5533",
+        color: "black"
       }}
       showStyles={{
         backgroundColor: "white",

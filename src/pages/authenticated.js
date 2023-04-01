@@ -46,7 +46,7 @@ const Authenticated  = () => {
             </div> */}
             <div className='row' style={{margin: "0", width: "100vw", padding: "0 1vw"}}>
               <div className='col-' style={{padding: "0", margin: "0 1.5vw 0 1.5vw", width: "22vw", minWidth: "23rem"}}>
-                <div style={{backgroundColor: "white", paddingTop: "1rem", marginBottom: "1.5vw", width: "100%", border: "2px solid black", borderRadius: "8px"}}>
+                <div style={{backgroundColor: "white", paddingTop: "1rem", marginBottom: "1.5vw", width: "100%", border: "3px solid #FF5533", borderRadius: "8px"}}>
                   <div className='wrapper' style={{position: "relative", float: "center", width: "5.7rem", minWidth: "5.7rem", margin: "auto"}}>
                     <Image
                       src="/CNTLogo.png"
