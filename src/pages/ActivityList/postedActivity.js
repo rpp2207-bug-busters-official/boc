@@ -65,13 +65,13 @@ export default function AddedActivity(props) {
   
     const getRatings = async (id) => {
         fetch('/api/getPostedRatings', {
-            method: "GET",
+            method: "POST",
             body: id
         })
         .then(data => data.json())
         .then((res) => {
             // Probably set the retrieved activities in a state
-            console.log('success', res);
+            setRating(res);
         })
         .catch((err) => {
             console.log('Failed to get user added nearby activities', err);
@@ -80,6 +80,7 @@ export default function AddedActivity(props) {
 
   useEffect(() => {
     getRatings(activityObj.activity_id)
+        .then(data => data.json())
         .then((res) => {
             setRating(res.total / res.count);
             console.log(res.total/res.count);
@@ -89,19 +90,19 @@ export default function AddedActivity(props) {
 
   return (
     <div className={`activity-widget ${myFont.className}`}>
-      {isFavorite ? <AiFillStar color="gold" size="36" onClick={() => setIsFavorite(!isFavorite)}/> : <AiFillStar color="white" size="36" onClick={() => setIsFavorite(!isFavorite)}/>}
+      {isFavorite ? <AiFillStar id="list-item-favorited" color="gold" size="36" onClick={() => setIsFavorite(!isFavorite)}/> : <AiFillStar color="white" size="36" onClick={() => setIsFavorite(!isFavorite)}/>}
+        <h2 id="list-item-name">{activityObj.name}</h2>
 
       <div className="activity-body">
-        <p>{activityObj.name}</p>
-        <p>{activityObj.address} {activityObj.city}, {activityObj.state} {activityObj.zip}</p>
+        <h4 id="list-item-location">{activityObj.address} {activityObj.city}, {activityObj.state} {activityObj.zip}</h4>
       </div>
 
-      <div>
-        <p><StarRating rating={rating}/></p>
+      <div id="list-stars-container">
+        <p id="list-item-stars"><StarRating rating={rating}/></p>
       </div>
 
       <>
-        <button className="btn btn-success" id="a-btn-lnk" onClick={() => setModalShow(true)}>
+        <button className="btn btn-success item-btn" id="a-btn-lnk" onClick={() => setModalShow(true)}>
           Show Reviews
         </button>
 
