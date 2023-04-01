@@ -15,6 +15,8 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 import * as MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 
+import {BsFillPlugFill} from 'react-icons/bs';
+
 import mapboxgl from 'mapbox-gl' // eslint-disable-line import/no-webpack-loader-syntax
 
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_KEY;
@@ -98,7 +100,19 @@ export default function ChargerMap(props) {
           avail = "Occupied";
         }
 
-        let combined = avail + '<br />' + provider + '<br />' + sname +'<br />' + connection + '<br />' + description  +'<br />';
+        // let combined = '<p> ' + avail + '</p>'
+        // '<br /><p>' + provider +
+        // '<br />' + sname +
+        // '<br />' + connection +
+        // '<br />' + description +
+        // '<br />';
+
+        let combined = `<p style='font-size:20px'><strong>${avail}</strong></p>
+        <p><strong>Location:</strong> ${sname}</p>
+        <p><strong>Connector Type:</strong> ${connection}</p>
+        <p style='font-size:"15px"; color:rgb(150, 150, 150);'>${provider}</p>
+        <p style='color: rgb(150, 150, 150);'><small>${description}</small></p>
+        `
 
         // Ensure that if the map is zoomed out such that multiple
         // copies of the feature are visible, the popup appears
