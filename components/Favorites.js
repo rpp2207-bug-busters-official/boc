@@ -43,7 +43,7 @@ const Favorites = () => {
                 padding: "0.25rem 0"
             }}
             colStyles={{
-                backgroundColor: "#FFC467",
+                background: 'linear-gradient(0.25turn, #E34B4B, #E23B4B)',
                 border: "none",
                 float: "right",
                 marginRight: "1rem",

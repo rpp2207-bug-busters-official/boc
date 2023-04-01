@@ -59,7 +59,7 @@ export default function completedActivites (props) {
         padding: "0.25rem 0"
       }}
       colStyles={{
-        backgroundColor: "#BF0101",
+        backgroundColor: "#E23B4B",
         border: "none",
         float: "right",
         marginRight: "1rem",

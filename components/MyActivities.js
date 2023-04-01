@@ -67,7 +67,7 @@ const MyActivities = () => {
         padding: "0.25rem 0"
       }}
       colStyles={{
-        backgroundColor: "#E34B4B",
+        backgroundColor: "#E23B4B",
         border: "none",
         float: "right",
         marginRight: "1rem",

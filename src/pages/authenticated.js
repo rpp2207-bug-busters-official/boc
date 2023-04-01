@@ -6,6 +6,7 @@ import {useRouter} from 'next/router';
 import react, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import localFont from 'next/font/local';
+import Footer from './footer.js';
 
 const RegularFont = localFont({src:'../styles/Barlow_Condensed/BarlowCondensed-Regular.ttf'});
 
@@ -81,6 +82,7 @@ const Authenticated  = () => {
         </div>
       </>
       }
+      <Footer/>
     </>
   );
 
