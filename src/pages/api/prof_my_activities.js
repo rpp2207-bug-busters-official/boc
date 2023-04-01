@@ -13,20 +13,18 @@ let test = "SELECT * FROM activities FULL JOIN reviews ON activities.user_id = r
 
 
   return new Promise((resolve, reject) => {
-    pool.query(test, (err, res) => {
+    pool.query(test, (err, result) => {
       if (err) {
         console.log(err);
         reject(err);
-      } else {
-        console.log(res.rows);
       }
-      resolve(res);
+      res.status(200).json(result);
+      resolve(result);
     })
   })
 
 }
 
-getMyActivities();
 
-// export default getMyActivities;
+export default getMyActivities;
 

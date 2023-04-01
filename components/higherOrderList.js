@@ -5,19 +5,28 @@ import Modal from 'react-bootstrap/Modal';
 import fav from '../sample-data/sample-favorites.js';
 import Cookies from '../src/pages/Login/setCookie.js';
 import localFont from 'next/font/local';
+import Cookie from '../src/pages/Login/setCookie.js';
 
 const ExtraLightFont = localFont({src:'../src/styles/Barlow_Condensed/BarlowCondensed-ExtraLight.ttf'});
 
 const HigherOrderList = (props) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
-  const handleShow = (body, place) => {
+  const handleShow = (reviewData) => {
+
     setShow(true);
-    setReviewBody(body);
-    setReviewTitle(place);
+
+    // console.log('reviewData', reviewData);
+    setReview(reviewData);
+
+
+    // setReviewBody(body);
+    // setReviewTitle(place);
   }
   const [ reviewBody, setReviewBody ] = useState(null);
   const [ reviewTitle, setReviewTitle ] = useState(null);
+  const [ reviews, setReview ] = useState("");
+
   let [allAct, setallAct] = useState([]);
   let [rendered, setRendered] = useState([]);
 
@@ -64,18 +73,18 @@ const HigherOrderList = (props) => {
 
 //  this function will take in the userName so it can use that to make a query
 
-  const getMyActivites = (user_id) => {
+  const getMyActivites = () => {
+
+    const user_id = Cookie.getCookie()
 
     fetch('/api/prof_my_activities', {
-        method: "GET",
+        method: "POST",
         body: user_id
     })
     .then(data => data.json())
     .then((res) => {
-
-        // TODO: set the data for the user
-
-        console.log(res);
+        setallAct(res.rows);
+        renderData(res.rows);
     })
     .catch((err) => {
         console.log(err);
@@ -102,12 +111,12 @@ const HigherOrderList = (props) => {
   }
 
   useEffect(() => {
+
     if (props.title === 'Favorites') {
         setallAct(fav);
         renderData(fav);
     } else if (props.title === 'Your Activities') {
-        setallAct(activities);
-        renderData(activities);
+        getMyActivites();
     } else if (props.title === 'Completed Activities') {
         setallAct(activities);
         renderData(activities);
@@ -128,9 +137,13 @@ const HigherOrderList = (props) => {
 
         <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
-                <Modal.Title>{reviewTitle}</Modal.Title>
+                <Modal.Title>{reviews.title}</Modal.Title>
+                <span style={{position: "relative", left: "25%"}}>Date: {reviews.date}</span>
             </Modal.Header>
-        <Modal.Body>{reviewBody}</Modal.Body>
+        <Modal.Body>
+            <div>Review: {reviews.comment}</div>
+            <span style={{ position: "relative", left: "75%"}}>helpfulness: {reviews.helpfulness}</span>
+        </Modal.Body>
         <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
             Close
