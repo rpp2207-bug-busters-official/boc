@@ -6,7 +6,6 @@ import React from 'react';
 
 export default function completedActivites (props) {
   const CompletedCard = (props) => {
-    console.log(props);
     return (
       <div
         className="list-group-item list-group-item-action active"
