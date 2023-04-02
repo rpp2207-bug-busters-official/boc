@@ -1,6 +1,6 @@
 # Charge and Tarry
 
-Charge & Tarry is a website that electric vehicle owners can use to find charging stations and explore nearby recreational activities while they are waiting for their vehicles to be charged.
+Charge & Tarry is a website that electric vehicle owners can use to find charging stations and explore nearby recreational activities while they are waiting for their vehicles to be charged. This website is designed to be mobile friendly for the owners to access its contents easily on the go.
 
 ## Table of Contents
 * [Features](https://github.com/rpp2207-bug-busters-official/boc/blob/main/README.md#features)
@@ -16,6 +16,23 @@ Charge & Tarry is a website that electric vehicle owners can use to find chargin
 ## Features:
 
 ### Charging Station Map
+On the homepage, the EV owners will be able to find charging stations by:
+* current location
+* search by zipcode
+* search by address/point of interest
+
+The charging stations in the specified area will appear on the map as dots; their availabilities can be indicated by color: green for "available", orange for "occupied".
+
+Once the user places his/her mouse over the charging station, detailed info will pop up:
+* availability
+* provider
+* name
+* connection type
+* address
+
+The user can also filter charging stations by their provider/connection type.
+
+
 ### Nearby Activities and Reviews
 ### Add new Activity/Review 
 ### Charging Timer
