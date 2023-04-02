@@ -6,7 +6,7 @@ Charge & Tarry is a website that electric vehicle owners can use to find chargin
 * [Features](https://github.com/rpp2207-bug-busters-official/boc/blob/main/README.md#features)
    * [Charging Station Map](https://github.com/rpp2207-bug-busters-official/boc/blob/main/README.md#charging-station-map)
    * [Nearby Activities and Reviews](https://github.com/rpp2207-bug-busters-official/boc/blob/main/README.md#nearby-activities-and-reviews)
-   * [Add new Activity/Review](https://github.com/rpp2207-bug-busters-official/boc/blob/main/README.md#add-new-activites/reviews)
+   * [Add new Activity/Review](https://github.com/rpp2207-bug-busters-official/boc/blob/main/README.md#add-new-activityreviews)
    * [Charging Timer](https://github.com/rpp2207-bug-busters-official/boc/blob/main/README.md#charging-timer)
    * [Authentication](https://github.com/rpp2207-bug-busters-official/boc/blob/main/README.md#authentication)
    * [Profile Page](https://github.com/rpp2207-bug-busters-official/boc/blob/main/README.md#profile-page) 
