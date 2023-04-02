@@ -1,6 +1,33 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Charge and Tarry
+
+Charge & Tarry is a website that electric vehicle owners can use to find charging stations and explore nearby recreational activities while they are waiting for their vehicles to be charged.
+
+## Table of Contents
+* [Features](https://github.com/rpp2207-bug-busters-official/boc/edit/main/README.md#features):
+   * [Charging Station Map](https://github.com/rpp2207-bug-busters-official/boc/edit/main/README.md#charging-station-map)
+   * [Nearby Activities and Reviews]
+   * [Add new Activity/Review] 
+	 * [Charging Timer]
+   * [Authentication]
+   * [Profile Page] 
+	 
+* [Getting Started](https://github.com/rpp2207-bug-busters-official/boc/edit/main/README.md#getting-started)
+
+## Features:
+
+### Charging Station Map
+### Nearby Activities and Reviews
+### Add new Activity/Review 
+### Charging Timer
+### Authentication
+### Profile Page 
+ 
+
 
 ## Getting Started
+
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
 
 First, run the development server:
 
