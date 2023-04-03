@@ -34,11 +34,23 @@ The user can also filter charging stations by their provider/connection type.
 
 
 ### Nearby Activities and Reviews
+The user can get a list of nearby activities when he/she clicks on a charging station; rating and reviews for each individual activity will also be shown.
+
+
 ### Add new Activity/Review 
+Authenticated users can submit review and add new activities via forms.
+
+
 ### Charging Timer
+Default timer is 30 mins. The user will be able to customize the timer and check approximate time remaining; if the user choose to, he/she can receive email notifications when the charging status changes.
+
+
 ### Authentication
+The user can sign up with emails or through google/facebook to access profile page and submitting new activities/reviews.
+
+
 ### Profile Page 
- 
+Authenticated users will have a profile where they can store favorite and completed activities, and also add reviews to existing ones. Users without profiles cannot access these features.
 
 
 ## Getting Started
