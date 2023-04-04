@@ -8,7 +8,7 @@ import React from 'react';
 
 const MyActivities = () => {
   const CardComponent = (props) => {
-
+    console.log(props)
     return (
       <div
           className="list-group-item list-group-item-action active"
