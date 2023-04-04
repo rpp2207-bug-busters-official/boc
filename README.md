@@ -16,6 +16,8 @@ Charge & Tarry is a website that electric vehicle owners can use to find chargin
 ## Features:
 
 ### Charging Station Map
+<img width="1957" alt="Screen Shot 2023-04-04 at 4 28 08 PM" src="https://user-images.githubusercontent.com/42246116/229927840-c7a96234-d9c0-4f42-b359-002c9688d186.png">
+
 On the homepage, the EV owners will be able to find charging stations by:
 * current location
 * search by zipcode
