@@ -4,7 +4,7 @@ import Head from 'next/head';
 import Script from 'next/script';
 import Layout from '../../components/Layout.js';
 import react, {useState, useEffect} from 'react';
-import Cookies from './Login/setCookie.js';
+import Cookies from '../../helper_functions/setCookie.js';
 
 export default function App({ Component, pageProps }) {
   return (
