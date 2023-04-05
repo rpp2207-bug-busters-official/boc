@@ -22,7 +22,7 @@ const MyActivities = () => {
           className="list-group-item list-group-item-action active"
           aria-current="true"
           key={props.setKey}
-          style={{backgroundColor: "#FAF7F7", color: "black", borderColor: "#706B71", borderWidth: "0.12rem 0"}}
+          style={{backgroundColor: "white", color: "black", border: "1px solid #FF5533", borderLeft: "none", borderRight: "none"}}
       >
           <div>
             <div>
@@ -62,24 +62,28 @@ const MyActivities = () => {
       Card={CardComponent}
       title={'Your Activities'}
       mainStyles={{
-        backgroundColor: '#BF0101',
+        backgroundColor: 'white',
         width: "100%",
-        borderRadius: "0",
-        margin: "0 0 1.5vw 0"
+        borderRadius: "8px",
+        margin: "0 0 1.5vw 0",
+        border: "3px solid #FF5533",
+        color: "black"
       }}
       showStyles={{
-        backgroundColor: "#BF0101",
+        backgroundColor: "white",
         border: "none",
         float: "left",
         marginLeft: "1rem",
-        padding: "0.5rem 0"
+        padding: "0.5rem 0",
+        color: "black"
       }}
       colStyles={{
-        backgroundColor: "#BF0101",
+        backgroundColor: "white",
         border: "none",
         float: "right",
         marginRight: "1rem",
-        padding: "0.5rem 0"
+        padding: "0.5rem 0",
+        color: "black"
       }}
     />
   )

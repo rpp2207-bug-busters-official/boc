@@ -1,13 +1,14 @@
 import MyActivities from '../../components/MyActivities.js';
 import CompletedActivites from '../../components/completedActivites.js';
 import Favorites from '../../components/Favorites.js';
-import Cookies from './Login/setCookie.js';
+import Cookies from '../../helper_functions/setCookie.js';
 import {useRouter} from 'next/router';
 import react, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import localFont from 'next/font/local';
+import Footer from './footer.js';
 
-const RegularFont = localFont({src:'../styles/Barlow_Condensed/BarlowCondensed-Regular.ttf'});
+const RegularFont = localFont({src:'../styles/Inter/Inter-VariableFont_slnt,wght.ttf'});
 
 const Authenticated  = () => {
   let router = useRouter();
@@ -18,7 +19,6 @@ const Authenticated  = () => {
     if (currCookie === undefined) {
       router.push('/')
     }
-    // might need to fix this for build to work
   }, [router]);
 
 
@@ -26,7 +26,7 @@ const Authenticated  = () => {
     <>
       {cookie !== undefined &&
       <>
-        <div style={{padding: "2vh 0 0 0"}} className={RegularFont.className}>
+        <div style={{padding: "2vh 0 0 0", backgroundColor: "white"}} className={RegularFont.className}>
           <div className='row py-3' style={{margin: "0"}}>
 
 
@@ -46,7 +46,7 @@ const Authenticated  = () => {
             </div> */}
             <div className='row' style={{margin: "0", width: "100vw", padding: "0 1vw"}}>
               <div className='col-' style={{padding: "0", margin: "0 1.5vw 0 1.5vw", width: "22vw", minWidth: "23rem"}}>
-                <div style={{backgroundColor: "#FAF7F7", paddingTop: "1rem", marginBottom: "1.5vw", width: "100%"}}>
+                <div style={{backgroundColor: "white", paddingTop: "1rem", marginBottom: "1.5vw", width: "100%", border: "3px solid #FF5533", borderRadius: "8px"}}>
                   <div className='wrapper' style={{position: "relative", float: "center", width: "5.7rem", minWidth: "5.7rem", margin: "auto"}}>
                     <Image
                       src="/CNTLogo.png"
@@ -56,7 +56,7 @@ const Authenticated  = () => {
                       height='180'
                     />
                   </div>
-                  <div style={{margin: "0 0 1rem 0"}} className={`${RegularFont.className} text-capitalize`}>
+                  <div style={{padding: "0 0 1rem 0", color: "black"}} className={`${RegularFont.className}`}>
                     <p
                       className='lead text-center'
                       style={{
@@ -65,8 +65,6 @@ const Authenticated  = () => {
                         marginBottom: "0.3rem"
                       }}
                     >{Cookies.getUsername()}</p>
-                    <p style={{margin: "0 0 0 0.7rem", fontWeight: "bold"}}>Completed X Activities</p>
-                    <p style={{margin: "0 0 0 0.7rem", fontWeight: "bold", paddingBottom: "0.5rem"}}>Created X Activities</p>
                   </div>
                 </div>
                 <Favorites />
@@ -82,6 +80,7 @@ const Authenticated  = () => {
         </div>
       </>
       }
+      <Footer/>
     </>
   );
 

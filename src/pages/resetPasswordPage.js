@@ -1,7 +1,7 @@
 import react, { useEffect, useState } from 'react';
 import { Button, Modal} from 'react-bootstrap';
 import Link from 'next/link';
-import resetPass from './Login/resetPassword.js'
+import resetPass from '../../helper_functions/resetPassword.js'
 import {useRouter} from 'next/router';
 
 

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { Button, Modal, closeButton} from 'react-bootstrap';
 import Alert from 'react-bootstrap/Alert';
-import cookie from '../../pages/Login/setCookie.js';
+import cookie from '../../../helper_functions/setCookie.js';
 
 
 export default  function ActivityForm(props) {
@@ -22,9 +22,9 @@ export default  function ActivityForm(props) {
 
   return (
       <>
-        <Button variant="primary"  className="btn btn-success" onClick={checkSignedIn}>
-          Add Activity Here!
-        </Button>
+        <button id="add-acts-btn" variant="primary"  className="btn btn-success" onClick={checkSignedIn}>
+          Add an Activity
+        </button>
         <NotLoggedInModal
           show={alertShow}
           onHide={() => setAlertShow(false)}

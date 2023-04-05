@@ -50,6 +50,4 @@
     "jest-environment-jsdom": "^29.5.0",
     "react-test-renderer": "^18.2.0"
   }
-
-
 }

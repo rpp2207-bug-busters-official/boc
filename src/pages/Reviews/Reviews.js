@@ -1,4 +1,4 @@
-import Review from './Review.js';
+import Review from '../../../components/Review.js';
 import { Button, Modal} from 'react-bootstrap';
 import {useState} from 'react';
 import StarRating from '../ActivityList/StarRating.js'
