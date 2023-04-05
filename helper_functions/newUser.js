@@ -1,5 +1,5 @@
 import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import Cookies from './setCookie';
+import Cookies from './setCookie.js';
 
 export default function createUser(email, password, username) {
   const auth = getAuth();

@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import fav from '../sample-data/sample-favorites.js';
 import localFont from 'next/font/local';
-import Cookie from '../src/pages/Login/setCookie.js';
+import Cookie from '../helper_functions/setCookie.js';
 
 const ExtraLightFont = localFont({src:'../src/styles/Barlow_Condensed/BarlowCondensed-ExtraLight.ttf'});
 
@@ -62,6 +62,22 @@ const HigherOrderList = (props) => {
     }
   }
 
+  const getFavorites = () => {
+    const userId = Cookie.getCookie();
+
+    fetch('/api/prof_favorites', {
+        method: 'POST',
+        body: userId
+    })
+    .then(data => data.json())
+    .then((res) => {
+        setallAct(res.rows);
+        renderData(res.rows);
+    })
+    .catch((err) => {
+        console.log(err);
+    });
+  };
 
 //  might make sense to make all the db queries when the user is first logged in with promise.all
 
@@ -77,6 +93,7 @@ const HigherOrderList = (props) => {
     })
     .then(data => data.json())
     .then((res) => {
+        console.log(res.rows);
         setallAct(res.rows);
         renderData(res.rows);
     })
@@ -86,16 +103,33 @@ const HigherOrderList = (props) => {
 
   }
 
+  const getCompletedActivities = (userId) => {
+    fetch('/api/completedActivitesAPI', {
+        method:"POST",
+        body:userId
+    })
+        .then(data => {
+            return data.json();
+        })
+        .then(data => {
+            setallAct(data);
+            renderData(data);
+        })
+        .catch(err => {
+            console.log(err);
+        })
+  }
+
   useEffect(() => {
 
     if (props.title === 'Favorites') {
-        setallAct(fav);
-        renderData(fav);
+        getFavorites();
     } else if (props.title === 'Your Activities') {
         getMyActivites();
     } else if (props.title === 'Completed Activities') {
         setallAct(activities);
         renderData(activities);
+        getCompletedActivities(Cookie.getCookie())
     }
   }, [])
 
@@ -103,7 +137,7 @@ const HigherOrderList = (props) => {
       <div
         className={`list-group`}
         style={props.mainStyles}>
-          <h3 style={{ color: "white", fontSize: "1.7rem", margin: ".6rem", borderBottom: "1rem"}}>{props.title}</h3>
+          <h3 style={{fontSize: "1.7rem", margin: ".6rem", borderBottom: "1rem", fontWeight: "bold"}}>{props.title}</h3>
           {rendered.map((act, key) => {
               return (
                 <props.Card key={key} act={act} handleShow={handleShow} setKey={key} ExtraLight={ExtraLightFont}/>
@@ -147,7 +181,7 @@ const HigherOrderList = (props) => {
                       style={props.showStyles}
                       onClick={showMore}
                   >Show More</button>
-              : null}
+              : <span><p style={{display:'inline-block', height:'18px'}}></p></span>}
               {rendered.length > 4 ?
                   <button
                       style={props.colStyles}
