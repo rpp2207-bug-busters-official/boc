@@ -2,6 +2,10 @@ const pool = require('../../db/pool.js');
 
 const getMyActivities = (req, res) => {
 
+
+  console.log(req.body)
+
+
   let test =
   `SELECT
     a.activity_id,
@@ -17,7 +21,7 @@ const getMyActivities = (req, res) => {
         WHERE
             reviews.activity_id = a.activity_id)
   FROM
-    activities a where a.user_id = 'jaCqoxgk26bc6VvrnHsBr8L2dAr1'`;
+    activities a where a.user_id = '${req.body}'`;
 
 
 
