@@ -6,7 +6,7 @@ import getConnectionsFilters from '../../../helper_functions/getConnectionsFilte
 import getOperatorsFilters from '../../../helper_functions/getOperatorsFilters.js';
 import JsonEscape from '../../../helper_functions/jsonEscape.js';
 // import activity list
-import ActivityList from '../ActivityList/ActivityList.js';
+import ActivityList from '../../../components/ActivityList/ActivityList.js';
 import localFont from 'next/font/local';
 import Image from 'next/image';
 
