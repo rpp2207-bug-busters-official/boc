@@ -13,18 +13,13 @@ const HigherOrderList = (props) => {
   const handleClose = () => setShow(false);
   const handleShow = (reviewData) => {
 
+    setReview(reviewData);
     setShow(true);
 
-    // console.log('reviewData', reviewData);
-    setReview(reviewData);
-
-
-    // setReviewBody(body);
-    // setReviewTitle(place);
   }
   const [ reviewBody, setReviewBody ] = useState(null);
   const [ reviewTitle, setReviewTitle ] = useState(null);
-  const [ reviews, setReview ] = useState("");
+  const [ reviews, setReview ] = useState([]);
 
   let [allAct, setallAct] = useState([]);
   let [rendered, setRendered] = useState([]);
@@ -115,22 +110,36 @@ const HigherOrderList = (props) => {
               );
           })}
 
-        <Modal show={show} onHide={handleClose}>
-            <Modal.Header closeButton>
-                <Modal.Title>{reviews.title}</Modal.Title>
-                <span style={{position: "relative", left: "25%"}}>Date: {reviews.date}</span>
-            </Modal.Header>
-        <Modal.Body>
-            <div>Review: {reviews.comment}</div>
-            <span style={{ position: "relative", left: "75%"}}>helpfulness: {reviews.helpfulness}</span>
-        </Modal.Body>
-        <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-            Close
-            </Button>
-        </Modal.Footer>
-        </Modal>
 
+          {
+            reviews.length > 0 ?
+            <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+                <Modal.Title style={{textAlign: "center"}}>Reviews</Modal.Title>
+                </Modal.Header>
+                {reviews.map(review => {
+                    return (
+                        <div key={review.rating} style={{display: "flex", justifyContent: "space-between"}}>
+                            <Modal.Body style={{border: "1px solid black"}}>
+                                <h5 style={{textAlign: "center"}}>{review.comment}</h5>
+                                <p style={{textAlign: "center"}}>{review.date}</p>
+                                <div style={{display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
+                                    <p>Rating: {review.rating}</p>
+                                    <p>helpfulness: {review.helpfulness}</p>
+                                </div>
+                            </Modal.Body>
+                        </div>
+                    )
+                })}
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                    Close
+                    </Button>
+                </Modal.Footer>
+        </Modal>
+            :
+            null
+          }
 
           <div style={{width: "100%", textAlign: "center"}}>
               {rendered.length < allAct.length ?

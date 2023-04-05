@@ -8,7 +8,15 @@ import React from 'react';
 
 const MyActivities = () => {
   const CardComponent = (props) => {
-    console.log(props)
+
+    let avgRating = 0;
+
+    props.act.reviews.forEach(review => {
+      avgRating += review.rating;
+    })
+
+    avgRating = avgRating / props.act.reviews.length;
+
     return (
       <div
           className="list-group-item list-group-item-action active"
@@ -22,12 +30,12 @@ const MyActivities = () => {
               <h5
                   className="mb-1"
                   style={{display: "inline", fontSize: "1.3rem", float:'left'}}
-              >{props.act.activity_name}</h5>
+              >{props.act.name}</h5>
                 <h6
                   style={{display:'inline', float:'left', paddingLeft:'10px'}}
                 ><ReactStars
                   count = {5}
-                  value = {props.act.rating}
+                  value = {avgRating}
                   size={18}
                   edit={false}
                   color={'blue'}
@@ -35,8 +43,8 @@ const MyActivities = () => {
             </div>
               <div style={{display: "inline-block", float: "right", marginLeft: ""}}>
                 <Button variant="primary" style={{backgroundColor: "#3E363F", borderColor: "#3E363F", display: "inline", float: "right", marginLeft: "0.5rem"}}
-                onClick={() => props.handleShow({title: props.act.title, comment: props.act.comment, date: props.act.date, helpfulness: props.act.helpfulness})}>
-                  See Review
+                onClick={() => props.handleShow(props.act.reviews)}>
+                  See Reviews
                 </Button>
               </div>
               <div style={{display: "inline", float:'right', paddingRight:'20%'}}>
