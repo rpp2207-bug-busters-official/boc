@@ -85,11 +85,13 @@ const HigherOrderList = (props) => {
 
   const getMyActivites = () => {
 
-    const user_id = Cookie.getCookie()
+    const userId = Cookie.getCookie();
 
     fetch('/api/prof_my_activities', {
         method: "POST",
-        body: user_id
+        body:  JSON.stringify({
+            userId: userId
+        })
     })
     .then(data => data.json())
     .then((res) => {
