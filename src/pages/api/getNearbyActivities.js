@@ -33,11 +33,17 @@ const getNearbyActivities = async (req, res) => {
       WHERE distance <= radius
       ORDER BY distance`;
 
-    pool.query(activitiesQuery, (error, results) => {
-        if (error) {
-          console.log('Query Failed:', error);
-        }
-        return res.status(200).send(results);
+      return new Promise((reject, resolve) => {
+        pool.query(activitiesQuery, (error, results) => {
+            if (error) {
+              console.log('Query Failed:', error);
+              res.status(400).send(error);
+              reject(err);
+            }
+            res.status(200).send(results);
+            resolve(results);
+          })
+
       })
 }
 
