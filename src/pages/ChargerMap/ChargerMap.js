@@ -134,7 +134,7 @@ export default function ChargerMap(props) {
 
     map.current.flyTo({
       center: e.lngLat,
-      zoom: 15
+      zoom: 14
     });
 
     setLat(e.lngLat.lat);
