@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest  --coverage"
+    "test": "jest  --coverage",
+    "analyze":"ANALYZE=true npm run build"
   },
   "dependencies": {
     "@jest/globals": "^29.5.0",
@@ -36,7 +37,8 @@
     "react-icons": "^4.8.0",
     "react-map-gl": "^7.0.21",
     "react-scripts": "^5.0.1",
-    "react-stars": "^2.2.5"
+    "react-stars": "^2.2.5",
+    "sharp": "^0.32.0"
   },
   "devDependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.21.2",

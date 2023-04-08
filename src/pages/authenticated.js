@@ -28,22 +28,6 @@ const Authenticated  = () => {
       <>
         <div style={{padding: "2vh 0 0 0", backgroundColor: "white"}} className={RegularFont.className}>
           <div className='row py-3' style={{margin: "0"}}>
-
-
-
-            {/* <div className='row' style={{margin: "0"}}>
-              <div className='col-sm'>
-                <div className='row' style={{margin: "0"}}>
-                  <Favorites />
-                </div>
-                <div className='row' style={{margin: "0"}}>
-                  <CompletedActivites />
-                </div>
-              </div>
-              <div className='col-sm'>
-                <MyActivities />
-              </div>
-            </div> */}
             <div className='row' style={{margin: "0", width: "100vw", padding: "0 1vw"}}>
               <div className='col-' style={{padding: "0", margin: "0 1.5vw 0 1.5vw", width: "22vw", minWidth: "23rem"}}>
                 <div style={{backgroundColor: "white", paddingTop: "1rem", marginBottom: "1.5vw", width: "100%", border: "3px solid #FF5533", borderRadius: "8px"}}>

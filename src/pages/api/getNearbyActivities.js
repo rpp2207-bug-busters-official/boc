@@ -36,12 +36,11 @@ const getNearbyActivities = async (req, res) => {
       return new Promise((reject, resolve) => {
         pool.query(activitiesQuery, (error, results) => {
             if (error) {
-              console.log('Query Failed:', error);
+              reject(error);
               res.status(400).send(error);
-              reject(err);
             }
-            res.status(200).send(results);
             resolve(results);
+            res.status(200).send(results);
           })
 
       })
