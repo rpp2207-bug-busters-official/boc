@@ -9,5 +9,5 @@ const nextConfig = {
 }
 
 
-// module.exports = nextConfig;
-module.exports = withBundleAnalyzer({});
+module.exports = nextConfig;
+// module.exports = withBundleAnalyzer({});

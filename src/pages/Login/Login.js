@@ -1,9 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import { Button, Modal} from 'react-bootstrap';
-import firebase from '../../../firebase/clientApp.js';
 import facebookLogin from '../../../helper_functions/facebookLogin.js';
 import googleLogin from '../../../helper_functions/googleLogin.js';
-import CreateUser from '../../../helper_functions/newUser.js';
 import LoginUser from '../../../helper_functions/loginUser.js';
 import Link from 'next/link';
 

@@ -1,12 +1,9 @@
 import Script from 'next/script';
 import {Helmet} from 'react-helmet';
-// import Filters from './filters.js';
 import FiltersForm from '../../../components/FiltersForm.js';
 import getConnectionsFilters from '../../../helper_functions/getConnectionsFilters.js';
 import getOperatorsFilters from '../../../helper_functions/getOperatorsFilters.js';
 import JsonEscape from '../../../helper_functions/jsonEscape.js';
-// import activity list
-// import ActivityList from '../ActivityList/ActivityList.js';
 import ActivityList from '../../../components/ActivityList/ActivityList.js';
 
 import localFont from 'next/font/local';
@@ -30,7 +27,7 @@ export default function ChargerMap(props) {
   const map = useRef(null);
   const [lng, setLng] = useState(-100.000000);
   const [lat, setLat] = useState(38.5);
-  const [zoom, setZoom] = useState(3);
+  const [zoom, setZoom] = useState(4);
   const [activitiesOpened, setActivitiesOpened] = useState(false);
   const [filters, setFilters] = useState({
     operators:[],
