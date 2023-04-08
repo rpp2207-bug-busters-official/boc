@@ -34,18 +34,11 @@ export default function ChargerMap(props) {
     connections:[]
   });
 
-
-
-
-
   function handleClick() {
-    // console.log("in handle click");
     let combinedFilters = getOperatorsFilters(filters).concat(getConnectionsFilters(filters));
     if (combinedFilters.length!== 0) {
       let filter = ['any',].concat(combinedFilters);
       map.current.setFilter(layer,filter);
-      // console.log("log in handleclick",JSON.stringify(filter) );
-        // alert(JSON.stringify(filter));
   }
 }
 
@@ -53,9 +46,7 @@ export default function ChargerMap(props) {
     if (map.current) return; // initialize map only once
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
-      // style: 'mapbox://styles/mapbox/streets-v12',
       style:'mapbox://styles/rlhutong/clfdie9qk000b01qlk82ydzeb',
-      // style:'mapbox://styles/rlhutong/clfitz1yp001201o96kahnp76',
       center: [lng, lat],
       zoom: zoom
     });
@@ -79,7 +70,6 @@ export default function ChargerMap(props) {
       function showPopup(e) {
 
         map.current.getCanvas().style.cursor = 'pointer';
-        console.log(map.current.getCanvas().style.cursor);
         let sname = e.features[0]?.properties?.name;
         let connection = e.features[0]?.properties?.connectionType;
         let coordinates = e.features[0]?.geometry?.coordinates?.slice();
@@ -98,14 +88,6 @@ export default function ChargerMap(props) {
         if (level !== '2') {
           avail = "Occupied";
         }
-
-        // let combined = '<p> ' + avail + '</p>'
-        // '<br /><p>' + provider +
-        // '<br />' + sname +
-        // '<br />' + connection +
-        // '<br />' + description +
-        // '<br />';
-
         let combined = `<p style='font-size:20px'><strong>${avail}</strong></p>
         <p><strong>Location:</strong> ${sname}</p>
         <p><strong>Connector Type:</strong> ${connection}</p>
@@ -152,23 +134,19 @@ export default function ChargerMap(props) {
 
     map.current.flyTo({
       center: e.lngLat,
-      zoom: 16
+      zoom: 15
     });
 
     setLat(e.lngLat.lat);
     setLng(e.lngLat.lng);
     setZoom(map.current.getZoom());
     });
-
-
-
   });
 
   return (
     <>
     <Script src="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js"></Script>
     <Script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></Script>
-    <link rel="stylesheet" href="/map.css" type="text/css"></link>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
     <h1 id="title" className={myFont.className} style={{fontSize:'max(5vh,min(5vw,90px))', margin:'3vh', color: 'black', fontWeight: 'bold', height: "10vh"}}>Charge {''}
       <Image
@@ -178,23 +156,13 @@ export default function ChargerMap(props) {
           height='100'
           style={{height: "max(5vh,min(5vw,90px))", width: "auto"}}
       /> Tarry</h1>
-  {/* </div> */}
-
    <span className="map-span-container">
-
- {/* <div className="row"> */}
-
- {/* <div className="sidebar">
- Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
- </div> */}
-  {/* <div> */}
      <FiltersForm filters={filters} setFilters={setFilters} onCloseClick={handleClick} />
      <div ref={mapContainer} className="map-container" />
   </span>
   <pre id="quick-info">
     <ActivityList longitude={lng} latitude={lat}/>
   </pre>
-
 </>
   )
 }
