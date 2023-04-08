@@ -516,3 +516,7 @@ mapboxgl-popup {
 /* .navbar-link-underline:hover {
   border-bottom: 1px solid white;
 } */
+
+.clickable-link:hover {
+  cursor: pointer;
+}
