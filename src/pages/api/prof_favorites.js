@@ -12,7 +12,7 @@ return new Promise((resolve, reject) => {
         reject(err);
       }
       res.status(200).json(result);
-      console.log(result);
+      // console.log(result);
       resolve(result);
     })
   })

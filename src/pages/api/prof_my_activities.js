@@ -3,14 +3,27 @@ const pool = require('../../db/pool.js');
 const getMyActivities = (req, res) => {
 
 
-let test = "SELECT * FROM activities FULL JOIN reviews ON activities.review_id = reviews.review_id AND activities.user_id = '" + 'jaCqoxgk26bc6VvrnHsBr8L2dAr1' + "';"
-let query = "SELECT * FROM activities FULL JOIN reviews ON activities.user_id = reviews.user_id AND activities.user_id = 'jaCqoxgk26bc6VvrnHsBr8L2dAr1';";
+  console.log(req.body)
 
-// WORKING:
 
-    // "SELECT * FROM activities WHERE user_id = '" + 'jaCqoxgk26bc6VvrnHsBr8L2dAr1' + "';"
+  let test =
+  `SELECT
+    a.activity_id,
+    a.name,
+    a.city,
+    a.address,
+    a.state,
+    (
+        SELECT
+            coalesce(json_agg(json_build_object('comment', reviews.comment, 'date', reviews.date, 'helpfulness', reviews.helpfulness, 'title', reviews.title, 'rating', reviews.rating )), '[]') AS reviews
+        FROM
+            reviews
+        WHERE
+            reviews.activity_id = a.activity_id)
+  FROM
+    activities a where a.user_id = '${req.body}'`;
 
-    // "SELECT * FROM activities FULL JOIN reviews ON activities.user_id = reviews.user_id WHERE activities.user_id = '" + 'jaCqoxgk26bc6VvrnHsBr8L2dAr1' + "';"
+
 
 
   return new Promise((resolve, reject) => {
