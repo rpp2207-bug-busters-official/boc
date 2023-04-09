@@ -5,8 +5,6 @@ import getConnectionsFilters from '../../../helper_functions/getConnectionsFilte
 import getOperatorsFilters from '../../../helper_functions/getOperatorsFilters.js';
 import JsonEscape from '../../../helper_functions/jsonEscape.js';
 import ActivityList from '../../../components/ActivityList/ActivityList.js';
-
-import localFont from 'next/font/local';
 import Image from 'next/image';
 
 import React, { useRef, useEffect, useState } from 'react';
@@ -19,7 +17,6 @@ import {BsFillPlugFill} from 'react-icons/bs';
 import mapboxgl from 'mapbox-gl' // eslint-disable-line import/no-webpack-loader-syntax
 
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_KEY;
-const myFont = localFont({src:'../../styles/Inter/Inter-VariableFont_slnt,wght.ttf'})
 export default function ChargerMap(props) {
 
   const layer = 'us2-5avts3';
@@ -148,7 +145,7 @@ export default function ChargerMap(props) {
     <Script src="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js"></Script>
     <Script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></Script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
-    <h1 id="title" className={myFont.className} style={{fontSize:'max(5vh,min(5vw,90px))', margin:'3vh', color: 'black', fontWeight: 'bold', height: "10vh"}}>Charge {''}
+    <h1 id="title" style={{fontSize:'max(5vh,min(5vw,90px))', margin:'3vh', color: 'black', fontWeight: 'bold', height: "10vh"}}>Charge {''}
       <Image
           src="/and-symbol.png"
           alt="Charge and Tarry Logo"

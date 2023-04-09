@@ -1,14 +1,10 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
 import Alert from 'react-bootstrap/Alert';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import chargeTime from '../helper_functions/chargeTime.js';
 import Cookies from '../helper_functions/setCookie.js';
-import localFont from 'next/font/local';
-// import {Button} from 'react-bootstrap';
-
-const myFont = localFont({src:'../src/styles/Inter/Inter-VariableFont_slnt,wght.ttf'})
 
 const Timer = () => {
 
@@ -208,7 +204,7 @@ const Timer = () => {
           </div>
         </div>
         :
-        <button id="timer-btn" className={`${myFont.className}`} onClick={() => selected(!select)}>Start A Charge</button>
+        <button id="timer-btn" onClick={() => selected(!select)}>Start A Charge</button>
       }
 
       {

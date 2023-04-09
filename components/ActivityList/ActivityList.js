@@ -4,11 +4,7 @@
 import Activity from '../Activity.js';
 import AddedActivity from './postedActivity.js';
 import { useState, useEffect } from 'react';
-import localFont from 'next/font/local';
 import ActivityForm from '../ActivityForm/ActivityForm.js';
-
-// const myFont = localFont({src:'../../styles/Inter/Inter-VariableFont_slnt,wght.ttf'});
-const myFont = localFont({src:'../../src/styles/Inter/Inter-VariableFont_slnt,wght.ttf'});
 
 export default function ActivityList(props) {
   const [activities, setActivities] = useState([]);
@@ -121,7 +117,7 @@ export default function ActivityList(props) {
                 </div>
               }
           </div>)
-      : <button id="view-acts-btn" className={`${myFont.className}`} onClick={openToClose}>View Activities</button>}
+      : <button id="view-acts-btn" onClick={openToClose}>View Activities</button>}
     </div>
   )
 }

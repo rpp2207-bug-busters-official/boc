@@ -4,7 +4,6 @@ import Link from 'next/link';
 import resetPass from '../../helper_functions/resetPassword.js'
 import {useRouter} from 'next/router';
 
-
 export default function ResetPasswordPage() {
   let router = useRouter();
   const [resetPassMsg, setResetPassMsg] = useState('');
