@@ -42,7 +42,7 @@ const Navbar = (props) => {
               </li> */}
                 {cookie !== undefined &&
                   <li className='nav-item active' style={{marginRight: "6px"}}>
-                    <Link className="nav-link" href="/authenticated" id="a-btn-lnk">View Profile</Link>
+                    <Link className="nav-link" href="/authenticated" id="a-btn-lnk" style={{minWidth:'115px'}}>View Profile</Link>
                   </li>
                 }
 
