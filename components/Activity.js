@@ -1,8 +1,10 @@
 import {AiFillStar} from 'react-icons/ai';
 import {useState} from 'react';
-import Reviews from '../src/pages/Reviews/Reviews.js';
+// import Reviews from '../src/pages/Reviews/Reviews.js';
+import Reviews from './Reviews/Reviews.js';
 import { Button, Modal} from 'react-bootstrap';
-import StarRating from '../src/pages/ActivityList/StarRating.js';
+// import StarRating from '../src/pages/ActivityList/StarRating.js';
+import StarRating from './ActivityList/StarRating.js';
 
 export default function Activity(props) {
   const [isFavorite, setIsFavorite] = useState(false);
