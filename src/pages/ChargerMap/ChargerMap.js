@@ -171,14 +171,14 @@ export default function ChargerMap(props) {
     <Script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></Script>
     <link rel="stylesheet" href="/map.css" type="text/css"></link>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
-    <h1 id="title" className={myFont.className} style={{fontSize:'max(5vh,min(5vw,90px))', margin:'3vh', color: 'black', fontWeight: 'bold', height: "10vh"}}>Charge {''}
+    <h1 id="title" className={myFont.className} style={{fontSize:'max(5vh,min(5vw,90px))', margin:'3vh', color: 'black', fontWeight: 'bold', height: "10vh", flexWrap:'nowrap', display:'flex'}}>Charge&nbsp;
       <Image
           src="/and-symbol.png"
           alt="Charge and Tarry Logo"
           width='75'
           height='100'
           style={{height: "max(5vh,min(5vw,90px))", width: "auto"}}
-      /> Tarry</h1>
+      /> &nbsp;Tarry</h1>
   {/* </div> */}
 
    <span className="map-span-container">
