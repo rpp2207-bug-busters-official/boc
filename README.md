@@ -53,6 +53,8 @@ The user can create an account with their email or through google/facebook to ac
 
 As a guest, users are able to see charging stations as well as their availability, see nearby activites, and start a timer for their charge. Authenticated users can submit new activities/reviews and keep track of their completed or favorite activites through their profile page.
 
+Forgot your password? No problem! The website as taken care of the case where a user might forget their login credentials. It will send the user an email with a link which they can follow to reset their password. This redirects them to the Charge and Tarry webpage where they are able to reset their credentials.
+
 ### Add new Activity/Review (Authenticated users only)
 Authenticated users can submit review and add new activities via forms.
 
