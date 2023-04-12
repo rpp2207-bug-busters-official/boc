@@ -1,5 +1,6 @@
 # Charge and Tarry
 
+<img src="https://img.shields.io/badge/BadgeText-HexColor?logo=SimpleIconName&logoColor=ColorName&style=ShieldStyle" />
 Charge & Tarry is a website that electric vehicle owners can use to find charging stations and explore nearby recreational activities while they are waiting for their vehicles to be charged. This website is designed to be mobile friendly for the owners to access its contents easily on the go.
 
 ![homepage](https://user-images.githubusercontent.com/42246116/230190467-e666ce0c-0c76-4c36-a6d1-dac032e0217a.png)
