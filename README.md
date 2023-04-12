@@ -47,9 +47,11 @@ Default timer is 30 mins. The user will be able to customize the timer and check
 https://user-images.githubusercontent.com/42246116/230148711-d2284059-ada3-483f-8fca-c11cfe927aa9.mp4
 
 ### Authentication
-The user can sign up with emails or through google/facebook to access profile page and submitting new activities/reviews.
+The user can create an account with their email or through google/facebook to access profile page and submitting new activities/reviews.
 
 <img width="1191" alt="Screen Shot 2023-04-05 at 2 26 03 PM" src="https://user-images.githubusercontent.com/42246116/230184689-9b9a71f2-f9be-46a6-a26a-ba606f880216.png">
+
+As a guest, users are able to see charging stations as well as their availability, see nearby activites, and start a timer for their charge. Authenticated users can submit new activities/reviews and keep track of their completed or favorite activites through their profile page.
 
 ### Add new Activity/Review (Authenticated users only)
 Authenticated users can submit review and add new activities via forms.
