@@ -21,18 +21,20 @@ const Navbar = (props) => {
   }, [cookie]);
 
   return (
-    <nav className='navbar navbar-expand-lg navbar-light bg-light' style={{padding:'10px', 'backgroundImage':'#FFCB6B', width: "100vw", height: "12vh"}}>
-          <Link style={{color:'white'}} href="/" className={`navbar-brand ${myFont.className}`}>
-            <Image
-                src="/cnt-logo.png"
-                alt="Charge and Tarry Logo"
-                style={{width: "100%", minWidth: "4rem"}}
-                width='80'
-                height='60'
-            />
-          </Link>
+    <nav className='navbar navbar-expand navbar-light bg-light' style={{padding:'10px', 'backgroundImage':'#FFCB6B', width: "100vw", height: "12vh", minWidth:'400px'}}>
           <ul className='navbar-nav mr-auto' id="navbar-list">
-                  <li className='nav-item active' style={{marginRight: "10px"}}>
+            <li>
+              <Link style={{color:'white', display:'inline'}} href="/" className={`navbar-brand ${myFont.className}`}>
+                <Image
+                    src="/cnt-logo.png"
+                    alt="Charge and Tarry Logo"
+                    style={{width: "100%", minWidth: "4rem"}}
+                    width='80'
+                    height='60'
+                />
+              </Link>
+            </li>
+                  <li className='nav-item active' style={{marginRight: "10px", display:'inline'}}>
                     <Link className="nav-link" href="/" id="a-btn-lnk">Home</Link>
                   </li>
               {/* <li className='nav-item active'>
@@ -40,7 +42,7 @@ const Navbar = (props) => {
               </li> */}
                 {cookie !== undefined &&
                   <li className='nav-item active' style={{marginRight: "6px"}}>
-                    <Link className="nav-link" href="/authenticated" id="a-btn-lnk">View Profile</Link>
+                    <Link className="nav-link" href="/authenticated" id="a-btn-lnk" style={{minWidth:'115px'}}>View Profile</Link>
                   </li>
                 }
 

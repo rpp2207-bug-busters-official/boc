@@ -17,6 +17,8 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 import * as MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 
+import {BsFillPlugFill} from 'react-icons/bs';
+
 import mapboxgl from 'mapbox-gl' // eslint-disable-line import/no-webpack-loader-syntax
 
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_KEY;
@@ -100,7 +102,19 @@ export default function ChargerMap(props) {
           avail = "Occupied";
         }
 
-        let combined = avail + '<br />' + provider + '<br />' + sname +'<br />' + connection + '<br />' + description  +'<br />';
+        // let combined = '<p> ' + avail + '</p>'
+        // '<br /><p>' + provider +
+        // '<br />' + sname +
+        // '<br />' + connection +
+        // '<br />' + description +
+        // '<br />';
+
+        let combined = `<p style='font-size:20px'><strong>${avail}</strong></p>
+        <p><strong>Location:</strong> ${sname}</p>
+        <p><strong>Connector Type:</strong> ${connection}</p>
+        <p style='font-size:"15px"; color:rgb(150, 150, 150);'>${provider}</p>
+        <p style='color: rgb(150, 150, 150);'><small>${description}</small></p>
+        `
 
         // Ensure that if the map is zoomed out such that multiple
         // copies of the feature are visible, the popup appears
@@ -159,14 +173,14 @@ export default function ChargerMap(props) {
     <Script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></Script>
     <link rel="stylesheet" href="/map.css" type="text/css"></link>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
-    <h1 id="title" className={myFont.className} style={{fontSize:'max(5vh,min(5vw,90px))', margin:'3vh', color: 'black', fontWeight: 'bold', height: "10vh"}}>Charge {''}
+    <h1 id="title" className={myFont.className} style={{fontSize:'max(5vh,min(5vw,90px))', margin:'3vh', color: 'black', fontWeight: 'bold', height: "10vh", flexWrap:'nowrap', display:'flex'}}>Charge&nbsp;
       <Image
           src="/and-symbol.png"
           alt="Charge and Tarry Logo"
           width='75'
           height='100'
           style={{height: "max(5vh,min(5vw,90px))", width: "auto"}}
-      /> Tarry</h1>
+      /> &nbsp;Tarry</h1>
   {/* </div> */}
 
    <span className="map-span-container">
