@@ -4,11 +4,7 @@
 import Activity from '../Activity.js';
 import AddedActivity from './postedActivity.js';
 import { useState, useEffect } from 'react';
-import localFont from 'next/font/local';
 import ActivityForm from '../ActivityForm/ActivityForm.js';
-
-// const myFont = localFont({src:'../../styles/Inter/Inter-VariableFont_slnt,wght.ttf'});
-const myFont = localFont({src:'../../src/styles/Inter/Inter-VariableFont_slnt,wght.ttf'});
 
 export default function ActivityList(props) {
   const [activities, setActivities] = useState([]);
@@ -37,7 +33,7 @@ export default function ActivityList(props) {
         Authorization: `Bearer ` + yelpAPI
       }
     };
-      console.log(props.latitude + ' ' + props.longitude);
+      // console.log(props.latitude + ' ' + props.longitude);
      fetch(`${queryURL}https://api.yelp.com/v3/businesses/search?latitude=${props.latitude}&longitude=${props.longitude}&radius=1000&categories=&locale=en_US&open_now=true&sort_by=distance&device_platform=mobile-generic&limit=5`, options)
        .then(response => response.json())
        .then(response => {setActivities(response.businesses)})
@@ -51,11 +47,11 @@ export default function ActivityList(props) {
       .then(data => data.json())
       .then((res) => {
         // Probably set the retrieved activities in a state
-        console.log('success', res);
+        // console.log('success', res);
         setUserActs(res.rows);
       })
       .catch((err) => {
-        console.log('Failed to get user added nearby activities', err);
+        // console.log('Failed to get user added nearby activities', err);
       })
   }
 
@@ -71,11 +67,11 @@ export default function ActivityList(props) {
     setLongitude(props.longitude);
     getAddedNearbyActivities(0, 0)
       .then(() => {
-        console.log('Current Activities', activities)
+        // console.log('Current Activities', activities)
         getNearbyActivities();
       })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
       })
       .catch(err => console.log('wut'));
   }, [props.latitude, props.longitude])
@@ -121,7 +117,7 @@ export default function ActivityList(props) {
                 </div>
               }
           </div>)
-      : <button id="view-acts-btn" className={`${myFont.className}`} onClick={openToClose}>View Activities</button>}
+      : <button id="view-acts-btn" onClick={openToClose}>View Activities</button>}
     </div>
   )
 }

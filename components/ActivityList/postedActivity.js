@@ -3,10 +3,6 @@ import { useState, useEffect } from 'react';
 import Reviews from '../Reviews/Reviews.js';
 import { Button, Modal} from 'react-bootstrap';
 import StarRating from './StarRating.js';
-import localFont from 'next/font/local';
-
-// const myFont = localFont({src:'../../styles/Inter/Inter-VariableFont_slnt,wght.ttf'});
-const myFont = localFont({src:'../../src/styles/Inter/Inter-VariableFont_slnt,wght.ttf'});
 
 export default function AddedActivity(props) {
   const [isFavorite, setIsFavorite] = useState(false);
@@ -90,7 +86,7 @@ export default function AddedActivity(props) {
   },[activityObj]);
 
   return (
-    <div className={`activity-widget ${myFont.className}`}>
+    <div className={`activity-widget`}>
       {isFavorite ? <AiFillStar id="list-item-favorited" color="gold" size="36" onClick={() => setIsFavorite(!isFavorite)}/> : <AiFillStar color="white" size="36" onClick={() => setIsFavorite(!isFavorite)}/>}
         <h2 id="list-item-name">{activityObj.name}</h2>
 

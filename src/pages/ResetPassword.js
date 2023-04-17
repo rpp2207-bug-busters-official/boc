@@ -1,5 +1,5 @@
 import { getAuth, confirmPasswordReset } from "firebase/auth";
-import react, {useState, useEffect} from 'react';
+import react, {useState} from 'react';
 import {Button} from 'react-bootstrap';
 import Link from 'next/link';
 import {useRouter} from 'next/router';

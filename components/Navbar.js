@@ -6,9 +6,6 @@ import Logout from '../helper_functions/logOut.js';
 import react, {useEffect, useState} from 'react';
 import Image from 'next/image';
 
-import localFont from 'next/font/local';
-const myFont = localFont({src:'../src/styles/Inter/Inter-VariableFont_slnt,wght.ttf'})
-
 const Navbar = (props) => {
   let [cookie, setCookie] = useState(undefined);
   let [onProf, setOnProf] = useState(false);
@@ -22,7 +19,7 @@ const Navbar = (props) => {
 
   return (
     <nav className='navbar navbar-expand-lg navbar-light bg-light' style={{padding:'10px', 'backgroundImage':'#FFCB6B', width: "100vw", height: "12vh"}}>
-          <Link style={{color:'white'}} href="/" className={`navbar-brand ${myFont.className}`}>
+          <Link style={{color:'white'}} href="/" className={`navbar-brand`}>
             <Image
                 src="/cnt-logo.png"
                 alt="Charge and Tarry Logo"

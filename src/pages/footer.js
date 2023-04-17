@@ -37,10 +37,7 @@ export default function footer() {
                   <Link href="/authenticated" className="text-reset">Profile Page</Link>
                 </p>
                 <Register footer='Sign Up Today!'/>
-                <br/>
-                <br/>
                 <Login footer='Sign In'/>
-                <br/>
 
               </div>
 

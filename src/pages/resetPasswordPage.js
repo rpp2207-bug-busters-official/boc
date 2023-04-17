@@ -1,9 +1,8 @@
-import react, { useEffect, useState } from 'react';
+import react, { useState } from 'react';
 import { Button, Modal} from 'react-bootstrap';
 import Link from 'next/link';
 import resetPass from '../../helper_functions/resetPassword.js'
 import {useRouter} from 'next/router';
-
 
 export default function ResetPasswordPage() {
   let router = useRouter();

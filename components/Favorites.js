@@ -1,8 +1,6 @@
-import favorites from '../sample-data/sample-favorites.js';
+// import favorites from '../sample-data/sample-favorites.js';
 import { useState, useEffect } from 'react';
 import HigherOrderList from './higherOrderList.js';
-
-
 const Favorites = () => {
     const FavoriteCard = (props) => {
         return (

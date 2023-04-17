@@ -1,5 +1,5 @@
-import activities from '../sample-data/sample-activities.js';
-import react, { useEffect, useState } from 'react';
+// import activities from '../sample-data/sample-activities.js';
+import react, { useState } from 'react';
 import HigherOrderList from './higherOrderList.js';
 import ReactStars from 'react-stars';
 import React from 'react';

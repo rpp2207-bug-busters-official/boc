@@ -5,10 +5,7 @@ import Cookies from '../../helper_functions/setCookie.js';
 import {useRouter} from 'next/router';
 import react, { useEffect, useState } from 'react';
 import Image from 'next/image';
-import localFont from 'next/font/local';
 import Footer from './footer.js';
-
-const RegularFont = localFont({src:'../styles/Inter/Inter-VariableFont_slnt,wght.ttf'});
 
 const Authenticated  = () => {
   let router = useRouter();
@@ -26,24 +23,8 @@ const Authenticated  = () => {
     <>
       {cookie !== undefined &&
       <>
-        <div style={{padding: "2vh 0 0 0", backgroundColor: "white"}} className={RegularFont.className}>
+        <div style={{padding: "2vh 0 0 0", backgroundColor: "white"}} >
           <div className='row py-3' style={{margin: "0"}}>
-
-
-
-            {/* <div className='row' style={{margin: "0"}}>
-              <div className='col-sm'>
-                <div className='row' style={{margin: "0"}}>
-                  <Favorites />
-                </div>
-                <div className='row' style={{margin: "0"}}>
-                  <CompletedActivites />
-                </div>
-              </div>
-              <div className='col-sm'>
-                <MyActivities />
-              </div>
-            </div> */}
             <div className='row' style={{margin: "0", width: "100vw", padding: "0 1vw"}}>
               <div className='col-' style={{padding: "0", margin: "0 1.5vw 0 1.5vw", width: "22vw", minWidth: "23rem"}}>
                 <div style={{backgroundColor: "white", paddingTop: "1rem", marginBottom: "1.5vw", width: "100%", border: "3px solid #FF5533", borderRadius: "8px"}}>
@@ -56,7 +37,7 @@ const Authenticated  = () => {
                       height='180'
                     />
                   </div>
-                  <div style={{padding: "0 0 1rem 0", color: "black"}} className={`${RegularFont.className}`}>
+                  <div style={{padding: "0 0 1rem 0", color: "black"}} >
                     <p
                       className='lead text-center'
                       style={{

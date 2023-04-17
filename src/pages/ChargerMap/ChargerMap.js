@@ -1,15 +1,10 @@
 import Script from 'next/script';
 import {Helmet} from 'react-helmet';
-// import Filters from './filters.js';
 import FiltersForm from '../../../components/FiltersForm.js';
 import getConnectionsFilters from '../../../helper_functions/getConnectionsFilters.js';
 import getOperatorsFilters from '../../../helper_functions/getOperatorsFilters.js';
 import JsonEscape from '../../../helper_functions/jsonEscape.js';
-// import activity list
-// import ActivityList from '../ActivityList/ActivityList.js';
 import ActivityList from '../../../components/ActivityList/ActivityList.js';
-
-import localFont from 'next/font/local';
 import Image from 'next/image';
 
 import React, { useRef, useEffect, useState } from 'react';
@@ -17,10 +12,11 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 import * as MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 
+import {BsFillPlugFill} from 'react-icons/bs';
+
 import mapboxgl from 'mapbox-gl' // eslint-disable-line import/no-webpack-loader-syntax
 
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_KEY;
-const myFont = localFont({src:'../../styles/Inter/Inter-VariableFont_slnt,wght.ttf'})
 export default function ChargerMap(props) {
 
   const layer = 'us2-5avts3';
@@ -28,25 +24,18 @@ export default function ChargerMap(props) {
   const map = useRef(null);
   const [lng, setLng] = useState(-100.000000);
   const [lat, setLat] = useState(38.5);
-  const [zoom, setZoom] = useState(3);
+  const [zoom, setZoom] = useState(4);
   const [activitiesOpened, setActivitiesOpened] = useState(false);
   const [filters, setFilters] = useState({
     operators:[],
     connections:[]
   });
 
-
-
-
-
   function handleClick() {
-    // console.log("in handle click");
     let combinedFilters = getOperatorsFilters(filters).concat(getConnectionsFilters(filters));
     if (combinedFilters.length!== 0) {
       let filter = ['any',].concat(combinedFilters);
       map.current.setFilter(layer,filter);
-      // console.log("log in handleclick",JSON.stringify(filter) );
-        // alert(JSON.stringify(filter));
   }
 }
 
@@ -54,9 +43,7 @@ export default function ChargerMap(props) {
     if (map.current) return; // initialize map only once
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
-      // style: 'mapbox://styles/mapbox/streets-v12',
       style:'mapbox://styles/rlhutong/clfdie9qk000b01qlk82ydzeb',
-      // style:'mapbox://styles/rlhutong/clfitz1yp001201o96kahnp76',
       center: [lng, lat],
       zoom: zoom
     });
@@ -80,7 +67,6 @@ export default function ChargerMap(props) {
       function showPopup(e) {
 
         map.current.getCanvas().style.cursor = 'pointer';
-        console.log(map.current.getCanvas().style.cursor);
         let sname = e.features[0]?.properties?.name;
         let connection = e.features[0]?.properties?.connectionType;
         let coordinates = e.features[0]?.geometry?.coordinates?.slice();
@@ -99,8 +85,12 @@ export default function ChargerMap(props) {
         if (level !== '2') {
           avail = "Occupied";
         }
-
-        let combined = avail + '<br />' + provider + '<br />' + sname +'<br />' + connection + '<br />' + description  +'<br />';
+        let combined = `<p style='font-size:20px'><strong>${avail}</strong></p>
+        <p><strong>Location:</strong> ${sname}</p>
+        <p><strong>Connector Type:</strong> ${connection}</p>
+        <p style='font-size:"15px"; color:rgb(150, 150, 150);'>${provider}</p>
+        <p style='color: rgb(150, 150, 150);'><small>${description}</small></p>
+        `
 
         // Ensure that if the map is zoomed out such that multiple
         // copies of the feature are visible, the popup appears
@@ -141,25 +131,20 @@ export default function ChargerMap(props) {
 
     map.current.flyTo({
       center: e.lngLat,
-      zoom: 16
+      zoom: 14
     });
 
     setLat(e.lngLat.lat);
     setLng(e.lngLat.lng);
     setZoom(map.current.getZoom());
     });
-
-
-
   });
 
   return (
     <>
     <Script src="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js"></Script>
     <Script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></Script>
-    <link rel="stylesheet" href="/map.css" type="text/css"></link>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
-    <h1 id="title" className={myFont.className} style={{fontSize:'max(5vh,min(5vw,90px))', margin:'3vh', color: 'black', fontWeight: 'bold', height: "10vh"}}>Charge {''}
+    <h1 id="title" style={{fontSize:'max(5vh,min(5vw,90px))', margin:'3vh', color: 'black', fontWeight: 'bold', height: "10vh"}}>Charge {''}
       <Image
           src="/and-symbol.png"
           alt="Charge and Tarry Logo"
@@ -167,23 +152,13 @@ export default function ChargerMap(props) {
           height='100'
           style={{height: "max(5vh,min(5vw,90px))", width: "auto"}}
       /> Tarry</h1>
-  {/* </div> */}
-
    <span className="map-span-container">
-
- {/* <div className="row"> */}
-
- {/* <div className="sidebar">
- Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
- </div> */}
-  {/* <div> */}
      <FiltersForm filters={filters} setFilters={setFilters} onCloseClick={handleClick} />
      <div ref={mapContainer} className="map-container" />
   </span>
   <pre id="quick-info">
     <ActivityList longitude={lng} latitude={lat}/>
   </pre>
-
 </>
   )
 }
